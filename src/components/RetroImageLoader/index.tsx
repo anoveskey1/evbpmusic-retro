@@ -4,10 +4,11 @@ interface RetroImageLoaderProps {
     alt?: string;
     height?: number;
     src?: string;
+    testId?: string;
     width?: number;
 }
 
-const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, src, width }) => {
+const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, src, testId = "retro-image-loader",width }) => {
     const [linesLoaded, setLinesLoaded] = useState(0);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const totalLines = 30;
@@ -17,9 +18,9 @@ const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, sr
 
         const loadLine = () => {
             setLinesLoaded(currentLine);
-            currentLine++;
+            currentLine += 4;
             if (currentLine <= totalLines) {
-                const randomDelay = 300 + Math.random() * 300;
+                const randomDelay = 500 + Math.random() * 400;
                 timerRef.current = setTimeout(loadLine, randomDelay);
             }
         };
@@ -38,6 +39,7 @@ const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, sr
 
     return (
         <div
+            data-testid={testId}
             style={{
                 display: "inline-flex",
                 justifyContent: "flex-start",
@@ -48,7 +50,6 @@ const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, sr
             }}
         >
             <div
-                data-testid="retro-image-container"
                 style={{
                     position: "relative",
                     overflow: "visible",

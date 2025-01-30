@@ -5,15 +5,21 @@ const imageUnavailableAltText = "The linked image cannot be displayed. The file 
 
 interface ImageUnavailableProps {
     src?: string;
+    testId?: string;
     width?: number;
 }
 
 const ImageUnavailable: React.FC<ImageUnavailableProps> = (
     {
         src = "/images/image_unavailable.PNG",
+        testId = "image-unavailable",
         width = 0
     }) => (
-    <div className="image-container-unavailable" style={{ width: `${width}px` }}>
+    <div
+        className="image-container-unavailable"
+        data-testid={testId}
+        style={{ width: `${width}px` }}
+    >
         <img
             alt={imageUnavailableAltText}
             className="image-element"

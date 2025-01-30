@@ -8,7 +8,14 @@ interface RetroImageLoaderProps {
     width?: number;
 }
 
-const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, src, testId = "retro-image-loader",width }) => {
+const RetroImageLoader: React.FC<RetroImageLoaderProps> = (
+    {
+        alt,
+        height = 0,
+        src,
+        testId = "retro-image-loader",
+        width = 0
+    }) => {
     const [linesLoaded, setLinesLoaded] = useState(0);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const totalLines = 30;
@@ -18,7 +25,7 @@ const RetroImageLoader: React.FC<RetroImageLoaderProps> = ({ alt, height = 0, sr
 
         const loadLine = () => {
             setLinesLoaded(currentLine);
-            currentLine += 4;
+            currentLine += 3;
             if (currentLine <= totalLines) {
                 const randomDelay = 500 + Math.random() * 400;
                 timerRef.current = setTimeout(loadLine, randomDelay);

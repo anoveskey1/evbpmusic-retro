@@ -1,6 +1,7 @@
 import ImageUnavailable from "./components/ImageUnavailable/index.tsx";
 import NewRetroImageLoader from "./components/RetroImageLoader/index.tsx";
 import './App.css'
+import BlinkText from "./components/BlinkText/index.tsx";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
               width={600}
           />
       </div>
+        <div style={{ width: "100%", textAlign: "center" }}>
+            <BlinkText fontColor={"green"} fontSize={24} isBold text={"Home Page"} />
+        </div>
       <div className="card">
           <ImageUnavailable width={100} />
       </div>

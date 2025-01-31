@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 interface BlinkTextProps {
-    isBold: boolean;
-    fontColor: string;
-    fontSize: number;
+    isBold?: boolean;
+    fontColor?: string;
+    fontSize?: number;
+    testId?: string;
     text: string;
 }
 
@@ -12,7 +13,8 @@ const BlinkText: React.FC<BlinkTextProps> = (
         isBold = false,
         fontColor = 'black',
         fontSize = 14,
-        text = ""
+        testId = "blink-text",
+        text
     }) => {
     const [isVisible, setIsVisible] = useState(true);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -32,12 +34,15 @@ const BlinkText: React.FC<BlinkTextProps> = (
     }, [toggleVisibility]);
 
     return (
-        <div style={{
-            color: fontColor,
-            fontSize: `${fontSize}px`,
-            fontWeight: isBold ? "bold" : "normal",
-            visibility: isVisible? 'visible' : 'hidden'
-        }}>
+        <div
+            data-testid={testId}
+            style={{
+                color: fontColor,
+                fontSize: `${fontSize}px`,
+                fontWeight: isBold ? "bold" : "normal",
+                visibility: isVisible? 'visible' : 'hidden'
+            }}
+        >
             {text}
         </div>
     );

@@ -1,0 +1,37 @@
+import React, {useEffect, useState} from "react";
+
+const VisitorCounter: React.FC = () => {
+    const [visitorCount, setVisitorCount] = useState(0);
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/visitor-count`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok')
+                }
+                return response.json()
+            })
+            .then(data => setVisitorCount(data.count))
+            .catch(error => console.error('Fetch error: ', error));
+    }, []);
+
+    const paddedCount = String(visitorCount).padStart(6, '0');
+
+    return (
+        <div>
+            <p>You are visitor #
+                <span style={{
+                    backgroundColor: "black",
+                    color: "white",
+                    fontWeight: "bold",
+                    padding: "10px",
+                    fontFamily: "monospace"
+                }}>
+            {paddedCount}
+        </span>
+                to the site. Welcome!
+            </p>
+        </div>
+    );
+};
+
+export default VisitorCounter;

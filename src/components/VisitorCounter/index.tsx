@@ -14,20 +14,21 @@ const VisitorCounter: React.FC = () => {
             .catch(error => console.error('Fetch error: ', error));
     }, []);
 
-    const paddedCount = String(visitorCount).padStart(6, '0');
+    const paddedCount = String(visitorCount).padStart(8, '0');
 
     return (
         <div>
-            <p>You are visitor #
+            <p style={{ color: "black", fontFamily: "monospace"}}>
+                You are visitor #
                 <span style={{
                     backgroundColor: "black",
                     color: "white",
                     fontWeight: "bold",
-                    padding: "10px",
+                    padding: "5px",
                     fontFamily: "monospace"
                 }}>
-            {paddedCount}
-        </span>
+                    {paddedCount}
+                </span>
                 to the site. Welcome!
             </p>
         </div>

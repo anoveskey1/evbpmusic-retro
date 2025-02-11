@@ -11,7 +11,7 @@ const Home: React.FC = () => {
             <NewRetroImageLoader
                 alt="EVBP"
                 height={150}
-                src="/images/evbp_stereogram_logo_transparent.png"
+                src="/images/evbp_stereogram_logo_transparent_lo_rez.png"
                 width={600}
             />
             <h1>Home Page</h1>

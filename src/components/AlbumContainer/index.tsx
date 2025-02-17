@@ -38,7 +38,7 @@ const AlbumContainer: React.FC<IAlbumContainerProps> = (props: IAlbumContainrPro
                 <h2 className="title">{title} <span className="release-type">({type})</span></h2>
                 <p className="release-date">{releaseDate}</p>
                 <p className="credits">{credits}</p>
-                <ol>
+                <ol className="track-listing">
                     {trackList.map((track: string) => (
                         <li key={track}>{track}</li>
                     ))}

@@ -19,7 +19,7 @@ const Home: React.FC = () => {
         <div style={{ display: "flex", flexDirection: "row", width: "100%", textAlign: "center" }}>
             <MenuButton text={"Home"} onClick={() => console.log("Hello World!")} />
             <MenuButton text={"Bio"} onClick={() => console.log("Hello World!")} />
-            <MenuButton text={"Music"} onClick={() => console.log("Hello World!")} />
+            <MenuButton text={"music"} onClick={() => console.log("Hello World!")} />
             <MenuButton text={"Pics"} onClick={() => console.log("Hello World!")} />
             <MenuButton text={"Blog"} onClick={() => console.log("Hello World!")} />
             <MenuButton text={"Links"} onClick={() => console.log("Hello World!")} />

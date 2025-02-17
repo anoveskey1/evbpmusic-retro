@@ -1,0 +1,47 @@
+.album-container {
+  border: 3px outset #ccc;
+  display: flex;
+  padding: 5px;
+
+  .cover {
+    border: 1px solid #ccc;
+    height: 300px;
+    width: 300px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .info {
+    padding: 3px;
+
+    .release-type {
+      font-style: italic;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .album-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .album-container {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .album-container {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .album-container {
+    flex-direction: column;
+  }
+}

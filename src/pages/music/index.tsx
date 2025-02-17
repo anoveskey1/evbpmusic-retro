@@ -10,7 +10,11 @@ const Music: React.FC = () => {
                 availableFormats={["digital"]}
                 coverUrl="/images/lofimouth-hirez.jpg"
                 credits="Produced by EVBP"
-                links={["https://evbp.bandcamp.com/album/lofimouth"]}
+                links={[
+                    {
+                        url: "https://evbp.bandcamp.com/album/lofimouth",
+                        title: "bandcamp"
+                    }]}
                 releaseDate="2004-01-01"
                 title="Lofi Mouth"
                 type={"LP"}

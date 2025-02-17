@@ -1,11 +1,16 @@
 import React from "react";
 import "./index.less";
 
+interface IUrlLink {
+    url: string;
+    title: string;
+}
+
 interface IAlbumContainerProps {
     availableFormats: string[]; //create an enum - digital, vinyl, cassette, etc
     coverUrl: string;
     credits: string;
-    links: string[]; // create an enum - iTunes, Bandcamp, Spotify, etc
+    links: IUrlLink[]; // create an enum - iTunes, Bandcamp, Spotify, etc
     releaseDate: string;
     title: string;
     trackList: string[];
@@ -39,8 +44,8 @@ const AlbumContainer: React.FC<IAlbumContainerProps> = (props: IAlbumContainrPro
                     ))}
                 </ol>
                 <div className="links">
-                    {links.map((link: string, index: number) => (
-                        <a key={index} href={link}>{link}</a>
+                    {links.map(({ url, title }: IUrlLink, index: number) => (
+                        <a key={index} href={url} rel="noopener noreferrer" >{title}</a>
                     ))}
                 </div>
             </div>

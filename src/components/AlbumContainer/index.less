@@ -1,5 +1,7 @@
 .album-container {
+  background: #D3D3D3;
   border: 3px outset #ccc;
+  color: #333;
   display: flex;
   padding: 5px;
 
@@ -28,20 +30,20 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
   .album-container {
     flex-direction: row;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .album-container {
     flex-direction: row;
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
   .album-container {
-    flex-direction: column;
+    flex-direction: row;
   }
 }

@@ -6,7 +6,7 @@ interface IUrlLink {
     title: string;
 }
 
-interface IAlbumContainerProps {
+export interface IAlbumContainerProps {
     availableFormats: string[]; //create an enum - digital, vinyl, cassette, etc
     coverUrl: string;
     credits: string;

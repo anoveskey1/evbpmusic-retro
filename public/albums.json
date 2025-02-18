@@ -1,0 +1,114 @@
+[
+  {
+    "availableFormats": ["digital"],
+    "coverUrl": "/images/lofimouth-hirez.jpg",
+    "credits": "Produced by EVBP",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/lofimouth",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2004-01-01",
+    "title": "Lo-Fi Mouth",
+    "type": "LP"
+  },
+  {
+    "availableFormats": ["digital"],
+    "coverUrl": "/images/secondep-hirez.jpg",
+    "credits": "Produced by EVBP",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/secondep",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2005-10-31",
+    "title": "The Second EP",
+    "type": "EP"
+  },
+  {
+    "availableFormats": ["digital", "CD"],
+    "coverUrl": "/images/xofart-hirez.jpg",
+    "credits": "Produced by EVBP",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/xofart-deluxe",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2010-11-10",
+    "title": "The X of Art",
+    "type": "EP"
+  },
+  {
+    "availableFormats": ["digital", "CD"],
+    "coverUrl": "/images/meow-hirez.jpg",
+    "credits": "Produced by EVBP. Mixed by EVBP and Peter Bishop. Mastered by Adam Boose.",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/meow",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2016-02-21",
+    "title": "The Mechanical Essence of Whiskers (MEOW)",
+    "type": "LP"
+  },
+  {
+    "availableFormats": ["digital"],
+    "coverUrl": "/images/parameters-hirez.jpg",
+    "credits": "Produced, mixed and mastered by EVBP.",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/-",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2020-10-02",
+    "title": "パラメータの特定のセット (A Certain Set of Parameters",
+    "type": "EP"
+  },
+  {
+    "availableFormats": ["digital, cassette"],
+    "coverUrl": "/images/faux-hirez.jpg",
+    "credits": "Produced, mixed and mastered by EVBP.",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/faux-pleasure",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2021-10-31",
+    "title": "Faux Pleasure",
+    "type": "LP"
+  },
+  {
+    "availableFormats": ["digital"],
+    "coverUrl": "/images/xofart-dlx-hirez.jpg",
+    "credits": "Produced, mixed and mastered by EVBP.",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/xofart-deluxe",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2022-03-19",
+    "title": "The X of Art (Deluxe)",
+    "type": "LP"
+  },
+  {
+    "availableFormats": ["digital"],
+    "coverUrl": "/images/criminals-hirez.jpg",
+    "credits": "Produced, mixed and mastered by EVBP.",
+    "links": [
+      {
+        "url": "https://evbp.bandcamp.com/album/only-criminals-get-caught-i",
+        "title": "Listen on Bandcamp"
+      }
+    ],
+    "releaseDate": "2025-01-20",
+    "title": "Only Criminals Get Caught I",
+    "type": "EP"
+  }
+]

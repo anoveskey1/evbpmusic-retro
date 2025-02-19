@@ -5,6 +5,10 @@
   display: flex;
   padding: 1px;
 
+  h2, p {
+    margin: 0;
+  }
+
   .cover {
     border: 1px solid #ccc;
     height: 300px;
@@ -12,12 +16,14 @@
 
     img {
       height: 100%;
+      min-width: 300px;
       width: 100%;
     }
   }
 
   .info {
     padding: 8px;
+    font-size: 14px;
 
     .release-type {
       font-style: italic;
@@ -25,6 +31,12 @@
 
     .track-listing {
       text-align: left;
+      -moz-column-count: 2;
+      -moz-column-gap: 50px;
+      -webkit-column-count: 2;
+      -webkit-column-gap: 50px;
+        column-count: 2;
+        column-gap: 50px;
     }
   }
 }

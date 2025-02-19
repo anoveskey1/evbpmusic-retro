@@ -16,7 +16,7 @@ const Music: React.FC = () => {
                 releaseDate={album.releaseDate}
                 title={album.title}
                 type={album.type}
-                trackList={["Lofi Mouth", "Lofi Mouth (Instrumental)"]}
+                trackList={album.trackList}
             />))}
         </div>
     );

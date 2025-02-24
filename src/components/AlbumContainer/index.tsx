@@ -31,8 +31,15 @@ const AlbumContainer: React.FC<IAlbumContainerProps> = (props: IAlbumContainrPro
 
     return (
         <div className="album-container">
-            <div className="cover">
-                <img src={coverUrl} alt={`${title} cover`} className="cover-image" />
+            <div className="top">
+                <div className="cover">
+                    <img src={coverUrl} alt={`${title} cover`} className="cover-image" />
+                </div>
+                <div className="links-under-cover">
+                    {links.map(({ url, title }: IUrlLink, index: number) => (
+                        <a key={index} href={url} rel="noopener noreferrer" >{title}</a>
+                    ))}
+                </div>
             </div>
             <div className="info">
                 <h2 className="title">{title} <span className="release-type">({type})</span></h2>
@@ -43,7 +50,7 @@ const AlbumContainer: React.FC<IAlbumContainerProps> = (props: IAlbumContainrPro
                         <li key={track}>{track}</li>
                     ))}
                 </ol>
-                <div className="links">
+                <div className="links-in-info">
                     {links.map(({ url, title }: IUrlLink, index: number) => (
                         <a key={index} href={url} rel="noopener noreferrer" >{title}</a>
                     ))}

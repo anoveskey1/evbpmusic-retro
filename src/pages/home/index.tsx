@@ -6,7 +6,7 @@ import React from "react";
 
 const Home: React.FC = () => {
     return (<>
-        <div>
+        <div className="page-container">
             <h1>Welcome to the official</h1>
             <NewRetroImageLoader
                 alt="EVBP"

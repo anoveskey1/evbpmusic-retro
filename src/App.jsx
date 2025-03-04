@@ -1,19 +1,25 @@
-import { BrowserRouter  as Router, Route,  Routes } from "react-router-dom";
+import React, {Suspense, lazy} from "react";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css'
-import Bio from "./pages/bio/index.tsx";
-import Home from "./pages/home/index.tsx";
-import Music from "./pages/music/index.tsx";
+
+const Bio = lazy(() => import("./pages/bio/index.tsx"));
+const Home = lazy(() => import("./pages/home/index.tsx"));
+const Links = lazy(() => import("./pages/links/index.tsx"));
+const Music = lazy(() => import("./pages/music/index.tsx"));
 
 function App() {
-  return (
-    <Router>
-        <Routes>
-            <Route path={"/"} element={<Home />} />
-            <Route path="/bio" element={<Bio />} />
-            <Route path="/music" element={<Music />} />
-        </Routes>
-    </Router>
-  )
+    return (
+        <Router>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path={"/"} element={<Home />}/>
+                    <Route path="/bio" element={<Bio />}/>
+                    <Route path="/music" element={<Music />}/>
+                    <Route path="/links" element={<Links />}/>
+                </Routes>
+            </Suspense>
+        </Router>
+    )
 }
 
 export default App

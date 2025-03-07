@@ -1,16 +1,16 @@
 .menu-button {
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+  // -moz-background-clip: padding;
+  // -webkit-background-clip: padding-box;
+  // background-clip: padding-box;
   background-color: rebeccapurple;
-  box-shadow:
-          0 2px 0 rgba(0,0,0,.25),
-          inset 0 2px 1px rgba(255,255,255,.67),
-          inset 0 -3px 0 rgba(0,0,0,.14);
-  background-image: -moz-linear-gradient(90deg, rebeccapurple 0%, mediumpurple 100%);
-  background-image: -o-linear-gradient(90deg, rebeccapurple 0%, mediumpurple 100%);
-  background-image: -webkit-linear-gradient(90deg, rebeccapurple 0%, mediumpurple 100%);
-  background-image: linear-gradient(90deg, rebeccapurple 0%, mediumpurple 100%);
+  // box-shadow:
+  //         0 2px 0 rgba(0,0,0,.25),
+  //         inset 0 2px 1px rgba(255,255,255,.67),
+  //         inset 0 -3px 0 rgba(0,0,0,.14);
+  background-image: -moz-linear-gradient(90deg, rebeccapurple 30%, hotpink 100%);
+  background-image: -o-linear-gradient(90deg, rebeccapurple 30%, hotpink 100%);
+  background-image: -webkit-linear-gradient(90deg, rebeccapurple 30%, hotpink 100%);
+  background-image: linear-gradient(90deg, rebeccapurple 30%, black 100%);
   border-radius: 2%;
   color: #f0f0f0;
   cursor: pointer;
@@ -24,9 +24,18 @@
   padding: 10px 30px;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s;
+  // transition: background-color 0.3s;
 }
 
 .menu-button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  text-decoration: underline;
+  // box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+@media (min-width: 480px) {
+  .menu-button {
+    max-width: 200px;
+    min-width: unset;
+  }
+
 }

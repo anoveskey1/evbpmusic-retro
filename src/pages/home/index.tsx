@@ -2,35 +2,63 @@ import NewRetroImageLoader from "../../components/RetroImageLoader";
 import MenuButton from "../../components/MenuButton";
 import ImageUnavailable from "../../components/ImageUnavailable";
 import VisitorCounter from "../../components/VisitorCounter";
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 const Home: React.FC = () => {
-    return (<>
+    const getImageWidth = (): number => {
+        const width = window.innerWidth;
+
+        switch (true) {
+            case width <= 480:
+                return 300;
+            case width >= 480 && width < 768:
+                return 450;
+            case width >= 768 && width < 1024:
+                return 600;
+            default:
+                return 800; // default width for larger screens
+        }
+    }
+    const [imageWidth, setImageWidth] = useState(getImageWidth());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setImageWidth(getImageWidth());
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    return (
         <div className="page-container">
             <h1>Welcome to the official</h1>
             <NewRetroImageLoader
                 alt="EVBP"
                 height={150}
                 src="/images/evbp_stereogram_logo_transparent_lo_rez.png"
-                width={600}
+                width={imageWidth}
             />
             <h1>Home Page</h1>
+
+            <div className="menu">
+                <MenuButton text={"Home"} onClick={() => console.log("Hello World!")}/>
+                <MenuButton text={"Bio"} onClick={() => console.log("Hello World!")}/>
+                <MenuButton text={"Discography"} onClick={() => console.log("Hello World!")}/>
+                <MenuButton text={"Pics"} onClick={() => console.log("Hello World!")}/>
+                <MenuButton text={"News"} onClick={() => console.log("Hello World!")}/>
+                <MenuButton text={"Links"} onClick={() => console.log("Hello World!")}/>
+            </div>
+            <div className="card">
+                <ImageUnavailable width={100}/>
+            </div>
+            <div data-testid="visit-counter-container">
+                <VisitorCounter/>
+            </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "row", width: "100%", textAlign: "center" }}>
-            <MenuButton text={"Home"} onClick={() => console.log("Hello World!")} />
-            <MenuButton text={"Bio"} onClick={() => console.log("Hello World!")} />
-            <MenuButton text={"music"} onClick={() => console.log("Hello World!")} />
-            <MenuButton text={"Pics"} onClick={() => console.log("Hello World!")} />
-            <MenuButton text={"Blog"} onClick={() => console.log("Hello World!")} />
-            <MenuButton text={"Links"} onClick={() => console.log("Hello World!")} />
-        </div>
-        <div className="card">
-            <ImageUnavailable width={100} />
-        </div>
-        <div data-testid="visit-counter-container">
-            <VisitorCounter />
-        </div>
-    </>);
+    );
 }
 
 export default Home;

@@ -36,23 +36,26 @@ const Home: React.FC = () => {
         <div className="page-container">
             <h1>Welcome to the official</h1>
             <NewRetroImageLoader
-                alt="EVBP"
+                alt="EVBP logo"
                 height={150}
                 src="/images/evbp_stereogram_logo_transparent_lo_rez.png"
                 width={imageWidth}
             />
             <h1>Home Page</h1>
 
+            <NewRetroImageLoader
+                alt="EVBP profile picture"
+                height={600}
+                src="/images/1-horizontal-profile-grayscale-invert.png"
+                width={imageWidth}
+            />
             <div className="menu">
-                <MenuButton text={"Home"} onClick={() => console.log("Hello World!")}/>
-                <MenuButton text={"Bio"} onClick={() => console.log("Hello World!")}/>
-                <MenuButton text={"Discography"} onClick={() => console.log("Hello World!")}/>
-                <MenuButton text={"Pics"} onClick={() => console.log("Hello World!")}/>
-                <MenuButton text={"News"} onClick={() => console.log("Hello World!")}/>
-                <MenuButton text={"Links"} onClick={() => console.log("Hello World!")}/>
-            </div>
-            <div className="card">
-                <ImageUnavailable width={100}/>
+                <MenuButton text={"Home"} to="/" />
+                <MenuButton text={"Bio"} to="/bio" />
+                <MenuButton text={"Discography"} to="/music" />
+                <MenuButton text={"Pics"} to="/pics" />
+                <MenuButton text={"News"} to="/news" />
+                <MenuButton text={"Links"} to="/links" />
             </div>
             <div data-testid="visit-counter-container">
                 <VisitorCounter/>

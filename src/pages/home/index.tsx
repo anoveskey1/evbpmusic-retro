@@ -1,29 +1,18 @@
 import NewRetroImageLoader from "../../components/RetroImageLoader";
 import MenuButton from "../../components/MenuButton";
-import ImageUnavailable from "../../components/ImageUnavailable";
 import VisitorCounter from "../../components/VisitorCounter";
 import React, {useEffect, useState} from "react";
+import getLogoImageWidth from "./getLogoImageWidth";
+import getPortraitImageWidth from "./getPortraitImageWidth";
 
 const Home: React.FC = () => {
-    const getImageWidth = (): number => {
-        const width = window.innerWidth;
-
-        switch (true) {
-            case width <= 480:
-                return 300;
-            case width >= 480 && width < 768:
-                return 450;
-            case width >= 768 && width < 1024:
-                return 600;
-            default:
-                return 800; // default width for larger screens
-        }
-    }
-    const [imageWidth, setImageWidth] = useState(getImageWidth());
+    const [logoImageWidth, setLogoImageWidth] = useState(getLogoImageWidth());
+    const [portraitImageWidth, setPortraitImageWidth] = useState(getPortraitImageWidth());
 
     useEffect(() => {
         const handleResize = () => {
-            setImageWidth(getImageWidth());
+            setLogoImageWidth(getLogoImageWidth(window.innerWidth));
+            setPortraitImageWidth(getPortraitImageWidth(window.innerWidth));
         };
 
         window.addEventListener("resize", handleResize);
@@ -34,20 +23,20 @@ const Home: React.FC = () => {
 
     return (
         <div className="page-container">
-            <h1>Welcome to the official</h1>
+            <h1>Welcome to the
             <NewRetroImageLoader
-                alt="EVBP logo"
+                alt="EVBP"
                 height={150}
-                src="/images/evbp_stereogram_logo_transparent_lo_rez.png"
-                width={imageWidth}
+                src="/images/evbp-logo-white-lorez.png"
+                width={logoImageWidth}
             />
-            <h1>Home Page</h1>
+            Home Page</h1>
 
             <NewRetroImageLoader
                 alt="EVBP profile picture"
                 height={600}
                 src="/images/1-horizontal-profile-grayscale-invert.png"
-                width={imageWidth}
+                width={portraitImageWidth}
             />
             <div className="menu">
                 <MenuButton text={"Home"} to="/" />

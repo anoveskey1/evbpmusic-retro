@@ -1,9 +1,9 @@
 import NewRetroImageLoader from "../../components/RetroImageLoader";
-import MenuButton from "../../components/MenuButton";
 import VisitorCounter from "../../components/VisitorCounter";
 import React, {useEffect, useState} from "react";
 import getLogoImageWidth from "./getLogoImageWidth";
 import getPortraitImageWidth from "./getPortraitImageWidth";
+import Navigation from "../../components/Navigation";
 
 const Home: React.FC = () => {
     const [logoImageWidth, setLogoImageWidth] = useState(getLogoImageWidth());
@@ -38,14 +38,7 @@ const Home: React.FC = () => {
                 src="/images/1-horizontal-profile-grayscale-invert.png"
                 width={portraitImageWidth}
             />
-            <div className="menu">
-                <MenuButton text={"Home"} to="/" />
-                <MenuButton text={"Bio"} to="/bio" />
-                <MenuButton text={"Discography"} to="/music" />
-                <MenuButton text={"Pics"} to="/pics" />
-                <MenuButton text={"News"} to="/news" />
-                <MenuButton text={"Links"} to="/links" />
-            </div>
+            <Navigation />
             <div data-testid="visit-counter-container">
                 <VisitorCounter/>
             </div>

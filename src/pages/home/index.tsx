@@ -1,9 +1,13 @@
+import React, {useEffect, useState} from "react";
+
+import Navigation from "../../components/Navigation";
+import PageContainer from "../../components/PageContainer";
 import NewRetroImageLoader from "../../components/RetroImageLoader";
 import VisitorCounter from "../../components/VisitorCounter";
-import React, {useEffect, useState} from "react";
+
 import getLogoImageWidth from "./getLogoImageWidth";
 import getPortraitImageWidth from "./getPortraitImageWidth";
-import Navigation from "../../components/Navigation";
+import "./style.less";
 
 const Home: React.FC = () => {
     const [logoImageWidth, setLogoImageWidth] = useState(getLogoImageWidth());
@@ -22,15 +26,17 @@ const Home: React.FC = () => {
     }, []);
 
     return (
-        <div className="page-container">
-            <h1>Welcome to the
-            <NewRetroImageLoader
-                alt="EVBP"
-                height={150}
-                src="/images/evbp-logo-white-lorez.png"
-                width={logoImageWidth}
-            />
-            Home Page</h1>
+        <PageContainer>
+            <h1>
+                <span>Welcome to the</span>
+                <NewRetroImageLoader
+                    alt="EVBP"
+                    height={150}
+                    src="/images/evbp-logo-white-lorez.png"
+                    width={logoImageWidth}
+                />
+                <span>Home Page</span>
+            </h1>
 
             <NewRetroImageLoader
                 alt="EVBP profile picture"
@@ -42,7 +48,7 @@ const Home: React.FC = () => {
             <div data-testid="visit-counter-container">
                 <VisitorCounter/>
             </div>
-        </div>
+        </PageContainer>
     );
 }
 

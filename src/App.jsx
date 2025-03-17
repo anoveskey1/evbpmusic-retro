@@ -1,6 +1,5 @@
 import React, {Suspense, lazy} from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import './App.css'
 
 const Bio = lazy(() => import("./pages/bio/index.tsx"));
 const Faq = lazy(() => import("./pages/faq/index.tsx"));

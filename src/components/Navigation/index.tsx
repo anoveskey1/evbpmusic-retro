@@ -1,5 +1,6 @@
-import MenuButton from "../MenuButton";
 import React from "react";
+import MenuButton from "../MenuButton";
+import "./style.less";
 
 const Navigation: React.FC = () => {
     const isRootPath = window.location.pathname === "/";

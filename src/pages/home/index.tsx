@@ -8,6 +8,7 @@ import VisitorCounter from "../../components/VisitorCounter";
 import getLogoImageWidth from "./getLogoImageWidth";
 import getPortraitImageWidth from "./getPortraitImageWidth";
 import "./style.less";
+import MenuButton from "../../components/MenuButton";
 
 const Home: React.FC = () => {
     const [logoImageWidth, setLogoImageWidth] = useState(getLogoImageWidth());
@@ -25,6 +26,8 @@ const Home: React.FC = () => {
         };
     }, []);
 
+    const isMobile = window.innerWidth < 480;
+
     return (
         <PageContainer>
             <h1>
@@ -38,13 +41,31 @@ const Home: React.FC = () => {
                 <span>Home Page</span>
             </h1>
 
-            <NewRetroImageLoader
-                alt="EVBP profile picture"
-                height={600}
-                src="/images/1-horizontal-profile-grayscale-invert.png"
-                width={portraitImageWidth}
-            />
-            <Navigation />
+            <div className="home-content">
+                <div className="desktop-nav-menu nav-left" data-testid="desktop-nav-menu-left">
+                    <MenuButton text={"FAQ"} to="/faq"/>
+                    <MenuButton text={"Bio"} to="/bio"/>
+                    <MenuButton text={"Discography"} to="/music"/>
+                    <MenuButton text={"Pics"} to="/pics"/>
+                </div>
+                <div className="profile-center">
+                    <NewRetroImageLoader
+                        alt="EVBP profile picture"
+                        height={600}
+                        src="/images/1-horizontal-profile-grayscale-invert.png"
+                        width={portraitImageWidth}
+                    />
+                </div>
+                <div className="desktop-nav-menu nav-right" data-testid="desktop-nav-menu-right">
+                    <MenuButton text={"News"} to="/news"/>
+                    <MenuButton text={"Links"} to="/links"/>
+                    <MenuButton text={"Guestbook"} to="/guestbook"/>
+                    <MenuButton text={"Contact"} to="/contact"/>
+                </div>
+            </div>
+            <div className="mobile-nav-menu" data-testid="mobile-nav-menu">
+                <Navigation />
+            </div>
             <div data-testid="visit-counter-container">
                 <VisitorCounter/>
             </div>

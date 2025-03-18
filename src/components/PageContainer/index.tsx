@@ -8,7 +8,9 @@ interface IPageContainerProps {
 const PageContainer: React.FC<IPageContainerProps> = ({ children }) => {
     return (
         <div className="page-container">
-            {children}
+            <div className="page-container-content">
+                {children}
+            </div>
         </div>
     );
 }

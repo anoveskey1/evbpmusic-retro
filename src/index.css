@@ -1,12 +1,13 @@
 :root {
-  font-family: 'Times New Roman', Serif, serif;  /* Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family:
+    "Times New Roman", Serif, serif; /* Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
   font-weight: 400;
   width: 100%;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-attachment: fixed;
-  background-image: url('/public/images/starfield1.jpg');
+  background-image: url("/public/images/starfield1.jpg");
   background-repeat: repeat;
   font-synthesis: none;
   text-rendering: optimizeLegibility;

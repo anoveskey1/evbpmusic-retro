@@ -1,9 +1,7 @@
-import React from "react";
+import { FC } from "react";
 
-const Bio: React.FC = () => {
-    return (
-        <div>bio</div>
-    );
-}
+const Bio: FC = () => {
+  return <div>bio</div>;
+};
 
 export default Bio;

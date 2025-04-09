@@ -1,18 +1,16 @@
-import React, { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import "./style.less";
 
 interface IPageContainerProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-const PageContainer: React.FC<IPageContainerProps> = ({ children }) => {
-    return (
-        <div className="page-container">
-            <div className="page-container-content">
-                {children}
-            </div>
-        </div>
-    );
-}
+const PageContainer: FC<IPageContainerProps> = ({ children }) => {
+  return (
+    <div className="page-container">
+      <div className="page-container-content">{children}</div>
+    </div>
+  );
+};
 
 export default PageContainer;

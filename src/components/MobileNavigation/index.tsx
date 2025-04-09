@@ -1,23 +1,25 @@
-import React from "react";
+import { FC } from "react";
 import MenuButton from "../MenuButton";
+import ButtonWrapper from "../ButtonWrapper";
 import "./style.less";
 
-const Navigation: React.FC = () => {
-    const isRootPath = window.location.pathname === "/";
+const MobileNavigation: FC = () => {
+  const isRootPath = window.location.pathname === "/";
 
-    return (
-        <div className="menu">
-            {!isRootPath && <MenuButton text={"Home"} to="/"/>}
-            <MenuButton text={"FAQ"} to="/faq"/>
-            <MenuButton text={"Bio"} to="/bio"/>
-            <MenuButton text={"Discography"} to="/music"/>
-            <MenuButton text={"Pics"} to="/pics"/>
-            <MenuButton text={"News"} to="/news"/>
-            <MenuButton text={"Links"} to="/links"/>
-            <MenuButton text={"Guestbook"} to="/guestbook"/>
-            <MenuButton text={"Contact"} to="/contact"/>
-        </div>
-    );
-}
 
-export default Navigation;
+  return (
+    <div className="menu">
+      {!isRootPath && <MenuButton text={"home"} to="/" />}
+      <MenuButton text={"faq"} to="/faq" />
+      <MenuButton text={"bio"} to="/bio" />
+      <MenuButton text={"discography"} to="/music" />
+      <MenuButton text={"pics"} to="/pics" />
+      <MenuButton text={"news"} to="/news" />
+      <MenuButton text={"links"} to="/links" />
+      <MenuButton text={"guestbook"} to="/guestbook" />
+      <MenuButton text={"contact"} to="/contact" />
+    </div>
+  );
+};
+
+export default MobileNavigation;

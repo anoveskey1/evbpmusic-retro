@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
 import MobileNavigation from './index';
 
 describe('MobileNavigation', () => {
@@ -10,7 +11,11 @@ describe('MobileNavigation', () => {
             },
         });
 
-        render(<MobileNavigation />);
+        render(
+          <MemoryRouter>
+              <MobileNavigation />
+          </MemoryRouter>
+        );
 
         expect(screen.getByText('home')).toBeInTheDocument();
         expect(screen.getByText('news')).toBeInTheDocument();
@@ -29,7 +34,10 @@ describe('MobileNavigation', () => {
             },
         });
 
-        render(<MobileNavigation />);
+        render(<MemoryRouter>
+            <MobileNavigation />
+        </MemoryRouter>
+        );
 
         expect(window.location.pathname).toBe('/');
         expect(screen.queryByText('home')).not.toBeInTheDocument();

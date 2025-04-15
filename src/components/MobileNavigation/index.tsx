@@ -6,7 +6,6 @@ import "./style.less";
 const MobileNavigation: FC = () => {
   const isRootPath = window.location.pathname === "/";
 
-
   return (
     <div className="menu">
       {!isRootPath && <MenuButton text={"home"} to="/" />}

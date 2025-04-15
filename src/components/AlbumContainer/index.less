@@ -48,7 +48,7 @@
   }
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (width >= 481px) {
   .album-container {
     flex-direction: row;
 
@@ -59,7 +59,6 @@
     }
 
     .cover {
-      // border: 1px solid #ccc;
       display: block;
       flex-shrink: 0;
       width: 100%;
@@ -82,13 +81,9 @@
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (width >= 769px) {
   .album-container {
     .track-listing {
-      -moz-column-count: 2;
-      -moz-column-gap: 50px;
-      -webkit-column-count: 2;
-      -webkit-column-gap: 50px;
       column-count: 2;
       column-gap: 50px;
     }

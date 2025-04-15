@@ -1,16 +1,6 @@
 .button-wrapper {
   background-color: rebeccapurple;
-  background-image: -moz-linear-gradient(
-    90deg,
-    rebeccapurple 30%,
-    hotpink 100%
-  );
-  background-image: -o-linear-gradient(90deg, rebeccapurple 30%, hotpink 100%);
-  background-image: -webkit-linear-gradient(
-    90deg,
-    rebeccapurple 30%,
-    hotpink 100%
-  );
+  background-image: linear-gradient(90deg, rebeccapurple 30%, hotpink 100%);
   background-image: linear-gradient(90deg, rebeccapurple 30%, slategray 100%);
   border-radius: 2%;
   color: #f0f0f0;
@@ -33,13 +23,13 @@
   text-decoration: underline;
 }
 
-@media (min-width: 480px) {
+@media (width >= 480px) {
   .button-wrapper {
     max-width: 200px;
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .button-wrapper {
     max-width: 248px;
     min-width: 248px;

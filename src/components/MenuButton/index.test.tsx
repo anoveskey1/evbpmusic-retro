@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from "react-router-dom";
 import MenuButton from "./index";
 
 const mockOnClick = jest.fn();
@@ -10,7 +10,7 @@ describe("MenuButton", () => {
     render(
       <MemoryRouter>
         <MenuButton onClick={mockOnClick} text="Click me!" />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("Click me!")).toBeInTheDocument();
   });
@@ -19,7 +19,7 @@ describe("MenuButton", () => {
     render(
       <MemoryRouter>
         <MenuButton onClick={mockOnClick} text="Click me!" />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     screen.getByText("Click me!").click();
     expect(mockOnClick).toHaveBeenCalled();

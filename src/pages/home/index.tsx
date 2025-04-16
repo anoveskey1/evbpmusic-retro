@@ -28,8 +28,6 @@ const Home: React.FC = () => {
     };
   }, []);
 
-  const isMobile = window.innerWidth < 480;
-
   return (
     <PageContainer>
       <h1>

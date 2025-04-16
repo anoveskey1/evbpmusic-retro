@@ -1,6 +1,5 @@
 import { FC } from "react";
 import MenuButton from "../MenuButton";
-import ButtonWrapper from "../ButtonWrapper";
 import "./style.less";
 
 const MobileNavigation: FC = () => {

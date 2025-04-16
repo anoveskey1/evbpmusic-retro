@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const { pathsToModuleNameMapper } = require("ts-jest");
 const { compilerOptions } = require("./tsconfig");
 
@@ -13,6 +11,10 @@ module.exports = {
     "<rootDir>/dist/",
     "<rootDir>/coverage/",
     "<rootDir>/src/__tests__/",
+    "eslint.config.js",
+    "jest.setup.ts",
+    "vite.config.js",
+    "vite.workspace.js",
   ],
   coverageProvider: "v8",
   coverageThreshold: {
@@ -24,7 +26,7 @@ module.exports = {
     },
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}),
-  modulePaths: [`${compilerOptions.baseUrl}\src`], // compilerOptions.baseUrl
+  modulePaths: [`${compilerOptions.baseUrl}\src`],
   preset: "ts-jest",
   roots: ["<rootDir>"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],

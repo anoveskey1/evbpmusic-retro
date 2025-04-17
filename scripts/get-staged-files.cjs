@@ -1,20 +1,22 @@
 // scripts/get-staged-files.cjs
-const { execSync } = require('child_process');
+const { execSync } = require("child_process");
 
 try {
-  const stagedFiles = execSync('git diff --cached --name-only --diff-filter=ACM')
+  const stagedFiles = execSync(
+    "git diff --cached --name-only --diff-filter=ACM",
+  )
     .toString()
-    .split('\n')
+    .split("\n")
     .filter((file) => /\.(js|jsx|ts|tsx)$/.test(file))
     .map((file) => `'${file}'`);
 
   if (stagedFiles.length === 0) {
-    console.log('');
+    console.log("");
     process.exit(0);
   }
 
-  console.log(stagedFiles.join(','));
+  console.log(stagedFiles.join(","));
 } catch (error) {
-  console.error('Error getting staged files:', error);
+  console.error("Error getting staged files:", error);
   process.exit(1);
 }

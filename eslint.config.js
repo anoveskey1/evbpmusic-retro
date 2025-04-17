@@ -16,6 +16,7 @@ export default [
       "coverage",
       "dist",
       "node_modules",
+      "scripts",
       ".storybook",
       "eslint.config.js",
       "jest.setup.ts",

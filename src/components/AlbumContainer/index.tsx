@@ -7,7 +7,7 @@ interface IUrlLink {
 }
 
 export interface IAlbumContainerProps {
-  // availableFormats: string[]; //create an enum - digital, vinyl, cassette, etc
+  // availableFormats: string[]; //TODO: create an enum - digital, vinyl, cassette, etc.
   coverUrl: string;
   credits: string;
   links: IUrlLink[]; // create an enum - iTunes, Bandcamp, Spotify, etc
@@ -37,7 +37,7 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
         <div className="cover">
           <img src={coverUrl} alt={`${title} cover`} className="cover-image" />
         </div>
-        <div className="links-under-cover">
+        <div className="links-under-cover" data-testid="links-under-cover">
           {links.map(({ url, title }: IUrlLink, index: number) => (
             <a key={index} href={url} rel="noopener noreferrer">
               {title}
@@ -56,7 +56,7 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
             <li key={track}>{track}</li>
           ))}
         </ol>
-        <div className="links-in-info">
+        <div className="links-in-info" data-testid="links-in-info">
           {links.map(({ url, title }: IUrlLink, index: number) => (
             <a key={index} href={url} rel="noopener noreferrer">
               {title}

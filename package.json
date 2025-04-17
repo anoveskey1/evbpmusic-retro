@@ -72,7 +72,7 @@
     "*.{js,jsx,ts,tsx}": [
       "npm run format",
       "eslint --fix",
-      "npm test -- --bail --findRelatedTests --passWithNoTests --coverage --collectCoverageFrom='src/**/*.{js,jsx,ts,tsx}' --coverageThreshold='{\"global\":{\"statements\":0,\"branches\":0,\"functions\":0,\"lines\":0}}'"
+      "node scripts/get-staged-files.cjs | xargs -I {} npm test -- --config jest.config.cjs --bail --passWithNoTests --coverage --collectCoverageFrom={}"
     ],
     "*.less": [
       "prettier --write",

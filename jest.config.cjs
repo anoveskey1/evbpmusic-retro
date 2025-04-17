@@ -3,14 +3,15 @@ const { compilerOptions } = require("./tsconfig");
 
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
+  bail: true,
   clearMocks: true,
   collectCoverage: true,
+  collectCoverageFrom: ["src/components/**/*.{js,jsx,ts,tsx}"],
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: [
     "<rootDir>/node_modules/",
     "<rootDir>/dist/",
     "<rootDir>/coverage/",
-    "<rootDir>/src/__tests__/",
     "eslint.config.js",
     "jest.setup.ts",
     "vite.config.js",
@@ -27,6 +28,7 @@ module.exports = {
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}),
   modulePaths: [`${compilerOptions.baseUrl}\src`],
+  passWithNoTests: true,
   preset: "ts-jest",
   roots: ["<rootDir>"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],

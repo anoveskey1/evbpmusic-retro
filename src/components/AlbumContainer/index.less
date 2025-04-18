@@ -1,10 +1,12 @@
 .album-container {
+  align-items: center;
   background: #d3d3d3;
   border: 3px outset #ccc;
   color: #333;
   display: flex;
   flex-direction: column;
-  padding: 1px;
+  justify-content: center;
+  // padding: 1px;
 
   h2,
   p {
@@ -20,7 +22,7 @@
     img {
       display: block;
       height: auto;
-      max-width: 334px; // 100%;
+      max-width: 100%; // 100%;
     }
   }
 
@@ -28,6 +30,7 @@
     font-size: 14px;
     padding: 8px;
     text-align: left;
+    width: 90%;
 
     .release-type {
       font-style: italic;
@@ -50,23 +53,32 @@
 
 @media screen and (width >= 481px) {
   .album-container {
+    align-items: flex-start;
     flex-direction: row;
+    justify-content: flex-start;
+
+    .info {
+      padding-left: 16px;
+    }
 
     .top {
       display: flex;
       flex-direction: column;
-      width: 50%;
+      // min-width: 50%;
+      // width: 50%;
     }
 
     .cover {
       display: block;
       flex-shrink: 0;
+      max-width: 350px;
       width: 100%;
 
       img {
         display: block;
         height: auto;
-        max-width: 100%;
+        max-width: 250px;
+        min-width: 250px;
       }
     }
 
@@ -83,6 +95,15 @@
 
 @media screen and (width >= 769px) {
   .album-container {
+    max-width: 768px;
+
+    .cover {
+      img {
+        max-width: 350px;
+        min-width: 350px;
+      }
+    }
+
     .track-listing {
       column-count: 2;
       column-gap: 50px;

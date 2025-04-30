@@ -1,0 +1,85 @@
+.contact-form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  width: 100%;
+
+  .button-section {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: flex-start;
+    width: 100%;
+
+    button {
+      all: unset;
+      background-color: darkgray;
+      border: outset 1px;
+      border-radius: 0;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 8px 48px;
+
+      &:active {
+        background-color: #888 !important;
+        border: 0;
+        transform: scale(0.95);
+      }
+
+      &:disabled {
+        background-color: darkgray;
+        color: gray;
+        cursor: not-allowed;
+        pointer-events: none;
+        transform: none;
+      }
+    }
+  }
+
+  input,
+  input:-webkit-autofill {
+    background-color: white !important;
+    color: black !important;
+    font-family: "courier new", consolas, monospace;
+    font-size: 16px;
+    padding: 4px;
+    width: 100%;
+  }
+
+  label {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  select {
+    background-color: white;
+    color: black;
+    font-family: "courier new", consolas, monospace;
+    font-size: 16px;
+    padding: 4px 0;
+    width: 50%;
+  }
+
+  textarea {
+    background-color: white;
+    color: black;
+    font-family: "courier new", consolas, monospace;
+    font-size: 16px;
+    min-height: 200px;
+    min-width: 100%;
+    padding: 4px;
+    width: 100%;
+  }
+}
+
+@media screen and (width >= 769px) {
+  .contact-form {
+    input {
+      max-width: 50%;
+    }
+  }
+}

@@ -79,10 +79,12 @@ const ContactForm: React.FC = () => {
       <textarea
         id="message"
         name="message"
+        maxLength="2000"
         onChange={(e) => setMessage(e.target.value)}
         required
         value={message}
       />
+      <span className="character-limit">maximum characters: 2000</span>
       <div
         className="cf-turnstile"
         data-sitekey={`${import.meta.env.VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY}`}

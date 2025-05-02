@@ -57,6 +57,10 @@
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 4px;
+
+    &::after {
+      content: ":";
+    }
   }
 
   select {
@@ -85,6 +89,7 @@
 @media screen and (width >= 481px) {
   .contact-form {
     max-width: initial;
+    width: 80%;
   }
 }
 

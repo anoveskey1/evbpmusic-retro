@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import "./index.less";
 
@@ -17,10 +18,28 @@ const ContactForm: React.FC = () => {
     setSubject(event.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    alert("Message sent!");
+    const params = {
+      email: email,
+      message: message,
+      subject: subject,
+      recipient_email: `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_RECIPIENT_EMAIL}`,
+    };
+
+    try {
+      await emailjs.send(
+        `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_SERVICE_ID}`,
+        `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_TEMPLATE_ID}`,
+        params,
+        `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_PUBLIC_KEY}`,
+      );
+      alert("Message sent!");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send message. Please try again later.");
+    }
   };
 
   return (

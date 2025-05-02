@@ -1,9 +1,12 @@
 .contact-form {
   align-items: flex-start;
+  background-color: rgb(255 255 255 / 20%);
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: flex-start;
+  max-width: max-content;
+  padding: 16px;
   width: 100%;
 
   .button-section {
@@ -42,6 +45,7 @@
   input,
   input:-webkit-autofill {
     background-color: white !important;
+    box-sizing: border-box;
     color: black !important;
     font-family: "courier new", consolas, monospace;
     font-size: 16px;
@@ -60,12 +64,14 @@
     color: black;
     font-family: "courier new", consolas, monospace;
     font-size: 16px;
+    max-width: 200px;
     padding: 4px 0;
-    width: 50%;
+    width: 60%;
   }
 
   textarea {
     background-color: white;
+    box-sizing: border-box;
     color: black;
     font-family: "courier new", consolas, monospace;
     font-size: 16px;
@@ -76,10 +82,22 @@
   }
 }
 
+@media screen and (width >= 481px) {
+  .contact-form {
+    max-width: initial;
+  }
+}
+
 @media screen and (width >= 769px) {
   .contact-form {
+    max-width: 100%;
+
     input {
       max-width: 50%;
+    }
+
+    select {
+      max-width: 200px;
     }
   }
 }

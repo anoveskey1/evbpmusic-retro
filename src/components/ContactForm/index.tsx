@@ -5,7 +5,6 @@ import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import "./index.less";
 
 const ContactForm: React.FC = () => {
-  const [captchaVerified, setCaptchaVerified] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [subject, setSubject] = useState<string>(SUBJECT_OPTIONS[0].value);
@@ -14,10 +13,6 @@ const ContactForm: React.FC = () => {
     setEmail("");
     setSubject(SUBJECT_OPTIONS[0].value);
     setMessage("");
-  };
-
-  const handleCaptchaChange = (value: string | null) => {
-    setCaptchaVerified(!!value);
   };
 
   const handleSubjectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -29,11 +24,6 @@ const ContactForm: React.FC = () => {
 
     if (!emailValidator.validate(email)) {
       alert("Please enter a valid email address.");
-      return;
-    }
-
-    if (!captchaVerified) {
-      alert("Please complete the CAPTCHA.");
       return;
     }
 
@@ -93,7 +83,10 @@ const ContactForm: React.FC = () => {
         required
         value={message}
       />
-      <div>{/* Captcha will go here */}</div>
+      <div
+        className="cf-turnstile"
+        data-sitekey={`${import.meta.env.VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY}`}
+      ></div>
       <div className="button-section">
         <button onClick={clearForm} type="button">
           Clear

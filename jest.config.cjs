@@ -16,6 +16,7 @@ module.exports = {
     "jest.setup.ts",
     "vite.config.js",
     "vite.workspace.js",
+    ".*Props\\.ts$"
   ],
   coverageProvider: "v8",
   coverageThreshold: {

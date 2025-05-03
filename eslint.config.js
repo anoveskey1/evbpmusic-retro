@@ -21,6 +21,7 @@ export default [
       "eslint.config.js",
       "jest.setup.ts",
       "vite.config.js",
+      "vite-env.d.ts",
       "vitest.workspace.js",
     ],
   },

@@ -2,9 +2,12 @@ import emailjs from "@emailjs/browser";
 import emailValidator from "email-validator";
 import { useState } from "react";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
+import IContactFormProps from "./IContactFormProps";
 import "./index.less";
 
-const ContactForm: React.FC = () => {
+const ContactForm: React.FC<IContactFormProps> = (props: IContactFormProps) => {
+  const { publicKey, recipientEmail, serviceId, templateId, turnstileSiteKey } =
+    props;
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [subject, setSubject] = useState<string>(SUBJECT_OPTIONS[0].value);
@@ -31,16 +34,11 @@ const ContactForm: React.FC = () => {
       email: email,
       message: message,
       subject: subject,
-      recipient_email: `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_RECIPIENT_EMAIL}`,
+      recipient_email: recipientEmail,
     };
 
     try {
-      await emailjs.send(
-        `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_SERVICE_ID}`,
-        `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_TEMPLATE_ID}`,
-        params,
-        `${import.meta.env.VITE_EVBP_MUSIC_EMAILJS_PUBLIC_KEY}`,
-      );
+      await emailjs.send(serviceId, templateId, params, publicKey);
       alert("Message sent!");
     } catch (error) {
       console.error("Error sending email:", error);
@@ -79,16 +77,13 @@ const ContactForm: React.FC = () => {
       <textarea
         id="message"
         name="message"
-        maxLength="2000"
+        maxLength={2000}
         onChange={(e) => setMessage(e.target.value)}
         required
         value={message}
       />
       <span className="character-limit">maximum characters: 2000</span>
-      <div
-        className="cf-turnstile"
-        data-sitekey={`${import.meta.env.VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY}`}
-      ></div>
+      <div className="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
       <div className="button-section">
         <button onClick={clearForm} type="button">
           Clear

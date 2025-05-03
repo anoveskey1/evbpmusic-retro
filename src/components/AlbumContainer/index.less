@@ -6,7 +6,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // padding: 1px;
+  margin-bottom: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
 
   h2,
   p {
@@ -56,6 +58,7 @@
     align-items: flex-start;
     flex-direction: row;
     justify-content: flex-start;
+    width: -webkit-fill-available;
 
     .info {
       padding-left: 16px;
@@ -96,6 +99,8 @@
 @media screen and (width >= 769px) {
   .album-container {
     max-width: 768px;
+    min-width: 768px;
+    width: 100%;
 
     .cover {
       img {

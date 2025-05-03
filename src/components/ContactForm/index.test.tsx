@@ -2,10 +2,19 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ContactForm from "./index";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
+import IContactFormProps from "./IContactFormProps";
+
+const mockProps: IContactFormProps = {
+  publicKey: "test_public_key",
+  recipientEmail: "someguy@test.com",
+  serviceId: "test_service_id",
+  templateId: "test_template_id",
+  turnstileSiteKey: "test_turnstile_key",
+};
 
 describe("ContactForm", () => {
   it("should render the contact form", () => {
-    render(<ContactForm />);
+    render(<ContactForm {...mockProps} />);
     const formElement = screen.getByRole("form");
     const emailInputElement = screen.getByLabelText(/email/i);
     const subjectInputElement = screen.getByLabelText(/subject/i);
@@ -20,7 +29,7 @@ describe("ContactForm", () => {
   });
 
   it("should clear the form when the 'clear' button is pressed", async () => {
-    render(<ContactForm />);
+    render(<ContactForm {...mockProps} />);
     const mockFormInput = "macho macho man... I've got to be a macho man!";
 
     const emailInputElement = screen.getByLabelText<HTMLInputElement>(/email/i);

@@ -1,7 +1,6 @@
 import React from "react";
-import AlbumContainer, {
-  IAlbumContainerProps,
-} from "../../components/AlbumContainer";
+import AlbumContainer from "../../components/AlbumContainer";
+import IAlbumContainerProps from "../../components/AlbumContainer/IAlbumContainerProps";
 import albums from "../../../public/albums.json";
 import PageContainer from "../../components/PageContainer";
 

@@ -3,6 +3,7 @@ import emailValidator from "email-validator";
 import { useState } from "react";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import IContactFormProps from "./IContactFormProps";
+import sanitizeInput from "./sanitizeInput";
 import "./index.less";
 
 const ContactForm: React.FC<IContactFormProps> = (props: IContactFormProps) => {
@@ -30,10 +31,20 @@ const ContactForm: React.FC<IContactFormProps> = (props: IContactFormProps) => {
       return;
     }
 
+    const sanitizationOptions = {
+      level: 5,
+      noSql: true,
+      sql: true,
+      xss: true,
+    };
+    const sanitizedEmail = sanitizeInput(email, sanitizationOptions);
+    const sanitizedMessage = sanitizeInput(message, sanitizationOptions);
+    const sanitizedSubject = sanitizeInput(subject, sanitizationOptions);
+
     const params = {
-      email: email,
-      message: message,
-      subject: subject,
+      email: sanitizedEmail,
+      message: sanitizedMessage,
+      subject: sanitizedSubject,
       recipient_email: recipientEmail,
     };
 
@@ -56,7 +67,7 @@ const ContactForm: React.FC<IContactFormProps> = (props: IContactFormProps) => {
         name="email"
         onChange={(e) => setEmail(e.target.value)}
         required
-        type="email"
+        type="text"
         value={email}
       />
       <label htmlFor="subject">Subject</label>

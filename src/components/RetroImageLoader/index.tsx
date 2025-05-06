@@ -1,14 +1,7 @@
 import { FC, useEffect, useState, useRef } from "react";
+import IRetroImageLoaderProps from "./IRetroImageLoaderProps";
 
-interface RetroImageLoaderProps {
-  alt?: string;
-  height?: number;
-  src?: string;
-  testId?: string;
-  width?: number;
-}
-
-const RetroImageLoader: FC<RetroImageLoaderProps> = ({
+const RetroImageLoader: FC<IRetroImageLoaderProps> = ({
   alt,
   height = 0,
   src,
@@ -43,30 +36,25 @@ const RetroImageLoader: FC<RetroImageLoaderProps> = ({
   const removeBorder = linesLoaded == totalLines;
   const revealPercentage = (linesLoaded / totalLines) * 100;
 
+  const imageStyle = {
+    border: removeBorder ? "none" : "1px ridge lightgray",
+    clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
+    transition: "clip-path 0.3s linear",
+  };
+
   return width !== 0 && height !== 0 ? (
     <img
       alt={alt}
       data-testid={testId}
       src={src}
       style={{
-        border: removeBorder ? "none" : "1px ridge white",
-        clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
+        ...imageStyle,
         height: `${height}px`,
-        transition: "clip-path 0.3s linear",
         width: `${width}px`,
       }}
     />
   ) : (
-    <img
-      alt={alt}
-      data-testid={testId}
-      src={src}
-      style={{
-        border: removeBorder ? "none" : "1px ridge white",
-        clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
-        transition: "clip-path 0.3s linear",
-      }}
-    />
+    <img alt={alt} data-testid={testId} src={src} style={imageStyle} />
   );
 };
 

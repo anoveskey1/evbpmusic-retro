@@ -9,6 +9,7 @@ interface IAlbumContainerProps {
   credits: string;
   links: IUrlLink[]; // create an enum - iTunes, Bandcamp, Spotify, etc
   releaseDate: string;
+  summary: string;
   title: string;
   trackList: string[];
   type: string; // create an enum

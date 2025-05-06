@@ -12,6 +12,7 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
     credits,
     links,
     releaseDate,
+    summary,
     title,
     trackList,
     type,
@@ -43,6 +44,7 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
               <li key={track}>{track}</li>
             ))}
           </ol>
+          <div className="summary">{summary}</div>
           <div className="links-in-info" data-testid="links-in-info">
             {links.map(({ url, title }: IUrlLink, index: number) => (
               <a key={index} href={url} rel="noopener noreferrer">

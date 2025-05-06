@@ -22,6 +22,7 @@ const Music: React.FC = () => {
           key={index}
           links={album.links}
           releaseDate={album.releaseDate}
+          summary={album.summary}
           title={album.title}
           type={album.type}
           trackList={album.trackList}

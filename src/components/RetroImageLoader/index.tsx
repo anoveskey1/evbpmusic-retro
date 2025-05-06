@@ -43,42 +43,30 @@ const RetroImageLoader: FC<RetroImageLoaderProps> = ({
   const removeBorder = linesLoaded == totalLines;
   const revealPercentage = (linesLoaded / totalLines) * 100;
 
-  return (
-    <div
+  return width !== 0 && height !== 0 ? (
+    <img
+      alt={alt}
       data-testid={testId}
+      src={src}
       style={{
-        display: "inline-flex",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
+        border: removeBorder ? "none" : "1px ridge white",
+        clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
         height: `${height}px`,
-        maxWidth: `${width}px`,
-        backgroundColor: "inherit",
+        transition: "clip-path 0.3s linear",
+        width: `${width}px`,
       }}
-    >
-      <div
-        style={{
-          position: "relative",
-          overflow: "visible",
-          height: `${height}px`,
-          maxWidth: `${width}px`,
-          border: removeBorder ? "none" : "1px inset lightgray",
-          background: "inherit",
-        }}
-      >
-        <img
-          src={src}
-          alt={alt}
-          style={{
-            maxWidth: `${width}px`,
-            width: `${width}px`,
-            height: "100%",
-            // objectFit: "cover",
-            clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
-            transition: "clip-path 0.3s linear",
-          }}
-        />
-      </div>
-    </div>
+    />
+  ) : (
+    <img
+      alt={alt}
+      data-testid={testId}
+      src={src}
+      style={{
+        border: removeBorder ? "none" : "1px ridge white",
+        clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
+        transition: "clip-path 0.3s linear",
+      }}
+    />
   );
 };
 

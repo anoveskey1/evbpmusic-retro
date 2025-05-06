@@ -1,6 +1,7 @@
 import { FC } from "react";
 import "./index.less";
 import IAlbumContainerProps, { IUrlLink } from "./IAlbumContainerProps";
+import RetroImageLoader from "../RetroImageLoader";
 
 const AlbumContainer: FC<IAlbumContainerProps> = (
   props: IAlbumContainerProps,
@@ -20,7 +21,7 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
     <div className="album-container">
       <div className="top">
         <div className="cover">
-          <img src={coverUrl} alt={`${title} cover`} className="cover-image" />
+          <RetroImageLoader alt={`${title} cover`} src={coverUrl} />
         </div>
         <div className="links-under-cover" data-testid="links-under-cover">
           {links.map(({ url, title }: IUrlLink, index: number) => (

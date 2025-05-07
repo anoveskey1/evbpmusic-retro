@@ -11,6 +11,7 @@ describe("AlbumContainer", () => {
       { url: "https://test.com", title: "Test Link" },
     ],
     releaseDate: "2023-01-01",
+    summary: "Lorem ipsum dollop.",
     title: "Test Album",
     trackList: ["Track 1", "Track 2", "Track 3"],
     type: "EP",
@@ -65,4 +66,6 @@ describe("AlbumContainer", () => {
     expect(linksUnderCoverSection).toBeVisible();
     expect(linksUnderCoverSection.querySelectorAll("a").length).toBe(2);
   });
+
+  // TODO: add unit test for show/hide summary toggle function
 });

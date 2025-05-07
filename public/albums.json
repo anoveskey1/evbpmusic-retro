@@ -2,15 +2,19 @@
   {
     "availableFormats": ["digital"],
     "coverUrl": "/images/lofimouth-lorez.jpg",
-    "credits": "Produced by EVBP",
+    "credits": "Produced and mixed (sorta) by EVBP.",
     "links": [
       {
         "url": "https://evbp.bandcamp.com/album/lofimouth",
         "title": "Bandcamp"
+      },
+      {
+        "url": "javascript:alert('Too lo-fi for Spotify!')",
+        "title": "Spotify"
       }
     ],
     "releaseDate": "2004-01-01",
-    "summary": "This is where it all started. Recorded on a Tascam Porta02 4-track, using a variety of unconventional instruments, song structures, and effects. At times really exciting, and also really cringey. Fans of lo-fi, alternative bands like Guided By Voices and Ween will probably like this one.",
+    "summary": "\"This is where it all started. Recorded on a Tascam Porta02 4-track, using a variety of unconventional instruments, song structures, and effects. At times really exciting, and also really cringey. Fans of lo-fi, alternative bands like Guided By Voices and Ween will probably like this one.\"",
     "title": "Lo-Fi Mouth",
     "trackList": [
       "Skinned-Knee Mercy",
@@ -31,15 +35,19 @@
   {
     "availableFormats": ["digital"],
     "coverUrl": "/images/secondep-lorez.jpg",
-    "credits": "Produced by EVBP",
+    "credits": "Produced and (hardly) mixed by EVBP.",
     "links": [
       {
         "url": "https://evbp.bandcamp.com/album/secondep",
         "title": "Bandcamp"
+      },
+      {
+        "url": "javascript:alert('Nope. Not this one either.')",
+        "title": "Spotify"
       }
     ],
     "releaseDate": "2005-10-31",
-    "summary": "Even more experimental than LFM. This was mostly written and recorded during a week when my college gf was out of town with friends. It's not as cohesive as LFM, but there were some worthwhile moments - \"which hand\", for example.",
+    "summary": "\"Even more experimental than LFM. This was mostly written and recorded during a week when my college gf was out of town with friends. It's not as cohesive as LFM, but there were some worthwhile moments - 'Which Hand', for example.\"",
     "title": "The Second EP",
     "trackList": [
       "It Only Sounds Sad",
@@ -56,15 +64,19 @@
   {
     "availableFormats": ["digital", "CD"],
     "coverUrl": "/images/xofart-lorez.jpg",
-    "credits": "Produced by EVBP",
+    "credits": "Produced, mixed and (poorly) mastered by EVBP.",
     "links": [
       {
         "url": "https://evbp.bandcamp.com/album/xofart-deluxe",
         "title": "Bandcamp"
+      },
+      {
+        "url": "javascript:alert('Seriously, Spotify sucks. What are you doing?')",
+        "title": "Spotify"
       }
     ],
     "releaseDate": "2010-11-10",
-    "summary": "The first foray into computer recording, and it shows. While the songs are much more accessible, the production quality was still lacking. Despite having access to a software drum machine, I still opted to use a hardware one, and didn't sync it with the MIDI clock in the DAW as I did not know how. Ultimately, this made the remixing and remastering process for the deluxe edition years later... challenging. More than likely, you have heard the song \"Chickenz\" from this one as it is a famously stupid song.",
+    "summary": "\"The first foray into computer recording, and it shows. While the songs are much more accessible, the production quality was still lacking. Despite having access to a software drum machine, I still opted to use a hardware one, and didn't sync it with the MIDI clock in the DAW as I did not know how. Ultimately, this made the remixing and remastering process for the deluxe edition years later... challenging. More than likely, you have heard the song 'Chickenz' from this one as it is a famously stupid song.\"",
     "title": "The X of Art",
     "trackList": [
       "Lisa Simpson",
@@ -78,15 +90,27 @@
   {
     "availableFormats": ["digital", "CD"],
     "coverUrl": "/images/meow-lorez.jpg",
-    "credits": "Produced by EVBP. Mixed by EVBP and Peter Bishop. Mastered by Adam Boose.",
+    "credits": "Produced by EVBP. Mixed by EVBP and Peter Bishop. Mastered by Adam Boose at Cauliflower Audio.",
     "links": [
+      {
+        "url": "https://music.apple.com/us/album/the-mechanical-essence-of-whiskers/1087530987",
+        "title": "Apple Music"
+      },
       {
         "url": "https://evbp.bandcamp.com/album/meow",
         "title": "Bandcamp"
+      },
+      {
+        "url": "javascript:alert('Once upon a time this was on Spotify. Now it is not for reasons.')",
+        "title": "Spotify"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=wPOgUlt4FtQ&list=OLAK5uy_kH5qKL4Xd8mRqynZ1n5ZDtPh6YA--taQ4&pp=0gcJCV8EOCosWNin",
+        "title": "YouTube Music"
       }
     ],
     "releaseDate": "2016-02-21",
-    "summary": "My comfort level with a DAW had improved significantly by the time work on this album began. It's still weird, a bit tongue in cheek and stylistically all over the place, but I think it works. It also features the largest number of guest appearances of anything I've released. Fun fact, \"Kittens and Warm Cocoa\" was my first and only foray into Cookie Monster voice. Tony Raines made it sound so much better than the original demo. Also, \"Decipher This Song\" is not just a catchy title!",
+    "summary": "\"My comfort level with a DAW had improved significantly by the time work on this album began. It's still weird, a bit tongue in cheek and stylistically all over the place, but I think it works. It also features the largest number of guest appearances of anything I've released. Fun fact, 'Kittens and Warm Cocoa' was my first and only foray into Cookie Monster voice. Tony Raines made it sound so much better than the original demo. Also, 'Decipher This Song' is not just a catchy title!\"",
     "title": "The Mechanical Essence of Whiskers (MEOW)",
     "trackList": [
       "There's No Write Way",
@@ -108,13 +132,29 @@
     "credits": "Produced, mixed and mastered by EVBP.",
     "links": [
       {
+        "url": "https://music.apple.com/us/album/param%C4%93ta-no-tokutei-no-setto-ep/1535732180",
+        "title": "Apple Music"
+      },
+      {
         "url": "https://evbp.bandcamp.com/album/-",
         "title": "Bandcamp"
-      }
+      },
+      {
+        "url": "https://soundcloud.com/evbp/sets/parameta-no-tokutei-no-setto-ep",
+        "title": "SoundCloud"
+      },
+      {
+        "url": "javascript:alert('Pulled from Spotify in protest.')",
+        "title": "Spotify"
+      },
+        {
+            "url": "https://www.youtube.com/watch?v=fiDxvr8530Y&list=OLAK5uy_l9FFtcA2g4JqoJZj1ezg-ahs6mr2PjNNA",
+            "title": "YouTube Music"
+        }
     ],
     "releaseDate": "2020-10-02",
-    "summary": "This was my attempt to break several years of inactivity. I decided to try a new direction musically as I discovered just how much I was able to do with synthesizers. It is an EP conceived in the isolation of the first year of the Covid-19 pandemic and at the closing of the first Trump term. As such, it is a maelstrom of negative emotions, with a few rays of hope sprinkled here and there. Track 5 (roughly translated as \"The Idol Guild\") is sung entirely in Vulcan. As in Spock. Live long and prosper.",
-    "title": "パラメータの特定のセット (A Certain Set of Parameters",
+    "summary": "\"This was my attempt to break several years of inactivity. It is also the first release where I dropped the full band name in favor of the easier to write and remember 'EVBP'. I decided to try a new direction musically as I discovered just how much I was able to do with synthesizers. It is an EP conceived in the isolation of the first year of the Covid-19 pandemic and at the closing of the first Trump term. As such, it is a maelstrom of negative emotions, with a few rays of hope sprinkled here and there. Track 5 (roughly translated as 'The Idol Guild') is sung entirely in Vulcan. As in Spock. Live long and prosper.\"",
+    "title": "パラメータの特定のセット (A Certain Set of Parameters)",
     "trackList": [
       "時計1： 自由への降伏",
       "時計2： フォールアウトの新世代",
@@ -133,9 +173,18 @@
       {
         "url": "https://evbp.bandcamp.com/album/faux-pleasure",
         "title": "Bandcamp"
+      },
+      {
+        "url": "javascript:alert('Even if I did not loathe Spotify, there are too many samples on this one to get clearance.')",
+        "title": "Spotify"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=sdORlH6JIV4&list=PLFb63Tg_UXIcbqH4FOpo6mw6d8wwclJz9&pp=gAQB')",
+        "title": "YouTube Music"
       }
     ],
     "releaseDate": "2021-10-31",
+    "summary": "\"What do you do when you've spent close to a year fine tuning a small handful of songs, only to realize how far away you are from completing the album they will be on? You release a completely different album, of course! This was inspired by my discovery of vaporwave in the previous year. I wanted to do something similar, while also using the material as an effort to clean my gears. The whole thing came together pretty quickly and it still remains one of my favorites out of my discography.\"",
     "title": "Faux Pleasure",
     "trackList": [
       "そう感じる ~คɭ๏ภє~",
@@ -166,6 +215,7 @@
       }
     ],
     "releaseDate": "2022-03-19",
+    "summary": "\"TXoA was originally released as a limited edition CD, with no digital download available. If you wanted to get it, you had to get a copy from me at a show (once upon a time, I performed in public). While I enjoyed the boutique-like nature of a limited release, I also found it frustrating that my most well known material was not widely available. So in 2022, I remixed and remastered the original EP along with some songs that were released on evbpmusic.com around the same time. Revisiting [the album] gave me the opportunity to makes additional improvements. 'Free Parking' in my opinion sounds so much better with an actual 12-string guitar.\"",
     "title": "The X of Art (Deluxe)",
     "trackList": [
       "Lisa Simpson",
@@ -185,14 +235,19 @@
   {
     "availableFormats": ["digital"],
     "coverUrl": "/images/criminals-lorez.jpg",
-    "credits": "Produced, mixed and mastered by EVBP.",
+    "credits": "Produced, and mixed by EVBP. Mastered by Peter Bishop.",
     "links": [
       {
         "url": "https://evbp.bandcamp.com/album/only-criminals-get-caught-i",
         "title": "Bandcamp"
+      },
+      {
+        "url": "https://soundcloud.com/evbp/sets/only-criminals-get-caught-i",
+        "title": "SoundCloud"
       }
     ],
     "releaseDate": "2025-01-20",
+    "summary": "\"Part one of two. As of writing this, Part two is in the works and approximately 60% done. Originally, I intended this to be a full album, but given the heavy subject matter as well as how much time it was taking me to complete, I made the decision to break it up into smaller more digestible chunks. Not completely synthwave, but cut from the same cloth. It is my most political record by a long shot.\"",
     "title": "Only Criminals Get Caught I",
     "trackList": [
       "The Edge of Society",

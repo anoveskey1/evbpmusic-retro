@@ -1,3 +1,5 @@
+@import url("../../styles/variables.less");
+
 .album-container {
   align-items: center;
   background: #d3d3d3;
@@ -28,6 +30,10 @@
     }
   }
 
+  .external-music-link {
+    font-family: arial, sans-serif;
+  }
+
   .info {
     font-size: 14px;
     padding: 8px;
@@ -36,6 +42,33 @@
 
     .release-type {
       font-style: italic;
+    }
+
+    .summary {
+      font-style: italic;
+      margin-bottom: 8px;
+
+      &.hide {
+        display: none;
+      }
+
+      &.show {
+        display: block;
+      }
+    }
+
+    .summary-button {
+      background-image: @button-gradient;
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin-bottom: 8px;
+      margin-top: 8px;
+
+      &:hover {
+        filter: invert(0.75);
+        text-decoration: underline;
+      }
     }
 
     .track-listing {
@@ -59,6 +92,7 @@
     align-items: flex-start;
     flex-direction: row;
     justify-content: flex-start;
+    margin-bottom: 32px;
     width: -webkit-fill-available;
 
     .info {
@@ -68,8 +102,6 @@
     .top {
       display: flex;
       flex-direction: column;
-      // min-width: 50%;
-      // width: 50%;
     }
 
     .cover {
@@ -88,6 +120,7 @@
 
     .links-under-cover {
       display: block;
+      max-width: 350px;
       padding: 8px;
     }
 
@@ -110,9 +143,25 @@
       }
     }
 
-    .track-listing {
-      column-count: 2;
-      column-gap: 50px;
+    .info {
+      .summary {
+        &.hide {
+          display: block;
+        }
+
+        &.show {
+          display: block;
+        }
+      }
+
+      .summary-button {
+        display: none;
+      }
+
+      .track-listing {
+        column-count: 2;
+        column-gap: 50px;
+      }
     }
   }
 }

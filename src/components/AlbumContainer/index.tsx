@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, Fragment, useState } from "react";
 import "./index.less";
 import IAlbumContainerProps, { IUrlLink } from "./IAlbumContainerProps";
 import RetroImageLoader from "../RetroImageLoader";
@@ -7,7 +7,6 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
   props: IAlbumContainerProps,
 ) => {
   const {
-    // availableFormats,
     coverUrl,
     credits,
     links,
@@ -35,17 +34,16 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
         </div>
         <div className="links-under-cover" data-testid="links-under-cover">
           {links.map(({ url, title }: IUrlLink, index: number) => (
-            <>
+            <Fragment key={index}>
               <a
                 className="external-music-link"
                 href={url}
-                key={index}
                 rel="noopener noreferrer"
               >
                 {title}
               </a>
               {index < links.length - 1 && <span> | </span>}
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
@@ -61,7 +59,7 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
               <li key={track}>{track}</li>
             ))}
           </ol>
-          <button onClick={toggleSummary} className="summary-button">
+          <button className="summary-button" onClick={toggleSummary}>
             {summaryButtonText}
           </button>
           <div className={`summary ${isSummaryVisible ? "show" : "hide"}`}>
@@ -69,17 +67,16 @@ const AlbumContainer: FC<IAlbumContainerProps> = (
           </div>
           <div className="links-in-info" data-testid="links-in-info">
             {links.map(({ url, title }: IUrlLink, index: number) => (
-              <>
+              <Fragment key={index}>
                 <a
                   className="external-music-link"
                   href={url}
-                  key={index}
                   rel="noopener noreferrer"
                 >
                   {title}
                 </a>
                 {index < links.length - 1 && <span> | </span>}
-              </>
+              </Fragment>
             ))}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import AlbumContainer from "./index";
 
@@ -40,32 +40,15 @@ describe("AlbumContainer", () => {
     });
   });
 
-  // TODO: fix these unit tests. They provide false positives.
-  it.skip("renders the mobile links", () => {
-    Object.defineProperty(window, "innerWidth", {
-      configurable: true,
-      value: 375,
-      writable: true,
-    });
+  it("toggles the summary visibility when the button is clicked", () => {
     render(<AlbumContainer {...mockProps} />);
+    const summaryButton = screen.getByRole("button");
+    expect(screen.queryByText(/Lorem ipsum dollop./i)).toHaveClass("hide");
 
-    const linksUnderCoverSection = screen.getByTestId("links-under-cover");
-    expect(linksUnderCoverSection).toBeVisible();
-    expect(linksUnderCoverSection.querySelectorAll("a").length).toBe(2);
+    act(() => summaryButton.click());
+    expect(screen.getByText(/Lorem ipsum dollop./i)).toHaveClass("show");
+
+    act(() => summaryButton.click());
+    expect(screen.queryByText(/Lorem ipsum dollop./i)).toHaveClass("hide");
   });
-
-  it.skip("renders the tablet links", () => {
-    Object.defineProperty(window, "innerWidth", {
-      configurable: true,
-      value: 375,
-      writable: true,
-    });
-    render(<AlbumContainer {...mockProps} />);
-
-    const linksUnderCoverSection = screen.getByTestId("links-under-cover");
-    expect(linksUnderCoverSection).toBeVisible();
-    expect(linksUnderCoverSection.querySelectorAll("a").length).toBe(2);
-  });
-
-  // TODO: add unit test for show/hide summary toggle function
 });

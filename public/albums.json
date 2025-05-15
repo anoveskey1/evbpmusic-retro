@@ -140,10 +140,6 @@
         "title": "Bandcamp"
       },
       {
-        "url": "https://soundcloud.com/evbp/sets/parameta-no-tokutei-no-setto-ep",
-        "title": "SoundCloud"
-      },
-      {
         "url": "javascript:alert('Pulled from Spotify in protest.')",
         "title": "Spotify"
       },
@@ -240,10 +236,6 @@
       {
         "url": "https://evbp.bandcamp.com/album/only-criminals-get-caught-i",
         "title": "Bandcamp"
-      },
-      {
-        "url": "https://soundcloud.com/evbp/sets/only-criminals-get-caught-i",
-        "title": "SoundCloud"
       }
     ],
     "releaseDate": "2025-01-20",

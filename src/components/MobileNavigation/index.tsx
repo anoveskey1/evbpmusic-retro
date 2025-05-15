@@ -10,7 +10,7 @@ const MobileNavigation: FC = () => {
       {!isRootPath && <MenuButton text={"home"} to="/" />}
       <MenuButton text={"faq"} to="/faq" />
       <MenuButton text={"bio"} to="/bio" />
-      <MenuButton text={"discography"} to="/music" />
+      <MenuButton text={"music"} to="/music" />
       <MenuButton text={"pics"} to="/pics" />
       <MenuButton text={"news"} to="/news" />
       <MenuButton text={"links"} to="/links" />

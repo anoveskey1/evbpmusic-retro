@@ -26,20 +26,16 @@ const ContactForm: React.FC<IContactFormProps> = (props: IContactFormProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // validate email return email address
     if (!emailValidator.validate(email)) {
       alert("Please enter a valid email address.");
       return;
     }
 
-    const sanitizationOptions = {
-      level: 5,
-      noSql: true,
-      sql: true,
-      xss: true,
-    };
-    const sanitizedEmail = sanitizeInput(email, sanitizationOptions);
-    const sanitizedMessage = sanitizeInput(message, sanitizationOptions);
-    const sanitizedSubject = sanitizeInput(subject, sanitizationOptions);
+    // sanitize user input before sending the email
+    const sanitizedEmail = sanitizeInput(email);
+    const sanitizedMessage = sanitizeInput(message);
+    const sanitizedSubject = sanitizeInput(subject);
 
     const params = {
       email: sanitizedEmail,

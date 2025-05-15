@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Who, or what is EVBP?",
+    "answer": "EVBP is Adam Noveskey. EVBP is also a musical powder keg of creativity. No genre is safe."
+  },
+  {
+    "question": "Why isn't your music on Spotify?",
+    "answer": "Spotify has a poor artist compensation model. They platform Joe Rogan who frequently platforms rightwing personalities with retrogressive views on his show. Daniel Ek uses the wealth he has amassed from Spotify to fund the military industrial complex. Finally, my music has such a niche appeal that putting it on Spotify would be an endless game of carrot and stick where I'm always shy of getting any kind of compensation. Seems like a raw deal to me. I'm more than happy to do my part to help destroy the platform simply by not participating."
+  },
+  {
+    "question": "But everyone uses it! You're depriving people from hearing your music.",
+    "answer": "No, I'm not. It is available on other platforms, including YouTube, Apple Music, and (my personal favorite) Bandcamp."
+  },
+  {
+    "question": "This site looks really awful.",
+    "answer": "I know, right?! That's by design. I wanted it to have the aesthetic of a 90s-era webpage. Back in my day, we had to wait for our webpages to load!"
+  },
+  {
+    "question": "What's your issue with AI?",
+    "answer": "Conceptually, nothing. But the things that it is used for are horrible. It's bad for the environment. GenAI images and music look and sound like dollar store knockoffs of better quality products (not to mention they are trained on other people's copyrighted work... but I'm sure the techbros behind services like Sonos, etc. are paying for all that copyrighted material, right?). It is displacing thousands of workers as company view AI as an opportunity to downsize their workforces. Like, seriously, it's really, really bad and I am not going to feel bad about saying so."
+  },
+  {
+    "question": "Why did you take so long to update the website?",
+    "answer": "Because I had a full time job writing computer code and the idea of redesigning the site just didn't seem necessary to me. I finally got to the point where I was tired of looking at the Wordpress site. Plus, having this allows me to add it to my professional portfolio. So, win-win!"
+  },
+  {
+    "question": "Your albums seem to be getting more cohesive and less... all over the place.",
+    "answer": "I still enjoy genre exploration, but I find I'm more satisfied with the quality of the results when I'm not rubbernecking between genres. Anyway, enjoy it while it lasts. I cannot guarantee that I won't go back to my old ways."
+  },
+  {
+    "question": "When's your next live performance?",
+    "answer": "Probably not gonna happen anytime soon. I've done the 'guitar and a laptop' setup for a number of years and burned myself out. If I start performing live again, I want to get a full backing band, and those cost time and money. Maybe in the future, but not right now."
+  },
+  {
+    "question": "I ran one of your tracks through a spectrograph and saw some really scary images.",
+    "answer": "Yeah, spectrographic images are super neat. I just wish they were more \"musical\", y'know?"
+  },
+  {
+    "question": "What are your go-to instruments, effects, etc?",
+    "answer": "As far as guitars go, I'm almost exclusively a Fender guy. My mains these days are a Fender Strat Pro II, and a Marauder (the reboot, not the original), although I also have an Epiphone Les Paul (a gift from my father) that I use from time to time. As for synths, XFer's Serum is the goat. I would say I use it about 98% of the time. I just use Presonus' Impact for drums - the drums tend to come from a variety of sources - sample libraries, albums in my collection, A DVD disc full of vintage drum machine sounds that I lean on pretty heavily. Finally, I tend to use either a Shure SM7 or SM-57 depending on what I'm trying to capture."
+  },
+    {
+        "question": "Can I give you money for your music?",
+        "answer": "If you would like, but I would much rather that you give that money to a local mutual aid group, or a non-profit that you believe in. Capitalism will be the death of us all."
+    },
+    {
+        "question": "Then why do you sell merch on your bandcamp page",
+        "answer": "Because I paid to have it made."
+    }
+]

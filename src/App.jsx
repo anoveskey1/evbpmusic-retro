@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavigationProvider from "./context/NavigationProvider.js";
 
 const Bio = lazy(() => import("./pages/bio/index.tsx"));
 const Contact = lazy(() => import("./pages/contact/index.tsx"));
@@ -7,20 +8,24 @@ const Faq = lazy(() => import("./pages/faq/index.tsx"));
 const Home = lazy(() => import("./pages/home/index.tsx"));
 const Links = lazy(() => import("./pages/links/index.tsx"));
 const Music = lazy(() => import("./pages/music/index.tsx"));
+const News = lazy(() => import("./pages/news/index.tsx"));
 
 function App() {
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path={"/"} element={<Home />} />
-          <Route path="/bio" element={<Bio />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/links" element={<Links />} />
-          <Route path={"/faq"} element={<Faq />} />
-        </Routes>
-      </Suspense>
+      <NavigationProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path={"/"} element={<Home />} />
+            <Route path="/bio" element={<Bio />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path={"/faq"} element={<Faq />} />
+            <Route path="/links" element={<Links />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/news" element={<News />} />
+          </Routes>
+        </Suspense>
+      </NavigationProvider>
     </Router>
   );
 }

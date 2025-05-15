@@ -1,6 +1,8 @@
+import PageContainer from "../../components/PageContainer";
+
 const Links: React.FC = () => {
   return (
-    <div className="page-container">
+    <PageContainer>
       <h1>Links</h1>
       <h2>Social Media</h2>
       <ul>
@@ -41,7 +43,7 @@ const Links: React.FC = () => {
           <a href="https://www.duckduckgo.com">DuckDuckGo</a>
         </li>
       </ul>
-    </div>
+    </PageContainer>
   );
 };
 

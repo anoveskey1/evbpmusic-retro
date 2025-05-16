@@ -12,7 +12,7 @@ export interface MenuButtonProps {
 }
 
 const MenuButton: FC<MenuButtonProps> = ({
-  ariaLabel = "menu ",
+  ariaLabel,
   icon,
   onClick,
   testId = "menu-button",
@@ -32,7 +32,7 @@ const MenuButton: FC<MenuButtonProps> = ({
 
   return (
     <button
-      aria-label={`${text || ariaLabel} ${to ? "link" : "button"}`}
+      aria-label={`${ariaLabel || text} ${to ? "link" : "button"}`}
       className={componentPrefix}
       data-testid={testId}
       onClick={handleClick}

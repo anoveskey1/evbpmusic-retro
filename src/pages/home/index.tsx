@@ -48,7 +48,7 @@ const Home: React.FC = () => {
         >
           <MenuButton text={"faq"} to="/faq" />
           <MenuButton text={"bio"} to="/bio" />
-          <MenuButton text={"discography"} to="/music" />
+          <MenuButton text={"music"} to="/music" />
           <MenuButton text={"pics"} to="/pics" />
         </div>
         <div className="profile-center">

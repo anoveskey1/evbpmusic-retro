@@ -9,6 +9,7 @@ const Home = lazy(() => import("./pages/home/index.tsx"));
 const Links = lazy(() => import("./pages/links/index.tsx"));
 const Music = lazy(() => import("./pages/music/index.tsx"));
 const News = lazy(() => import("./pages/news/index.tsx"));
+const SlugPost = lazy(() => import("./components/News/SlugPost/index.tsx"));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/links" element={<Links />} />
             <Route path="/music" element={<Music />} />
             <Route path="/news" element={<News />} />
+            <Route path="/news/:slug" element={<SlugPost />} />
           </Routes>
         </Suspense>
       </NavigationProvider>

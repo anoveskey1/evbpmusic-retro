@@ -3,9 +3,9 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ContactForm from "./index";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
-import IContactFormProps from "./IContactFormProps";
+import IContactForm from "../../types/IContactForm";
 
-const mockProps: IContactFormProps = {
+const mockProps: IContactForm = {
   publicKey: "test_public_key",
   recipientEmail: "someguy@test.com",
   serviceId: "test_service_id",
@@ -88,7 +88,7 @@ describe("ContactForm", () => {
   //   const mockSend = jest.fn().mockResolvedValueOnce("success");
   //   jest.spyOn(emailjs, "send").mockImplementation(mockSend);
   //
-  //   render(<ContactForm {...mockProps} />);
+  //   render(<IContactForm {...mockProps} />);
   //   const validEmail = "test@example.com";
   //   const mockFormInput = "macho macho man... I've got to be a macho man!";
   //   const emailInputElement = screen.getByLabelText<HTMLInputElement>(/email/i);

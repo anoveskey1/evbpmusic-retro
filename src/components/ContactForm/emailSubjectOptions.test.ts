@@ -1,4 +1,4 @@
-// src/components/ContactForm/emailSubjectOptions.test.ts
+// src/components/IContactForm/emailSubjectOptions.test.ts
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 
 describe("SUBJECT_OPTIONS", () => {

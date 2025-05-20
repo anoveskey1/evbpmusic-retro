@@ -1,6 +1,6 @@
 import React from "react";
 import AlbumContainer from "../../components/AlbumContainer";
-import IAlbumContainerProps from "../../components/AlbumContainer/IAlbumContainerProps";
+import IAlbumContainer from "../../types/IAlbumContainer";
 import albums from "../../../public/albums.json";
 import PageContainer from "../../components/PageContainer";
 
@@ -15,8 +15,8 @@ const Music: React.FC = () => {
         including summaries behind each release, interesting tidbits, and
         possibly clues about other things...
       </h3>
-      {reverseAlbums.map((album: IAlbumContainerProps, index: number) => (
-        <AlbumContainer
+      {reverseAlbums.map((album: IAlbumContainer, index: number) => (
+        <IAlbumContainer
           coverUrl={album.coverUrl}
           credits={album.credits}
           key={index}

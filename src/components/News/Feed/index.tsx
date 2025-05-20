@@ -1,8 +1,8 @@
 import { FC } from "react";
 import Post from "../Post";
-import INewsFeedProps from "./INewsFeedProps";
+import INewsFeed from "../../../types/INewsFeed";
 
-const NewsFeed: FC<INewsFeedProps> = (props: INewsFeedProps) => {
+const NewsFeed: FC<INewsFeed> = (props: INewsFeed) => {
   const { newsPosts } = props;
 
   if (!newsPosts || newsPosts.length === 0) {

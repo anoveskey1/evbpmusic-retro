@@ -1,7 +1,7 @@
 import { FC, useEffect, useState, useRef } from "react";
-import IRetroImageLoaderProps from "./IRetroImageLoaderProps";
+import IRetroImageLoader from "../../types/IRetroImageLoader";
 
-const RetroImageLoader: FC<IRetroImageLoaderProps> = ({
+const RetroImageLoader: FC<IRetroImageLoader> = ({
   alt,
   height = 0,
   src,

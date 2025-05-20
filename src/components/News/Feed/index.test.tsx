@@ -3,23 +3,23 @@ import "@testing-library/jest-dom";
 import NewsFeed from "./index";
 
 describe("NewsFeed", () => {
-  it("should render the NewsFeed component without error", () => {
+  it("should render the INewsFeed component without error", () => {
     const props = {
       newsPosts: [
         {
           body: "This is news",
-          date: new Date("2023-10-01"),
+          date: "2023-10-01",
           header: "First News Header",
           images: ["https://example.com/image1.jpg"],
-          metaTags: ["tag1", "tag2"],
+          metaTags: [5, 6],
           slug: "first-news",
         },
         {
           body: "Here is Some More News",
-          date: new Date("2023-10-01"),
+          date: "2023-10-01",
           header: "Second News Header",
           images: ["https://example.com/image2.jpg"],
-          metaTags: ["tag3", "tag4"],
+          metaTags: [10, 11],
           slug: "second-news",
         },
       ],
@@ -35,7 +35,7 @@ describe("NewsFeed", () => {
     expect(screen.getByText("Here is Some More News")).toBeInTheDocument();
   });
 
-  it("should render the NewsFeed component without error when newsPosts are unavailable", () => {
+  it("should render the INewsFeed component without error when newsPosts are unavailable", () => {
     const props = {
       newsPosts: [],
     };

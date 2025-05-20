@@ -1,11 +1,9 @@
 import { FC, Fragment, useState } from "react";
 import "./index.less";
-import IAlbumContainerProps, { IUrlLink } from "./IAlbumContainerProps";
+import IAlbumContainer, { IUrlLink } from "../../types/IAlbumContainer";
 import RetroImageLoader from "../RetroImageLoader";
 
-const AlbumContainer: FC<IAlbumContainerProps> = (
-  props: IAlbumContainerProps,
-) => {
+const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
   const {
     coverUrl,
     credits,

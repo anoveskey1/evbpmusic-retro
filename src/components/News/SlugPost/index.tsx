@@ -1,13 +1,21 @@
 import { useParams } from "react-router-dom";
 import Post from "../Post";
-import INewsPostProps from "../Post/INewsPostProps";
+import INewsPost from "../../../types/INewsPost";
+import useNewsPosts from "../../../hooks/useNewsPosts";
 
 const SlugPost = () => {
   const { slug } = useParams();
-  const post = posts.find((post: INewsPostProps) => post.slug === slug);
+  const post: INewsPost | INewsPost[] | null = useNewsPosts(slug);
 
   if (!post) {
     return <div>Post not found</div>;
+  }
+
+  if (Array.isArray(post)) {
+    // This should absolutely not happen, but useNewsPosts is capable of returning an array of posts.
+    throw new Error(
+      "Unexpected data type: SlugPost received an array of posts.",
+    );
   }
 
   return <Post {...post} />;

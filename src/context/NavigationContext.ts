@@ -1,7 +1,7 @@
 import { createContext } from "react";
-import INavigationContextProps from "./INavigationContextProps";
+import INavigationContext from "../types/INavigationContext";
 
-const NavigationContext = createContext<INavigationContextProps | undefined>(
+const NavigationContext = createContext<INavigationContext | undefined>(
   undefined,
 );
 

@@ -1,4 +1,4 @@
-interface IRetroImageLoaderProps {
+interface IRetroImageLoader {
   alt?: string;
   height?: number;
   src?: string;
@@ -6,4 +6,4 @@ interface IRetroImageLoaderProps {
   width?: number;
 }
 
-export default IRetroImageLoaderProps;
+export default IRetroImageLoader;

@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import RetroImageLoader from "./index";
 
 describe("RetroImageLoader", () => {
-  test("renders RetroImageLoader component", () => {
+  test("renders IRetroImageLoader component", () => {
     render(<RetroImageLoader />);
     const retroImageLoaderElement = screen.getByTestId("retro-image-loader");
     expect(retroImageLoaderElement).toBeInTheDocument();

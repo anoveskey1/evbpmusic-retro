@@ -2,11 +2,11 @@ import emailjs from "@emailjs/browser";
 import emailValidator from "email-validator";
 import { useState } from "react";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
-import IContactFormProps from "./IContactFormProps";
+import IContactForm from "../../types/IContactForm";
 import sanitizeInput from "./sanitizeInput";
 import "./index.less";
 
-const ContactForm: React.FC<IContactFormProps> = (props: IContactFormProps) => {
+const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
   const { publicKey, recipientEmail, serviceId, templateId, turnstileSiteKey } =
     props;
   const [email, setEmail] = useState<string>("");

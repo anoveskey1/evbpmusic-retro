@@ -12,11 +12,11 @@ module.exports = {
     "<rootDir>/node_modules/",
     "<rootDir>/dist/",
     "<rootDir>/coverage/",
+    "<rootDir>/types/",
     "eslint.config.js",
     "jest.setup.ts",
     "vite.config.js",
     "vite.workspace.js",
-    ".*Props\\.ts$",
   ],
   coverageProvider: "v8",
   coverageThreshold: {

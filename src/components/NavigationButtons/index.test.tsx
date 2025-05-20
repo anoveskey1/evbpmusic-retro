@@ -8,7 +8,7 @@ import NavigationProvider from "../../context/NavigationProvider";
 const mockGoForward = jest.fn(() => "/contact");
 let mockHistory: string[] = [];
 
-jest.mock("../../context/useNavigation", () => ({
+jest.mock("../../hooks/useNavigation", () => ({
   __esModule: true,
   default: () => ({
     goForward: mockGoForward,

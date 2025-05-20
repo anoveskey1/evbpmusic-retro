@@ -1,4 +1,4 @@
-interface IContactFormProps {
+interface IContactForm {
   publicKey: string;
   recipientEmail: string;
   serviceId: string;
@@ -6,4 +6,4 @@ interface IContactFormProps {
   turnstileSiteKey: string;
 }
 
-export default IContactFormProps;
+export default IContactForm;

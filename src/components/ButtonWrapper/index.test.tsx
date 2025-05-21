@@ -16,4 +16,15 @@ describe("ButtonWrapper", () => {
     screen.getByText("Click me!").click();
     expect(mockOnClick).toHaveBeenCalled();
   });
+
+  it("should render an icon when a value is provided for one", () => {
+    render(
+      <ButtonWrapper
+        onClick={mockOnClick}
+        text="Click me!"
+        icon={<svg role="img"></svg>}
+      />,
+    );
+    expect(screen.getByRole("img")).toBeInTheDocument();
+  });
 });

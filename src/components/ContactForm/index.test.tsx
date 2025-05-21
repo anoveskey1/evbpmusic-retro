@@ -1,4 +1,4 @@
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ContactForm from "./index";
@@ -82,47 +82,47 @@ describe("ContactForm", () => {
     });
   });
 
-  // TODO: fix this unit test. It should not be directly dependent on the sanitizer function
-  // it("should clear the form fields on successful submission", async () => {
-  //   window.alert = jest.fn();
-  //   const mockSend = jest.fn().mockResolvedValueOnce("success");
-  //   jest.spyOn(emailjs, "send").mockImplementation(mockSend);
-  //
-  //   render(<IContactForm {...mockProps} />);
-  //   const validEmail = "test@example.com";
-  //   const mockFormInput = "macho macho man... I've got to be a macho man!";
-  //   const emailInputElement = screen.getByLabelText<HTMLInputElement>(/email/i);
-  //   const messageInputElement = screen.getByLabelText<HTMLTextAreaElement>(/message/i);
-  //   const submitButtonElement = screen.getByRole("button", { name: /send/i });
-  //
-  //   // Fill the form inputs
-  //   fireEvent.change(emailInputElement, { target: { value: validEmail } });
-  //   fireEvent.change(messageInputElement, { target: { value: mockFormInput } });
-  //
-  //   // Ensure the "send" button is enabled
-  //   expect(submitButtonElement).not.toBeDisabled();
-  //
-  //   // Submit the form
-  //   fireEvent.click(submitButtonElement);
-  //
-  //   // Wait for the form to be cleared
-  //   await waitFor(() => {
-  //     expect(emailInputElement.value).toBe("");
-  //     expect(messageInputElement.value).toBe("");
-  //     expect(submitButtonElement).toBeDisabled();
-  //   });
-  //
-  //   // Ensure emailjs.send was called with the correct parameters
-  //   expect(mockSend).toHaveBeenCalledWith(
-  //     mockProps.serviceId,
-  //     mockProps.templateId,
-  //     {
-  //       email: validEmail,
-  //       message: mockFormInput,
-  //       subject: SUBJECT_OPTIONS[0].value,
-  //       recipient_email: mockProps.recipientEmail,
-  //     },
-  //     mockProps.publicKey
-  //   );
-  // });
+  it("should clear the form fields on successful submission", async () => {
+    window.alert = jest.fn();
+    const mockSend = jest.fn().mockResolvedValueOnce("success");
+    jest.spyOn(emailjs, "send").mockImplementation(mockSend);
+
+    render(<ContactForm {...mockProps} />);
+    const validEmail = "test@example.com";
+    const mockFormInput = "macho macho man... I've got to be a macho man!";
+    const emailInputElement = screen.getByLabelText<HTMLInputElement>(/email/i);
+    const messageInputElement =
+      screen.getByLabelText<HTMLTextAreaElement>(/message/i);
+    const submitButtonElement = screen.getByRole("button", { name: /send/i });
+
+    // Fill the form inputs
+    fireEvent.change(emailInputElement, { target: { value: validEmail } });
+    fireEvent.change(messageInputElement, { target: { value: mockFormInput } });
+
+    // Ensure the "send" button is enabled
+    expect(submitButtonElement).not.toBeDisabled();
+
+    // Submit the form
+    fireEvent.click(submitButtonElement);
+
+    // Wait for the form to be cleared
+    await waitFor(() => {
+      expect(emailInputElement.value).toBe("");
+      expect(messageInputElement.value).toBe("");
+      expect(submitButtonElement).toBeDisabled();
+    });
+
+    // Ensure emailjs.send was called with the correct parameters
+    expect(mockSend).toHaveBeenCalledWith(
+      mockProps.serviceId,
+      mockProps.templateId,
+      {
+        email: validEmail,
+        message: mockFormInput,
+        subject: SUBJECT_OPTIONS[0].value,
+        recipient_email: mockProps.recipientEmail,
+      },
+      mockProps.publicKey,
+    );
+  });
 });

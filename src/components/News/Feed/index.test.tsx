@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import NewsFeed from "./index";
 
 describe("NewsFeed", () => {
-  it("should render the INewsFeed component without error", () => {
+  it("should render the NewsFeed component without error", () => {
     const props = {
       newsPosts: [
         {
@@ -35,7 +35,7 @@ describe("NewsFeed", () => {
     expect(screen.getByText("Here is Some More News")).toBeInTheDocument();
   });
 
-  it("should render the INewsFeed component without error when newsPosts are unavailable", () => {
+  it("should render the NewsFeed component without error when newsPosts are unavailable", () => {
     const props = {
       newsPosts: [],
     };

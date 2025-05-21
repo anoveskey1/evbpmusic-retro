@@ -16,7 +16,7 @@ const Music: React.FC = () => {
         possibly clues about other things...
       </h3>
       {reverseAlbums.map((album: IAlbumContainer, index: number) => (
-        <IAlbumContainer
+        <AlbumContainer
           coverUrl={album.coverUrl}
           credits={album.credits}
           key={index}

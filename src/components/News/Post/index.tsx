@@ -1,17 +1,18 @@
 import { FC } from "react";
 import { Helmet } from "react-helmet";
-import INewsPost from "../../../types/INewsPost";
 import tagMappings from "../../../constants/tagMappings";
+import INewsPost from "../../../types/INewsPost";
 
 const Post: FC<INewsPost> = (props: INewsPost) => {
   const { body, date, header, images, metaTags, slug } = props;
   const dateStringToDate = new Date(date);
-  const formattedDate = dateStringToDate.toLocaleDateString("en-US", {
+  const formattedDate = Intl.DateTimeFormat("en-US", {
+    timeZone: "UTC",
     weekday: "long",
     month: "short",
     day: "2-digit",
     year: "numeric",
-  });
+  }).format(dateStringToDate);
 
   return (
     <>
@@ -22,9 +23,9 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
       <article className="news-post">
         {images && images.length > 0 && (
           <img
+            alt={`${header} post image 1`}
             className="news-post-image"
             src={images[0]}
-            alt={`${header} post image 1`}
           />
         )}
         <header>

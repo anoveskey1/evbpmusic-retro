@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import newsPosts from "../../public/evbp-blog-data.json";
-import INewsPost from "../types/INewsPost";
+import newsPosts from "../../../public/evbp-blog-data.json";
+import INewsPost from "../../types/INewsPost";
 
 const useNewsPosts = (slug?: string, getMostRecent?: boolean) => {
   const [posts, setPosts] = useState<INewsPost[]>([]);
@@ -8,7 +8,6 @@ const useNewsPosts = (slug?: string, getMostRecent?: boolean) => {
   const [mostRecentPost, setMostRecentPost] = useState<INewsPost | null>(null);
 
   useEffect(() => {
-    // Simulate fetching data (or use actual API calls if needed)
     setPosts(newsPosts);
 
     if (slug) {

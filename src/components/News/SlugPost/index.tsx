@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import Post from "../Post";
+import { useNewsPosts } from "../../../hooks";
 import INewsPost from "../../../types/INewsPost";
-import useNewsPosts from "../../../hooks/useNewsPosts";
+import Post from "../Post";
 
 const SlugPost = () => {
   const { slug } = useParams();
@@ -12,7 +12,7 @@ const SlugPost = () => {
   }
 
   if (Array.isArray(post)) {
-    // This should absolutely not happen, but useNewsPosts is capable of returning an array of posts.
+    // This should absolutely not happen, but useNewsPosts is capable of returning an array of posts, so...
     throw new Error(
       "Unexpected data type: SlugPost received an array of posts.",
     );

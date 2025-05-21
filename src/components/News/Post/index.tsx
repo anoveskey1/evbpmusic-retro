@@ -61,8 +61,7 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
           <h2>{header}</h2>
           <time dateTime={dateStringToDate.toISOString()}>{formattedDate}</time>
         </header>
-        {/*<section dangerouslySetInnerHTML={{__html: body }} />*/}
-        <section>{processedBody}</section>
+        <section className="news-post-body">{processedBody}</section>
         <footer>
           {metaTags?.map((tag) => (
             <span className="meta-tag" key={tag}>

@@ -1,10 +1,14 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Helmet } from "react-helmet";
+import ImageUnavailable from "../../ImageUnavailable";
 import tagMappings from "../../../constants/tagMappings";
 import INewsPost from "../../../types/INewsPost";
+import "./style.less";
 
 const Post: FC<INewsPost> = (props: INewsPost) => {
   const { body, date, header, images, metaTags, slug } = props;
+
+  // format the date
   const dateStringToDate = new Date(date);
   const formattedDate = Intl.DateTimeFormat("en-US", {
     timeZone: "UTC",
@@ -13,6 +17,31 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
     day: "2-digit",
     year: "numeric",
   }).format(dateStringToDate);
+
+  // preprocess the body to replace images with <ImageUnavailable />
+  const preprocessBody = (html: string) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    const children: React.ReactNode[] = [];
+    doc.body.childNodes.forEach((node) => {
+      if (node.nodeName === "FIGURE") {
+        // const img = node.querySelector("img");
+        children.push(<ImageUnavailable key={children.length} width={50} />);
+      } else {
+        children.push(
+          <div
+            key={children.length}
+            dangerouslySetInnerHTML={{ __html: node.outerHTML }}
+          />,
+        );
+      }
+    });
+
+    return children;
+  };
+
+  const processedBody = preprocessBody(body);
 
   return (
     <>
@@ -32,9 +61,14 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
           <h2>{header}</h2>
           <time dateTime={dateStringToDate.toISOString()}>{formattedDate}</time>
         </header>
-        <section>{body}</section>
+        {/*<section dangerouslySetInnerHTML={{__html: body }} />*/}
+        <section>{processedBody}</section>
         <footer>
-          {metaTags?.map((tag) => <span key={tag}>{tagMappings[tag]}</span>)}
+          {metaTags?.map((tag) => (
+            <span className="meta-tag" key={tag}>
+              {tagMappings[tag]}
+            </span>
+          ))}
         </footer>
       </article>
     </>

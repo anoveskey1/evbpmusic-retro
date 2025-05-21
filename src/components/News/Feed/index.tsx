@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Post from "../Post";
 import INewsFeed from "../../../types/INewsFeed";
+import "./style.less";
 
 const NewsFeed: FC<INewsFeed> = (props: INewsFeed) => {
   const { newsPosts } = props;

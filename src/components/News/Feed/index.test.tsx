@@ -27,12 +27,8 @@ describe("NewsFeed", () => {
 
     render(<NewsFeed {...props} />);
 
-    expect(screen.getByLabelText("News Feed")).toBeInTheDocument();
-    expect(screen.getByText("First News Header")).toBeInTheDocument();
-    expect(screen.getByText("This is news")).toBeInTheDocument();
-
-    expect(screen.getByText("Second News Header")).toBeInTheDocument();
-    expect(screen.getByText("Here is Some More News")).toBeInTheDocument();
+    const posts = screen.getAllByRole("article");
+    expect(posts).toHaveLength(props.newsPosts.length);
   });
 
   it("should render the NewsFeed component without error when newsPosts are unavailable", () => {

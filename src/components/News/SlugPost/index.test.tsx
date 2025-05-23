@@ -34,7 +34,7 @@ describe("SlugPost", () => {
 
   it("should render the Post with all its corresponding values", () => {
     const spy = jest.spyOn(useNewsPostsModule, "default").mockReturnValue({
-      body: "This is a test body",
+      body: "<p>This is a test body</p>",
       date: "2023-10-01",
       header: "Test Header",
       metaTags: [5, 6],

@@ -32,7 +32,9 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
         children.push(
           <div
             key={children.length}
-            dangerouslySetInnerHTML={{ __html: node.outerHTML }}
+            dangerouslySetInnerHTML={{
+              __html: node instanceof Element ? node.outerHTML : "",
+            }}
           />,
         );
       }

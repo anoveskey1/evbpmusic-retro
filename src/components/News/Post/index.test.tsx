@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import Post from "./index";
 
 let mockProps = {
-  body: "This is a test body",
+  body: "<p>This is a test body</p>",
   date: "2023-10-01",
   header: "Test Header",
   images: ["https://example.com/image1.jpg"],

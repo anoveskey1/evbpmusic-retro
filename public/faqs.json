@@ -16,16 +16,20 @@
     "answer": "I know, right?! That's by design. I wanted it to have the aesthetic of a 90s-era webpage. Back in my day, we had to wait for our webpages to load!"
   },
   {
-    "question": "What's your issue with AI?",
-    "answer": "Conceptually, nothing. But the things that it is used for are horrible. It's bad for the environment. GenAI images and music look and sound like dollar store knockoffs of better quality products (not to mention they are trained on other people's copyrighted work... but I'm sure the techbros behind services like Sonos, etc. are paying for all that copyrighted material, right?). It is displacing thousands of workers as company view AI as an opportunity to downsize their workforces. Like, seriously, it's really, really bad and I am not going to feel bad about saying so."
-  },
-  {
     "question": "Why did you take so long to update the website?",
     "answer": "Because I had a full time job writing computer code and the idea of redesigning the site just didn't seem necessary to me. I finally got to the point where I was tired of looking at the Wordpress site. Plus, having this allows me to add it to my professional portfolio. So, win-win!"
   },
   {
+    "question": "All the images in the news posts are missing!",
+    "answer": "Depending on when you read this, yes. Since I blew the old site away, the image paths in the original posts are no longer valid. Don't worry though, I have replaced them with nifty little reminders that an image used to be present, so now you'll always be able to look back fondly on those old posts and... not... have images."
+  },
+  {
+    "question": "What's your issue with AI?",
+    "answer": "Conceptually, nothing. But the things that it is used for are horrible. It's bad for the environment. GenAI images and music look and sound like dollar store knockoffs of better quality products (not to mention they are trained on other people's copyrighted work... but I'm sure the techbros behind services like Sonos, etc. are paying for all that copyrighted material, right?). It is displacing thousands of workers as company view AI as an opportunity to downsize their workforces. Like, seriously, it's really, really bad and I am not going to feel bad about saying so."
+  },
+  {
     "question": "Didn't the Second EP used to have a different title?",
-    "answer": "Yes, it did. After I moved all of my music to a new Bandcamp url, I made the decision to change the title because the old title (which I will not bother to mention) was edgelord humor, and I no longer find it funny or acceptable. Be the change you want to see in the world!"
+    "answer": "Yes, it did. After I moved all of my music to a new Bandcamp url, I made the decision to change the title because the old title (which I will not bother to mention) was edgelord humor, and I no longer find it funny or acceptable. Be the change you want to see in the world."
   },
   {
     "question": "Your albums seem to be getting more cohesive and less... all over the place.",
@@ -37,7 +41,7 @@
   },
   {
     "question": "I ran one of your tracks through a spectrograph and saw some really scary images.",
-    "answer": "Yeah, spectrographic images are super neat. I just wish they were more \"musical\", y'know?"
+    "answer": "Yeah, spectrographic images are super neat. I just wish they were more \"musical\"."
   },
   {
     "question": "What are your go-to instruments, effects, etc?",

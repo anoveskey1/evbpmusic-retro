@@ -1,0 +1,50 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        env:
+          VITE_EVBP_MUSIC_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          VITE_EVBP_MUSIC_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          VITE_EVBP_MUSIC_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          VITE_EVBP_MUSIC_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          VITE_EVBP_MUSIC_EMAILJS_RECIPIENT_EMAIL: ${{ secrets.EMAILJS_RECIPIENT_EMAIL }}
+          VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SITE_KEY }}
+          VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SECRET_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}
+        run: npm run test
+
+      - name: Build the app
+        env:
+          VITE_EVBP_MUSIC_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          VITE_EVBP_MUSIC_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          VITE_EVBP_MUSIC_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          VITE_EVBP_MUSIC_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          VITE_EVBP_MUSIC_EMAILJS_RECIPIENT_EMAIL: ${{ secrets.EMAILJS_RECIPIENT_EMAIL }}
+          VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SITE_KEY }}
+          VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SECRET_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}
+        run: npm run build
+
+      - name: Clean up build files
+        run: rm -rf dist

@@ -63,6 +63,7 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
         </header>
         <section className="news-post-body">{processedBody}</section>
         <footer>
+          {metaTags && metaTags.length > 0 && <h3>Tags:</h3>}
           {metaTags?.map((tag) => (
             <span className="meta-tag" key={tag}>
               {tagMappings[tag]}

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import NewsFeed from "./index";
+import { HelmetProvider } from "react-helmet-async";
 
 describe("NewsFeed", () => {
   it("should render the NewsFeed component without error", () => {
@@ -25,7 +26,11 @@ describe("NewsFeed", () => {
       ],
     };
 
-    render(<NewsFeed {...props} />);
+    render(
+      <HelmetProvider>
+        <NewsFeed {...props} />
+      </HelmetProvider>,
+    );
 
     const posts = screen.getAllByRole("article");
     expect(posts).toHaveLength(props.newsPosts.length);
@@ -36,7 +41,11 @@ describe("NewsFeed", () => {
       newsPosts: [],
     };
 
-    render(<NewsFeed {...props} />);
+    render(
+      <HelmetProvider>
+        <NewsFeed {...props} />
+      </HelmetProvider>,
+    );
 
     expect(screen.getByText("No news posts available.")).toBeInTheDocument();
   });

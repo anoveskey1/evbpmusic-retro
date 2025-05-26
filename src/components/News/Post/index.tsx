@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import ImageUnavailable from "../../ImageUnavailable";
 import tagMappings from "../../../constants/tagMappings";
 import INewsPost from "../../../types/INewsPost";
 import "./style.less";
 
 const Post: FC<INewsPost> = (props: INewsPost) => {
-  const { body, date, header, images, metaTags, slug } = props;
+  const { body, date, header, images, isSlugPost, metaTags, slug } = props;
 
   // format the date
   const dateStringToDate = new Date(date);
@@ -26,15 +26,14 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
     const children: React.ReactNode[] = [];
     doc.body.childNodes.forEach((node) => {
       if (node.nodeName === "FIGURE") {
-        // const img = node.querySelector("img");
         children.push(<ImageUnavailable key={children.length} width={50} />);
       } else {
         children.push(
           <div
-            key={children.length}
             dangerouslySetInnerHTML={{
               __html: node instanceof Element ? node.outerHTML : "",
             }}
+            key={children.length}
           />,
         );
       }
@@ -47,10 +46,16 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href={`https://evbpmusic.com/news/${slug}`} />
-        <meta name="keywords" content={metaTags?.join(", ") || ""} />
-      </Helmet>
+      {isSlugPost && (
+        <Helmet>
+          <link rel="canonical" href={`https://evbpmusic.com/news/${slug}`} />
+          <meta
+            name="keywords"
+            content={metaTags?.map((tag) => tagMappings[tag]).join(", ") || ""}
+          />
+          <title>EVBPMusic.com | News | {header}</title>
+        </Helmet>
+      )}
       <article className="news-post">
         {images && images.length > 0 && (
           <img

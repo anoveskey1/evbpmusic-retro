@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Post from "./index";
 
 let mockProps = {
@@ -13,7 +14,11 @@ let mockProps = {
 
 describe("News Post", () => {
   it("should render the Post component without error", () => {
-    render(<Post {...mockProps} />);
+    render(
+      <HelmetProvider>
+        <Post {...mockProps} />
+      </HelmetProvider>,
+    );
 
     expect(screen.getByRole("img")).toBeInTheDocument();
     expect(screen.getByText("Test Header")).toBeInTheDocument();
@@ -28,7 +33,11 @@ describe("News Post", () => {
       images: [],
     };
 
-    render(<Post {...noImagesProps} />);
+    render(
+      <HelmetProvider>
+        <Post {...noImagesProps} />
+      </HelmetProvider>,
+    );
 
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
@@ -51,7 +60,11 @@ describe("News Post", () => {
       metaTags: [],
     };
 
-    render(<Post {...noImagesProps} />);
+    render(
+      <HelmetProvider>
+        <Post {...noImagesProps} />
+      </HelmetProvider>,
+    );
 
     expect(screen.getByRole("contentinfo").children).toHaveLength(0);
   });
@@ -67,4 +80,6 @@ describe("News Post", () => {
 
     expect(screen.getByRole("contentinfo").children).toHaveLength(0);
   });
+
+  // TODO: Add test to validate isSlugPost conditional helmet rendering
 });

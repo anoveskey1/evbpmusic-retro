@@ -18,7 +18,7 @@ const SlugPost = () => {
     );
   }
 
-  return <Post {...post} />;
+  return <Post {...post} isSlugPost />;
 };
 
 export default SlugPost;

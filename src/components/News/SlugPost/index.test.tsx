@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { HelmetProvider } from "react-helmet-async";
 import SlugPost from "./index";
 import * as useNewsPostsModule from "../../../hooks/useNewsPosts/useNewsPosts";
 
@@ -17,15 +18,23 @@ describe("SlugPost", () => {
   });
 
   it("should throw an error if the type of post is an array", () => {
-    expect(() => render(<SlugPost />)).toThrow(
-      "Unexpected data type: SlugPost received an array of posts.",
-    );
+    expect(() =>
+      render(
+        <HelmetProvider>
+          <SlugPost />
+        </HelmetProvider>,
+      ),
+    ).toThrow("Unexpected data type: SlugPost received an array of posts.");
   });
 
   it("should render the text 'Post not found' if the useNewsPost hook returns null", () => {
     const spy = jest.spyOn(useNewsPostsModule, "default").mockReturnValue(null);
 
-    render(<SlugPost />);
+    render(
+      <HelmetProvider>
+        <SlugPost />
+      </HelmetProvider>,
+    );
 
     expect(screen.getByText("Post not found")).toBeInTheDocument();
 
@@ -41,7 +50,11 @@ describe("SlugPost", () => {
       slug: "test-slug",
     });
 
-    render(<SlugPost />);
+    render(
+      <HelmetProvider>
+        <SlugPost />
+      </HelmetProvider>,
+    );
 
     expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
       "Test Header",

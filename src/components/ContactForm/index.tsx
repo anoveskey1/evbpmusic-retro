@@ -1,14 +1,13 @@
-import emailjs from "@emailjs/browser";
 import emailValidator from "email-validator";
 import { useState } from "react";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import IContactForm from "../../types/IContactForm";
 import sanitizeInput from "./sanitizeInput";
-import "./index.less";
+import "./style.less";
 
 const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
-  const { publicKey, recipientEmail, serviceId, templateId, turnstileSiteKey } =
-    props;
+  const { turnstileSiteKey } = props;
+  const maxCharactersForMessage = 800;
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [subject, setSubject] = useState<string>(SUBJECT_OPTIONS[0].value);
@@ -41,12 +40,25 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
       email: sanitizedEmail,
       message: sanitizedMessage,
       subject: sanitizedSubject,
-      recipient_email: recipientEmail,
     };
 
     try {
-      await emailjs.send(serviceId, templateId, params, publicKey);
-      alert("Message sent!");
+      const response = await fetch(
+        `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/send-email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(params),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      } else {
+        alert("Message sent!");
+      }
     } catch (error) {
       console.error("Error sending email:", error);
       alert("Failed to send message. Please try again later.");
@@ -84,12 +96,21 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
       <textarea
         id="message"
         name="message"
-        maxLength={2000}
+        maxLength={maxCharactersForMessage}
         onChange={(e) => setMessage(e.target.value)}
         required
         value={message}
       />
-      <span className="character-limit">maximum characters: 2000</span>
+      <span className="character-limit">
+        maximum characters: {maxCharactersForMessage};
+        <span
+          className={
+            maxCharactersForMessage - message.length <= 15 ? "near-limit" : ""
+          }
+        >
+          remaining: {maxCharactersForMessage - message.length}
+        </span>
+      </span>
       <div className="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
       <div className="button-section">
         <button onClick={clearForm} type="button">

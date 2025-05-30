@@ -1,4 +1,3 @@
-import emailjs from "@emailjs/browser";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ContactForm from "./index";
@@ -6,10 +5,6 @@ import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import IContactForm from "../../types/IContactForm";
 
 const mockProps: IContactForm = {
-  publicKey: "test_public_key",
-  recipientEmail: "someguy@test.com",
-  serviceId: "test_service_id",
-  templateId: "test_template_id",
   turnstileSiteKey: "test_turnstile_key",
 };
 
@@ -85,7 +80,12 @@ describe("ContactForm", () => {
   it("should clear the form fields on successful submission", async () => {
     window.alert = jest.fn();
     const mockSend = jest.fn().mockResolvedValueOnce("success");
-    jest.spyOn(emailjs, "send").mockImplementation(mockSend);
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ message: "Email sent successfully" }),
+      }),
+    ) as jest.Mock;
 
     render(<ContactForm {...mockProps} />);
     const validEmail = "test@example.com";
@@ -112,17 +112,20 @@ describe("ContactForm", () => {
       expect(submitButtonElement).toBeDisabled();
     });
 
-    // Ensure emailjs.send was called with the correct parameters
-    expect(mockSend).toHaveBeenCalledWith(
-      mockProps.serviceId,
-      mockProps.templateId,
+    // Ensure send-email endpoint was called with the correct parameters
+    expect(global.fetch).toHaveBeenCalledWith(
+      `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/send-email`,
       {
-        email: validEmail,
-        message: mockFormInput,
-        subject: SUBJECT_OPTIONS[0].value,
-        recipient_email: mockProps.recipientEmail,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: validEmail,
+          message: mockFormInput,
+          subject: SUBJECT_OPTIONS[0].value,
+        }),
       },
-      mockProps.publicKey,
     );
   });
 });

@@ -2,8 +2,9 @@ import { FC, useEffect, useState } from "react";
 
 const VisitorCounter: FC = () => {
   const [visitorCount, setVisitorCount] = useState(0);
+
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/visitor-count`)
+    fetch(`${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/visitor-count`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

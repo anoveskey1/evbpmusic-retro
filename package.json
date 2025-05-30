@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "email-validator": "^2.0.4",
     "eslint-plugin-react-refresh": "^0.4.19",
     "react": "^18.3.1",

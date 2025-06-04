@@ -24,12 +24,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run unit tests
         env:
           VITE_EVBP_MUSIC_API_BASE_URL: ${{ secrets.API_BASE_URL }}
           VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SITE_KEY }}
           VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SECRET_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}
         run: npm run test
+
+      - name: Run Cucumber tests
+        env:
+          VITE_EVBP_MUSIC_BASE_URL: ${{ secrets.BASE_URL }}
+        run: npm run test:cucumber
 
       - name: Build the app
         env:
@@ -37,3 +45,10 @@ jobs:
           VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SITE_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SITE_KEY }}
           VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SECRET_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}
         run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: cucumber-report
+          path: cucumber-report/
+          retention-days: 30

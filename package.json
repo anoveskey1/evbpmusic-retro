@@ -106,6 +106,6 @@
     "storybook": "storybook dev -p 6006",
     "test": "jest --runInBand",
     "test-e2e": "npx playwright test",
-    "e2e-test": "cross-env NODE_OPTIONS=--loader=ts-node/esm cucumber-js"
+    "test:cucumber": "cross-env NODE_OPTIONS=--loader=ts-node/esm cucumber-js --config cucumber.js"
   }
 }

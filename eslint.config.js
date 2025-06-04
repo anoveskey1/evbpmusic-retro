@@ -14,6 +14,7 @@ export default [
   {
     ignores: [
       "coverage",
+      "cucumber.js",
       "dist",
       "node_modules",
       "scripts",

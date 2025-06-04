@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-module.exports = {
+export default {
   default: {
     format: ["json:reports/cucumber.json"],
     parallel: 2,

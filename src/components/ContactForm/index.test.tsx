@@ -79,7 +79,6 @@ describe("ContactForm", () => {
 
   it("should clear the form fields on successful submission", async () => {
     window.alert = jest.fn();
-    const mockSend = jest.fn().mockResolvedValueOnce("success");
     global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,

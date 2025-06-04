@@ -11,6 +11,7 @@ coverage
 dist
 dist-ssr
 node_modules
+reports
 *.local
 
 # Editor directories and files
@@ -26,3 +27,9 @@ node_modules
 .env
 
 *storybook.log
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

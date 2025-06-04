@@ -5,15 +5,15 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
     "lib": ["dom", "es2015"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6",
-    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "target": "ES2020",
+    "types": ["jest", "node", "@testing-library/jest-dom", "@playwright/test"],
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "e2e_tests", "playwright.config.ts"],
   "exclude": ["node_modules"]
 }

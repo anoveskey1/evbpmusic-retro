@@ -14,11 +14,9 @@ export default [
   {
     ignores: [
       "coverage",
-      "cucumber.js",
       "dist",
       "node_modules",
       "scripts",
-      ".storybook",
       "eslint.config.js",
       "jest.setup.ts",
       "vite.config.js",

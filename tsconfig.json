@@ -6,7 +6,7 @@
     "jsx": "react-jsx",
     "lib": ["dom", "es2015"],
     "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

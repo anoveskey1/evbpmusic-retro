@@ -1,5 +1,5 @@
 import { FC, Fragment, useState } from "react";
-import "./index.less";
+import "./style.less";
 import IAlbumContainer, { IUrlLink } from "../../types/IAlbumContainer";
 import RetroImageLoader from "../RetroImageLoader";
 

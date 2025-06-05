@@ -26,8 +26,6 @@ reports
 *.sw?
 .env
 
-*storybook.log
-
 # Playwright
 /test-results/
 /playwright-report/

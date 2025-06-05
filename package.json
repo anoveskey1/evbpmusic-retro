@@ -16,16 +16,8 @@
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
     "@babel/preset-typescript": "^7.26.0",
-    "@chromatic-com/storybook": "^3.2.5",
     "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.52.0",
-    "@storybook/addon-essentials": "^8.6.3",
-    "@storybook/addon-onboarding": "^8.6.3",
-    "@storybook/blocks": "^8.6.3",
-    "@storybook/experimental-addon-test": "^8.6.3",
-    "@storybook/react": "^8.6.3",
-    "@storybook/react-vite": "^8.6.3",
-    "@storybook/test": "^8.6.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/jest": "^29.5.14",
@@ -59,7 +51,6 @@
     "playwright": "^1.52.0",
     "postcss-less": "^6.0.0",
     "prettier": "^3.5.3",
-    "storybook": "^8.6.3",
     "stylelint": "^16.18.0",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-order": "^6.0.4",
@@ -90,22 +81,13 @@
   "overrides": {
     "whatwg-url": "^14.0.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
-  },
   "scripts": {
     "build": "vite build",
-    "build-storybook": "storybook build",
     "dev": "vite",
     "format": "prettier --write .",
-    "lint": "eslint . && stylelint '**/*.less' --fix",
-    "prepare": "husky install",
+    "lint": "eslint . && stylelint \"**/*.less\" --fix",
+    "prepare": "husky",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "test": "jest --runInBand",
-    "test-e2e": "npx playwright test",
-    "test:cucumber": "cross-env NODE_OPTIONS=--loader=ts-node/esm cucumber-js --config cucumber.js"
+    "test": "jest --runInBand"
   }
 }

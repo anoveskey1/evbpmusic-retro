@@ -19,7 +19,7 @@ const VisitorCounter: FC = () => {
 
   return (
     <div>
-      <p style={{ color: "black", fontFamily: "monospace" }}>
+      <p style={{ color: "white", fontFamily: "monospace" }}>
         You are visitor #
         <span
           style={{

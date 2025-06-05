@@ -72,9 +72,9 @@ const Home: React.FC = () => {
       <div className="mobile-nav-menu" data-testid="mobile-nav-menu">
         <Navigation />
       </div>
-      <div data-testid="visit-counter-container">
+      <footer data-testid="visit-counter-container">
         <VisitorCounter />
-      </div>
+      </footer>
     </PageContainer>
   );
 };

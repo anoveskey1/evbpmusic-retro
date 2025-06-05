@@ -88,6 +88,7 @@
     "lint": "eslint . && stylelint \"**/*.less\" --fix",
     "prepare": "husky",
     "preview": "vite preview",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "test:e2e": "cucumber-js"
   }
 }

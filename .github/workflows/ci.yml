@@ -33,7 +33,7 @@ jobs:
         run: npm run test
 
       - name: Start server
-        run: npm run dev
+        run: nohup npm run dev > server.log 2>&1 &
 
       - name: Wait for server to be ready
         run: npx wait-on ${{ secrets.BASE_URL }}

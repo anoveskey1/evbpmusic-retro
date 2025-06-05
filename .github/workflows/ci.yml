@@ -35,7 +35,7 @@ jobs:
       - name: Run Cucumber tests
         env:
           VITE_EVBP_MUSIC_BASE_URL: ${{ secrets.BASE_URL }}
-          run: npm run test:e2e
+        run: npm run test:e2e
 
       - name: Build the app
         env:

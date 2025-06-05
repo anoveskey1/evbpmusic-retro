@@ -67,7 +67,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,json,jsx,ts,tsx}": [
       "npm run format",
       "eslint --fix",
       "node scripts/get-staged-files.cjs | xargs -I {} npm test -- --config jest.config.cjs --bail --passWithNoTests --coverage --collectCoverageFrom={}"

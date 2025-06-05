@@ -1,17 +1,10 @@
 {
   "default": {
-    "paths": [
-      "e2e_tests/features/"
-    ],
-    "require": [
-      "e2e_tests/steps/*.js"
-    ],
+    "paths": ["e2e_tests/features/"],
+    "require": ["e2e_tests/steps/*.js"],
     "formatOptions": {
       "snippetInterface": "async-await"
     },
-    "format": [
-      "summary",
-      "progress-bar"
-    ]
+    "format": ["summary", "progress-bar"]
   }
 }

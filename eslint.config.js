@@ -15,10 +15,11 @@ export default [
     ignores: [
       "coverage",
       "dist",
-      "node_modules",
-      "scripts",
       "eslint.config.js",
       "jest.setup.ts",
+      "node_modules",
+      "scripts",
+      "test-examples",
       "vite.config.js",
       "vite-env.d.ts",
       "vitest.workspace.js",

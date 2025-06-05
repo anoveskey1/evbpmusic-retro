@@ -32,6 +32,12 @@ jobs:
           VITE_EVBP_MUSIC_CLOUDFLARE_TURNSTILE_SECRET_KEY: ${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}
         run: npm run test
 
+      - name: Start server
+        run: npm run dev
+
+      - name: Wait for server to be ready
+        run: npx wait-on ${{ secrets.BASE_URL }}
+
       - name: Run Cucumber tests
         env:
           VITE_EVBP_MUSIC_BASE_URL: ${{ secrets.BASE_URL }}

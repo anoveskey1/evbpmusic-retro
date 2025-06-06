@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import "./style.less";
 
 const VisitorCounter: FC = () => {
   const [visitorCount, setVisitorCount] = useState(0);
@@ -19,19 +20,8 @@ const VisitorCounter: FC = () => {
 
   return (
     <div>
-      <p style={{ color: "white", fontFamily: "monospace" }}>
-        You are visitor #
-        <span
-          style={{
-            backgroundColor: "black",
-            color: "white",
-            fontWeight: "bold",
-            padding: "5px",
-            fontFamily: "monospace",
-          }}
-        >
-          {paddedCount}
-        </span>
+      <p className="visitor-counter-text">
+        You are visitor #<span className="ticker">{paddedCount}</span>
         to the site. Welcome!
       </p>
     </div>

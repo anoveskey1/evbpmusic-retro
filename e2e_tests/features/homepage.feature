@@ -16,8 +16,7 @@ Feature: Homepage Functionality
 
   Scenario: Verify footer content
     Given I am on the homepage
-    Then the footer should contain the text "You are visitor #"
-    And the footer should contain the text "to the site. Welcome!"
+    Then the footer should contain the text "You are visitor # to the site. Welcome!"
 
   Scenario: Verify navigation links go to the appropriate page
     Given I am on the homepage

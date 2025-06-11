@@ -5,6 +5,7 @@ import NavigationProvider from "./context/NavigationProvider.js";
 const Bio = lazy(() => import("./pages/bio/index.tsx"));
 const Contact = lazy(() => import("./pages/contact/index.tsx"));
 const Faq = lazy(() => import("./pages/faq/index.tsx"));
+const Guestbook = lazy(() => import("./pages/guestbook/index.tsx"));
 const Home = lazy(() => import("./pages/home/index.tsx"));
 const Links = lazy(() => import("./pages/links/index.tsx"));
 const Music = lazy(() => import("./pages/music/index.tsx"));
@@ -21,6 +22,7 @@ function App() {
             <Route path="/bio" element={<Bio />} />
             <Route path="/contact" element={<Contact />} />
             <Route path={"/faq"} element={<Faq />} />
+            <Route path="/guestbook" element={<Guestbook />} />
             <Route path="/links" element={<Links />} />
             <Route path="/music" element={<Music />} />
             <Route path="/news" element={<News />} />

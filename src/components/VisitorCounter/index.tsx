@@ -21,8 +21,10 @@ const VisitorCounter: FC = () => {
   return (
     <div>
       <p className="visitor-counter-text">
-        You are visitor #<span className="ticker">{paddedCount}</span>
-        to the site. Welcome!
+        <span>You are visitor #</span>
+        <span className="ticker">{paddedCount}</span>
+        &nbsp;
+        <span>to the site. Welcome!</span>
       </p>
     </div>
   );

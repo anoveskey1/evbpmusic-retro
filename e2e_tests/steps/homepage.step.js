@@ -42,8 +42,15 @@ Then(
   "the footer should contain the text {string}",
   async (expectedFooterText) => {
     const footer = await page.locator("footer");
+    const footerContent = await footer.textContent();
+    const normalizedFooter = footerContent.replace(/\s|\u00A0/g, " ");
 
-    expect(await footer.textContent()).toContain(expectedFooterText);
+    const pattern = expectedFooterText
+      .replace("#", "#\\d+\\s*")
+      .replace(".", "\\.");
+
+    const regex = new RegExp(pattern);
+    expect(normalizedFooter).toMatch(regex);
   },
 );
 

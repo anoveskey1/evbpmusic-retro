@@ -1,4 +1,4 @@
-Feature: Homepage Functionality
+Feature: Homepage
   Scenario: Verify homepage title
     Given I am on the homepage
     Then the header should be "Welcome to theHome Page"

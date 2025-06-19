@@ -1,0 +1,68 @@
+.guestbook-form {
+  background-color: dimgray;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 768px;
+  min-width: 85%;
+  padding: 1rem;
+
+  &-username-field,
+  &-email-field,
+  &-validation-code-field,
+  &-message-field {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: space-between;
+
+    label {
+      color: white;
+      font-weight: bold;
+      text-align: start;
+    }
+  }
+
+  input {
+    background-color: white !important;
+    color: black !important;
+    padding: 5px;
+
+    &:read-only {
+      background-color: #f0f0f0 !important;
+      color: #666 !important;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+
+    button {
+      background-color: rebeccapurple;
+      border-radius: 0;
+
+      &:disabled {
+        background-color: mediumpurple;
+        cursor: default;
+      }
+
+      &:hover:not([disabled]),
+      &:focus:not([disabled]) {
+        background-color: darkorchid;
+      }
+    }
+  }
+}
+
+@media (width >= 768px) {
+  .guestbook-form {
+    max-width: 768px;
+
+    input {
+      min-width: 368px;
+    }
+  }
+}

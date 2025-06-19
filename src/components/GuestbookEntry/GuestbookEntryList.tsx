@@ -9,7 +9,7 @@ const GuestbookEntryList = () => {
     const fetchEntries = async () => {
       try {
         const response = await fetch(
-          `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/get-guestbook-entries`,
+          `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/guestbook-entries`,
         );
         if (!response.ok) {
           throw new Error("Network error. Unable to get guestbook entries.");

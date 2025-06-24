@@ -15,6 +15,10 @@ const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
     type,
   } = props;
 
+  const formattedReleaseDate = new Date(releaseDate).toLocaleDateString(
+    "en-US",
+    { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" },
+  );
   const [isSummaryVisible, setIsSummaryVisible] = useState<boolean>(false);
   const [summaryButtonText, setSummaryButtonText] =
     useState<string>("View summary");
@@ -25,7 +29,7 @@ const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
   };
 
   return (
-    <div className="album-container">
+    <article className="album-container">
       <div className="top">
         <div className="cover">
           <RetroImageLoader alt={`${title} cover`} src={coverUrl} />
@@ -50,9 +54,9 @@ const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
           <h2 className="title">
             {title} <span className="release-type">({type})</span>
           </h2>
-          <p className="release-date">{releaseDate}</p>
+          <p className="release-date">{formattedReleaseDate}</p>
           <p className="credits">{credits}</p>
-          <ol className="track-listing">
+          <ol className="track-list">
             {trackList.map((track: string) => (
               <li key={track}>{track}</li>
             ))}
@@ -79,7 +83,7 @@ const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

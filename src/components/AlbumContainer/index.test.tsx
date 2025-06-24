@@ -25,7 +25,7 @@ describe("AlbumContainer", () => {
 
   it("renders the release date", () => {
     render(<AlbumContainer {...mockProps} />);
-    expect(screen.getByText(/2023-01-01/i)).toBeInTheDocument();
+    expect(screen.getByText("January 1, 2023")).toBeInTheDocument();
   });
 
   it("renders the credits", () => {

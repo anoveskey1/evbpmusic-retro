@@ -10,11 +10,11 @@ const Music: React.FC = () => {
   return (
     <PageContainer>
       <h1>Music</h1>
-      <h3 style={{ maxWidth: 768 }}>
+      <p style={{ maxWidth: 768 }}>
         Here, you will find information about EVBP&apos;s entire discography,
         including summaries behind each release, interesting tidbits, and
         possibly clues about other things...
-      </h3>
+      </p>
       {reverseAlbums.map((album: IAlbumContainer, index: number) => (
         <AlbumContainer
           coverUrl={album.coverUrl}

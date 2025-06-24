@@ -25,37 +25,40 @@ const numericConversion = {
   ninth: 8,
 };
 
-let page, browser;
+// let page, browser;
+//
+// Before(async function () {
+//   browser = await chromium.launch({ headless: true });
+//   const context = await browser.newContext();
+//   page = await context.newPage();
+// });
 
-Before(async function () {
-  browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext();
-  page = await context.newPage();
+Given("I have navigated to the {string} page", async function (pageName) {
+  await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
 });
 
-Given("I have navigated to the {string} page", async (pageName) => {
-  await page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
-});
+Given("I am on the {string} page", async function (pageName) {
+  await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
 
-Given("I am on the {string} page", async (pageName) => {
-  await page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
-
-  expect(page.url()).toEqual(
+  expect(this.page.url()).toEqual(
     `${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`,
   );
 });
 
-Then("I should see the main page header, {string}", async (expectedTitle) => {
-  const header = await page.locator("h1");
-  const headerContent = await header.textContent();
+Then(
+  "I should see the main page header, {string}",
+  async function (expectedTitle) {
+    const header = await this.page.locator("h1");
+    const headerContent = await header.textContent();
 
-  expect(headerContent).toContain(expectedTitle);
-});
+    expect(headerContent).toContain(expectedTitle);
+  },
+);
 
 Then(
   "I should see page summary text that reads {string}",
-  async (expectedText) => {
-    const paragraph = await page.locator("p").first();
+  async function (expectedText) {
+    const paragraph = await this.page.locator("p").first();
     const paragraphContent = await paragraph.textContent();
 
     expect(paragraphContent).toContain(expectedText);
@@ -64,8 +67,8 @@ Then(
 
 Then(
   "the {string} release tile will be {string}",
-  async (numericOrder, releaseTitle) => {
-    const releaseContainer = await page
+  async function (numericOrder, releaseTitle) {
+    const releaseContainer = await this.page
       .locator("article")
       .nth(numericConversion[numericOrder]);
     const titleContainer = await releaseContainer.locator("h2");
@@ -76,8 +79,8 @@ Then(
 );
 
 When("I see the {string} release tile", async function (releaseTitle) {
-  await page.waitForSelector("article");
-  const articles = await page.locator("article");
+  await this.page.waitForSelector("article");
+  const articles = await this.page.locator("article");
 
   for (let i = 0; i < (await articles.count()); i++) {
     const article = articles.nth(i);
@@ -143,65 +146,15 @@ Then(
   },
 );
 
-When("the browser window is in {string} mode", async function (windowMode) {
-  if (windowMode === "mobile") {
-    await page.setViewportSize({ width: 320, height: 720 });
-  } else {
-    await page.setViewportSize({ width: 1024, height: 768 });
-  }
-});
-
 Then(
-  "I should see the show\\/hide button for the release summary",
-  async function () {
+  /^I should (not )?see the show\/hide button for the release summary$/,
+  async function (negation) {
     const summaryToggle = this.releaseArticle.locator("button");
 
-    await expect(summaryToggle).toBeVisible();
+    if (negation) {
+      await expect(summaryToggle).not.toBeVisible();
+    } else {
+      await expect(summaryToggle).toBeVisible();
+    }
   },
 );
-
-Then(
-  "I should not see the show\\/hide button for the release summary",
-  async function () {
-    const summaryToggle = this.releaseArticle.locator("button");
-
-    await expect(summaryToggle).not.toBeVisible();
-  },
-);
-
-// Then("I should see a link to the {string} page", async (expectedLinkText) => {
-//   const link = await page.getByRole("link", { name: expectedLinkText });
-//
-//   expect(link).toBeDefined();
-// });
-
-// Then(
-//   "the footer should contain the text {string}",
-//   async (expectedFooterText) => {
-//     const footer = await page.locator("footer");
-//     const footerContent = await footer.textContent();
-//     const normalizedFooter = footerContent.replace(/\s|\u00A0/g, " ");
-//
-//     const pattern = expectedFooterText
-//       .replace("#", "#\\d+\\s*")
-//       .replace(".", "\\.");
-//
-//     const regex = new RegExp(pattern);
-//     expect(normalizedFooter).toMatch(regex);
-//   },
-// );
-
-// When("I click on the {string} link", async (expectedLinkText) => {
-//   const link = await page.getByRole("link", { name: expectedLinkText });
-//
-//   await link.click();
-// });
-
-// Then("I should be redirected to the {string} page", async (expectedPage) => {
-//   await page.waitForURL(`**/${expectedPage}`);
-//   await expect(page).toHaveURL(`http://localhost:5173/${expectedPage}`);
-// });
-
-After(async function () {
-  await browser.close();
-});

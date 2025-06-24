@@ -28,7 +28,7 @@ const numericConversion = {
 let page, browser;
 
 Before(async function () {
-  browser = await chromium.launch({ headless: false });
+  browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
   page = await context.newPage();
 });
@@ -157,6 +157,15 @@ Then(
     const summaryToggle = this.releaseArticle.locator("button");
 
     await expect(summaryToggle).toBeVisible();
+  },
+);
+
+Then(
+  "I should not see the show\\/hide button for the release summary",
+  async function () {
+    const summaryToggle = this.releaseArticle.locator("button");
+
+    await expect(summaryToggle).not.toBeVisible();
   },
 );
 

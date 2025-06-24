@@ -27,3 +27,5 @@ Feature: Music page
     And the "fifth" track should be "Only Criminals Get Caught"
     When the browser window is in "mobile" mode
     Then I should see the show/hide button for the release summary
+    When the browser window is in "desktop" mode
+    Then I should not see the show/hide button for the release summary

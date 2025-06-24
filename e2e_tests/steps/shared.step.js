@@ -1,4 +1,4 @@
-import { Before, Then } from "@cucumber/cucumber";
+import { Before, Then, When } from "@cucumber/cucumber";
 import { chromium, expect } from "@playwright/test";
 
 let page, browser;

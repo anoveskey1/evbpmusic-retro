@@ -43,12 +43,12 @@ describe("AlbumContainer", () => {
   it("toggles the summary visibility when the button is clicked", () => {
     render(<AlbumContainer {...mockProps} />);
     const summaryButton = screen.getByRole("button");
-    expect(screen.queryByText(/Lorem ipsum dollop./i)).toHaveClass("hide");
+    expect(screen.queryByTestId("test-album-summary")).toHaveClass("hide");
 
     act(() => summaryButton.click());
-    expect(screen.getByText(/Lorem ipsum dollop./i)).toHaveClass("show");
+    expect(screen.getByTestId("test-album-summary")).toHaveClass("show");
 
     act(() => summaryButton.click());
-    expect(screen.queryByText(/Lorem ipsum dollop./i)).toHaveClass("hide");
+    expect(screen.queryByTestId("test-album-summary")).toHaveClass("hide");
   });
 });

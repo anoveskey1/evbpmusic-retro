@@ -1,12 +1,5 @@
-import {
-  After,
-  Before,
-  Given,
-  setDefaultTimeout,
-  Then,
-  When,
-} from "@cucumber/cucumber";
-import { chromium, expect } from "@playwright/test";
+import { Given, setDefaultTimeout, Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -24,14 +17,6 @@ const numericConversion = {
   eighth: 7,
   ninth: 8,
 };
-
-// let page, browser;
-//
-// Before(async function () {
-//   browser = await chromium.launch({ headless: true });
-//   const context = await browser.newContext();
-//   page = await context.newPage();
-// });
 
 Given("I have navigated to the {string} page", async function (pageName) {
   await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
@@ -147,9 +132,12 @@ Then(
 );
 
 Then(
-  /^I should (not )?see the show\/hide button for the release summary$/,
-  async function (negation) {
-    const summaryToggle = this.releaseArticle.locator("button");
+  /^I should (not )?see the (view|hide) summary button$/,
+  async function (negation, action) {
+    const summaryToggle =
+      action === "view"
+        ? this.releaseArticle.locator("button", { name: /view summary/i })
+        : this.releaseArticle.locator("button", { name: /hide summary/i });
 
     if (negation) {
       await expect(summaryToggle).not.toBeVisible();
@@ -158,3 +146,33 @@ Then(
     }
   },
 );
+
+When(/^I click the (view|hide) summary button$/, async function (action) {
+  const summaryToggle =
+    action === "view"
+      ? this.releaseArticle.locator("button", { name: /view summary/i })
+      : this.releaseArticle.locator("button", { name: /hide summary/i });
+
+  await summaryToggle.click();
+});
+
+Then("I should no longer see the summary text", async function () {
+  const summaryText = this.releaseArticle.locator("div.summary>p");
+
+  await expect(summaryText).not.toBeVisible();
+});
+
+Then(
+  "I should see the summary text that reads {string}",
+  async function (expectedSummary) {
+    const summaryText = this.releaseArticle.locator("div.summary>p");
+
+    await expect(summaryText).toHaveText(expectedSummary);
+  },
+);
+
+Then("the summary should read {string}", async function (expectedSummary) {
+  const summaryText = this.releaseArticle.locator("div.summary>p");
+
+  await expect(summaryText).toHaveText(expectedSummary);
+});

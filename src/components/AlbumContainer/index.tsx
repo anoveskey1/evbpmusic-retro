@@ -28,6 +28,8 @@ const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
     setSummaryButtonText(isSummaryVisible ? "View summary" : "Hide summary");
   };
 
+  const summaryTestId = title.replaceAll(" ", "-").toLowerCase();
+
   return (
     <article className="album-container">
       <div className="top">
@@ -64,8 +66,11 @@ const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
           <button className="summary-button" onClick={toggleSummary}>
             {summaryButtonText}
           </button>
-          <div className={`summary ${isSummaryVisible ? "show" : "hide"}`}>
-            {summary}
+          <div
+            className={`summary ${isSummaryVisible ? "show" : "hide"}`}
+            data-testid={`${summaryTestId}-summary`}
+          >
+            <p>{summary}</p>
           </div>
           <div className="links-in-info" data-testid="links-in-info">
             {links.map(({ url, title }: IUrlLink, index: number) => (

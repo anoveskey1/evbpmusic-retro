@@ -26,6 +26,11 @@ Feature: Music page
     And the "fourth" track should be "Thoughts & Prayers [Interlude]"
     And the "fifth" track should be "Only Criminals Get Caught"
     When the browser window is in "mobile" mode
-    Then I should see the show/hide button for the release summary
+    Then I should see the view summary button
+    When I click the view summary button
+    Then I should see the summary text that reads "\"Part one of two. As of writing this, Part two is in the works and approximately 60% done. Originally, I intended this to be a full album, but given the heavy subject matter as well as how much time it was taking me to complete, I made the decision to break it up into smaller more digestible chunks. Not completely synthwave, but cut from the same cloth. It is my most political record by a long shot.\""
+    When I click the hide summary button
+    Then I should no longer see the summary text
     When the browser window is in "desktop" mode
-    Then I should not see the show/hide button for the release summary
+    Then I should not see the view summary button
+    And the summary should read "\"Part one of two. As of writing this, Part two is in the works and approximately 60% done. Originally, I intended this to be a full album, but given the heavy subject matter as well as how much time it was taking me to complete, I made the decision to break it up into smaller more digestible chunks. Not completely synthwave, but cut from the same cloth. It is my most political record by a long shot.\""

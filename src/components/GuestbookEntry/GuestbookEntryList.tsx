@@ -27,7 +27,7 @@ const GuestbookEntryList = () => {
   }, []);
 
   return (
-    <section aria-label="Guestbook Entries" className="GuestbookEntryList">
+    <section aria-label="Guestbook Entries" className="guestbook-entry-list">
       {entries.map((entry, index) => (
         <GuestbookEntry
           key={index}

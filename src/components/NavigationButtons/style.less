@@ -4,7 +4,38 @@
   margin: 1rem 0;
   width: 100%;
 
-  &-home {
-    margin: 0 1rem;
+  .nav-button {
+    cursor: pointer;
+
+    &-back {
+      background-image: linear-gradient(
+        90deg,
+        rebeccapurple 30%,
+        slategray 100%
+      );
+
+      &:hover {
+        filter: invert(0.75);
+        text-decoration: underline;
+      }
+    }
+
+    &-forward {
+      background-image: linear-gradient(
+        270deg,
+        rebeccapurple 30%,
+        slategray 100%
+      );
+
+      &:hover {
+        filter: invert(0.75);
+        text-decoration: underline;
+      }
+    }
+
+    &-home {
+      background-color: rebeccapurple;
+      margin: 0 1rem;
+    }
   }
 }

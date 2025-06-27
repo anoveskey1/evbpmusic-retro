@@ -1,22 +1,32 @@
+.guestbook-entry-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .guestbook-entry {
   align-items: center;
-  background-color: #454545;
-  border: 2px solid;
+  background-image: url("/images/starfield1-lowcontrast.jpg");
   color: black;
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin: 18px 0;
   padding: 5px 8px;
   place-content: flex-start;
   text-align: start;
 
   &-header {
-    background-color: #555;
+    background-image: linear-gradient(
+      180deg,
+      rebeccapurple 30%,
+      slategray 100%
+    );
+    color: white;
     width: 98%;
   }
 
   &-content {
-    background-color: #888;
+    background-color: #6effc3;
     font-family: monospace;
     width: 98%;
   }
@@ -30,11 +40,6 @@
 
   h3 {
     font-size: 24px;
-    height: 30%;
     margin: 0;
-  }
-
-  p {
-    height: 70%;
   }
 }

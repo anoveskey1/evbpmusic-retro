@@ -156,6 +156,41 @@ When(/^I click the (view|hide) summary button$/, async function (action) {
   await summaryToggle.click();
 });
 
+When(
+  /^I click on the (apple music|bandcamp|spotify|youtube) link$/,
+  async function (linkType) {
+    const externalMusicLink = this.releaseArticle.getByText(linkType).first();
+
+    await externalMusicLink.click();
+  },
+);
+
+Then(
+  /^I should be redirected to the (apple music|bandcamp|spotify|youtube) release page for "(.*)"$/,
+  async function (linkType, releaseTitle) {
+    const getLinkTypeDomain = () => {
+      switch (linkType) {
+        case "apple music":
+          return "https://music.apple.com/us/album/";
+        case "bandcamp":
+          return "https://evbp.bandcamp.com/album/";
+        case "youtube":
+          return "https://youtube.com/";
+        default:
+          return "/";
+      }
+    };
+
+    const getReleaseTitleSlug = () => {
+      return releaseTitle.toLowerCase().replace(/\s+/g, "-");
+    };
+
+    expect(this.page.url()).toEqual(
+      `${getLinkTypeDomain()}${getReleaseTitleSlug()}`,
+    );
+  },
+);
+
 Then("I should no longer see the summary text", async function () {
   const summaryText = this.releaseArticle.locator("div.summary>p");
 

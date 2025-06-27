@@ -24,14 +24,22 @@ const NavigationButtons = () => {
 
   return (
     <div className="navigation-buttons" role="navigation">
-      <button disabled={history.length <= 1} onClick={handleBack}>
+      <button
+        className="nav-button-back"
+        disabled={history.length <= 1}
+        onClick={handleBack}
+      >
         Back
       </button>
-      <button className="navigation-buttons-home" onClick={() => navigate("/")}>
+      <button className="nav-button-home" onClick={() => navigate("/")}>
         Home
       </button>
 
-      <button disabled={!goForward()} onClick={handleNext}>
+      <button
+        className="nav-button-forward"
+        disabled={!goForward()}
+        onClick={handleNext}
+      >
         Next
       </button>
     </div>

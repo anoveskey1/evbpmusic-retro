@@ -16,6 +16,11 @@ const numericConversion = {
   seventh: 6,
   eighth: 7,
   ninth: 8,
+  tenth: 9,
+  eleventh: 10,
+  twelfth: 11,
+  thirteenth: 12,
+  fourteenth: 13,
 };
 
 Given("I have navigated to the {string} page", async function (pageName) {
@@ -59,7 +64,7 @@ Then(
     const titleContainer = await releaseContainer.locator("h2");
     const titleContent = await titleContainer.textContent();
 
-    expect(titleContent).toContain(releaseTitle);
+    expect(titleContent).toEqual(releaseTitle);
   },
 );
 
@@ -73,7 +78,7 @@ When("I see the {string} release tile", async function (releaseTitle) {
       .locator("h2")
       .evaluate((node) => node.textContent.trim());
 
-    if (titleContent.includes(releaseTitle)) {
+    if (titleContent === releaseTitle) {
       this.releaseArticle = article;
       break;
     }
@@ -182,6 +187,10 @@ Then(
     };
 
     const getReleaseTitleSlug = () => {
+      if (releaseTitle.toLowerCase() === "パラメータの特定のセット") {
+        return "-";
+      }
+
       return releaseTitle.toLowerCase().replace(/\s+/g, "-");
     };
 

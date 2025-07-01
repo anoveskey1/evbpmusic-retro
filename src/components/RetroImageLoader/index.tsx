@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useRef } from "react";
+import { FC, useEffect, useState, useRef, useMemo } from "react";
 import IRetroImageLoader from "../../types/IRetroImageLoader";
 
 const RetroImageLoader: FC<IRetroImageLoader> = ({
@@ -36,11 +36,14 @@ const RetroImageLoader: FC<IRetroImageLoader> = ({
   const removeBorder = linesLoaded == totalLines;
   const revealPercentage = (linesLoaded / totalLines) * 100;
 
-  const imageStyle = {
-    border: removeBorder ? "none" : "1px ridge lightgray",
-    clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
-    transition: "clip-path 0.3s linear",
-  };
+  const imageStyle = useMemo(
+    () => ({
+      border: removeBorder ? "none" : "1px ridge lightgray",
+      clipPath: `inset(0 0 ${100 - revealPercentage}% 0)`,
+      transition: "clip-path 0.3s linear",
+    }),
+    [removeBorder, revealPercentage],
+  );
 
   return width !== 0 && height !== 0 ? (
     <img

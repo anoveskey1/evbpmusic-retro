@@ -6,6 +6,8 @@ const GuestbookEntryList = () => {
   const [entries, setEntries] = useState<IGuestbookEntry[]>([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchEntries = async () => {
       try {
         const response = await fetch(
@@ -24,6 +26,10 @@ const GuestbookEntryList = () => {
     };
 
     fetchEntries();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (

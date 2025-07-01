@@ -13,8 +13,8 @@ const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     setHistory((prevHistory) => {
-      if (prevHistory.length === 0) {
-        return [location.pathname];
+      if (prevHistory[prevHistory.length - 1] !== location.pathname) {
+        return [...prevHistory, location.pathname];
       }
 
       return prevHistory;

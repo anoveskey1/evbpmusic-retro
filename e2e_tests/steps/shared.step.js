@@ -14,3 +14,7 @@ When("the browser window is in {string} mode", async function (windowMode) {
     await this.page.setViewportSize({ width: 1024, height: 768 });
   }
 });
+
+When("I go back to the previous page", async function () {
+  await this.page.goBack();
+});

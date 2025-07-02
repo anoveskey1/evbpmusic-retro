@@ -34,8 +34,8 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And the summary should read "\"Part one of two. As of writing this, Part two is in the works and approximately 60% done. Originally, I intended this to be a full album, but given the heavy subject matter as well as how much time it was taking me to complete, I made the decision to break it up into smaller more digestible chunks. Not completely synthwave, but cut from the same cloth. It is my most political record by a long shot.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "Only Criminals Get Caught I"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "Only Criminals Get Caught I"
 
   Scenario: Verify content and behavior of the "The X of Art Deluxe Edition" album tile
     Given I am on the "music" page
@@ -64,8 +64,8 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"TXoA was originally released as a limited edition CD, with no digital download available. If you wanted to get it, you had to get a copy from me at a show (once upon a time, I performed in public). While I enjoyed the boutique-like nature of a limited release, I also found it frustrating that my most well known material was not widely available. So in 2022, I remixed and remastered the original EP along with some songs that were released on evbpmusic.com around the same time. Revisiting [the album] gave me the opportunity to makes additional improvements. 'Free Parking' in my opinion sounds so much better with an actual 12-string guitar.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "The X of Art deluxe edition"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "The X of Art Deluxe Edition"
 
   Scenario: Verify content and behavior of the "Faux Pleasure" album tile
     Given I am on the "music" page
@@ -97,8 +97,8 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"What do you do when you've spent close to a year fine tuning a small handful of songs, only to realize how far away you are from completing the album they will be on? You release a completely different album, of course! This was inspired by my discovery of vaporwave in the previous year. I wanted to do something similar, while also using the material as an effort to clean my gears. The whole thing came together pretty quickly and it still remains one of my favorites out of my discography.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "Faux Pleasure"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "Faux Pleasure"
 
   Scenario: Verify content and behavior of the "パラメータの特定のセット (A Certain Set of Parameters)" album tile
     Given I am on the "music" page
@@ -122,8 +122,16 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"This was my attempt to break several years of inactivity. It is also the first release where I dropped the full band name in favor of the easier to write and remember 'EVBP'. I decided to try a new direction musically as I discovered just how much I was able to do with synthesizers. It is an EP conceived in the isolation of the first year of the Covid-19 pandemic and at the closing of the first Trump term. As such, it is a maelstrom of negative emotions, with a few rays of hope sprinkled here and there. Track 5 (roughly translated as 'The Idol Guild') is sung entirely in Vulcan. As in Spock. Live long and prosper.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "パラメータの特定のセット"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "パラメータの特定のセット"
+    When I go back to the previous page
+    And I see the "パラメータの特定のセット (A Certain Set of Parameters) (EP)" release tile
+    When I click on the Apple Music link
+    Then I should be redirected to the Apple Music release page for "パラメータの特定のセット"
+    When I go back to the previous page
+    And I see the "パラメータの特定のセット (A Certain Set of Parameters) (EP)" release tile
+    And I click on the Youtube link
+    Then I should be redirected to the Youtube release page for "パラメータの特定のセット"
 
   Scenario: Verify content and behavior of the "The Mechanical Essence of Whiskers" album tile
     Given I am on the "music" page
@@ -151,8 +159,16 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"My comfort level with a DAW had improved significantly by the time work on this album began. It's still weird, a bit tongue in cheek and stylistically all over the place, but I think it works. It also features the largest number of guest appearances of anything I've released. Fun fact, 'Kittens and Warm Cocoa' was my first and only foray into Cookie Monster voice. Tony Raines made it sound so much better than the original demo. Also, 'Decipher This Song' is not just a catchy title!\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "The Mechanical Essence of Whiskers"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "The Mechanical Essence of Whiskers"
+    When I go back to the previous page
+    And I see the "The Mechanical Essence of Whiskers" release tile
+    When I click on the Apple Music link
+    Then I should be redirected to the Apple Music release page for "The Mechanical Essence of Whiskers"
+    When I go back to the previous page
+    And I see the "The Mechanical Essence of Whiskers" release tile
+    And I click on the Youtube link
+    Then I should be redirected to the Youtube release page for "The Mechanical Essence of Whiskers"
 
   Scenario: Verify content and behavior of the "The X of Art" album tile
     Given I am on the "music" page
@@ -175,8 +191,8 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"The first foray into computer recording, and it shows. While the songs are much more accessible, the production quality was still lacking. Despite having access to a software drum machine, I still opted to use a hardware one, and didn't sync it with the MIDI clock in the DAW as I did not know how. Ultimately, this made the remixing and remastering process for the deluxe edition years later... challenging. More than likely, you have heard the song 'Chickenz' from this one as it is a famously stupid song.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "The X of Art deluxe edition"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "The X of Art Deluxe Edition"
 
   Scenario: Verify content and behavior of the "The Second EP" album tile
     Given I am on the "music" page
@@ -202,8 +218,8 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"Even more experimental than LFM. This was mostly written and recorded during a week when my college gf was out of town with friends. It's not as cohesive as LFM, but there were some worthwhile moments - 'Which Hand', for example.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "Second EP"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "Second EP"
 
   Scenario: Verify content and behavior of the "Lo-Fi Mouth" album tile
     Given I am on the "music" page
@@ -233,5 +249,5 @@ Feature: Music page
     When the browser window is in "desktop" mode
     Then I should not see the view summary button
     And I should see the summary text that reads "\"This is where it all started. Recorded on a Tascam Porta02 4-track, using a variety of unconventional instruments, song structures, and effects. At times really exciting, and also really cringey. Fans of lo-fi, alternative bands like Guided By Voices and Ween will probably like this one.\""
-    When I click on the bandcamp link
-    Then I should be redirected to the bandcamp release page for "Lo-Fi Mouth"
+    When I click on the Bandcamp link
+    Then I should be redirected to the Bandcamp release page for "Lo-Fi Mouth"

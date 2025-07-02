@@ -1,27 +1,12 @@
 import { Given, setDefaultTimeout, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import dotenv from "dotenv";
+import albumUrls from "../constants/albumUrls.js";
+import numericConversion from "../constants/numericConversion.js";
 
 dotenv.config();
 
 setDefaultTimeout(60 * 1000);
-
-const numericConversion = {
-  first: 0,
-  second: 1,
-  third: 2,
-  fourth: 3,
-  fifth: 4,
-  sixth: 5,
-  seventh: 6,
-  eighth: 7,
-  ninth: 8,
-  tenth: 9,
-  eleventh: 10,
-  twelfth: 11,
-  thirteenth: 12,
-  fourteenth: 13,
-};
 
 Given("I have navigated to the {string} page", async function (pageName) {
   await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
@@ -162,7 +147,7 @@ When(/^I click the (view|hide) summary button$/, async function (action) {
 });
 
 When(
-  /^I click on the (apple music|bandcamp|spotify|youtube) link$/,
+  /^I click on the (Apple Music|Bandcamp|Spotify|Youtube) link$/,
   async function (linkType) {
     const externalMusicLink = this.releaseArticle.getByText(linkType).first();
 
@@ -171,32 +156,17 @@ When(
 );
 
 Then(
-  /^I should be redirected to the (apple music|bandcamp|spotify|youtube) release page for "(.*)"$/,
+  /^I should be redirected to the (Apple Music|Bandcamp|Spotify|Youtube) release page for "(.*)"$/,
   async function (linkType, releaseTitle) {
-    const getLinkTypeDomain = () => {
-      switch (linkType) {
-        case "apple music":
-          return "https://music.apple.com/us/album/";
-        case "bandcamp":
-          return "https://evbp.bandcamp.com/album/";
-        case "youtube":
-          return "https://youtube.com/";
-        default:
-          return "/";
-      }
+    const getLinkUrl = (linkType, releaseTitle) => {
+      const album = albumUrls[releaseTitle];
+
+      return album[linkType];
     };
 
-    const getReleaseTitleSlug = () => {
-      if (releaseTitle.toLowerCase() === "パラメータの特定のセット") {
-        return "-";
-      }
+    const linkUrl = await getLinkUrl(linkType, releaseTitle);
 
-      return releaseTitle.toLowerCase().replace(/\s+/g, "-");
-    };
-
-    expect(this.page.url()).toEqual(
-      `${getLinkTypeDomain()}${getReleaseTitleSlug()}`,
-    );
+    expect(this.page.url()).toEqual(linkUrl);
   },
 );
 

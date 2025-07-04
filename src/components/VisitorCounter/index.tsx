@@ -1,11 +1,8 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, memo, useEffect, useMemo, useState } from "react";
 import "./style.less";
 
 const VisitorCounter: FC = () => {
   const [visitorCount, setVisitorCount] = useState(0);
-  // TODO: Need to figure out an effective way to prevent the visitor
-  //  count from updating every time the page refreshes; possibly using
-  //  cookies, session storage, or an api call
 
   useEffect(() => {
     const controller = new AbortController();
@@ -39,7 +36,8 @@ const VisitorCounter: FC = () => {
   return (
     <div>
       <p className="visitor-counter-text">
-        <span>You are visitor #</span>
+        <span>You are visitor</span>
+        &nbsp;
         <span className="ticker">{paddedCount}</span>
         &nbsp;
         <span>to the site. Welcome!</span>
@@ -48,4 +46,4 @@ const VisitorCounter: FC = () => {
   );
 };
 
-export default VisitorCounter;
+export default memo(VisitorCounter);

@@ -7,7 +7,7 @@ const Faq: FC = () => {
   return (
     <PageContainer>
       <h1>FAQ</h1>
-      <h3>Have questions? We&apos;ve got answers!</h3>
+      <p>Have questions? We&apos;ve got answers!</p>
       {faqs.map((faq: { question: string; answer: string }, index: number) => (
         <FAQElement
           answer={faq.answer}

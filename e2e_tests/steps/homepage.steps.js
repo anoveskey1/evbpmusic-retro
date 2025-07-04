@@ -34,7 +34,7 @@ Then(
     const normalizedFooter = footerContent.replace(/\s|\u00A0/g, " ");
 
     const pattern = expectedFooterText
-      .replace("#", "#\\d+\\s*")
+      .replace("#", "\\d+\\s*")
       .replace(".", "\\.");
 
     const regex = new RegExp(pattern);

@@ -22,7 +22,7 @@ describe("VisitorCounter", () => {
     mockFetch(true);
     render(<VisitorCounter />);
 
-    const youAreVisitorText = screen.getByText("You are visitor #");
+    const youAreVisitorText = screen.getByText("You are visitor");
     const visitorCountText = await screen.findByText("12345678");
     const welcomeText = screen.getByText("to the site. Welcome!");
 
@@ -35,7 +35,7 @@ describe("VisitorCounter", () => {
     mockFetch(false);
     render(<VisitorCounter />);
 
-    const youAreVisitorText = screen.getByText("You are visitor #");
+    const youAreVisitorText = screen.getByText("You are visitor");
     const visitorCountText = await screen.findByText("00000000");
     const welcomeText = screen.getByText("to the site. Welcome!");
 

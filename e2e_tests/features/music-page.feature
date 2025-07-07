@@ -1,9 +1,14 @@
 Feature: Music page
-  Scenario: Verify music page layout
+  Scenario: Verify music page basic layout
     Given I have navigated to the "music" page
     Then I should see the main navigation menu
     And I should see the main page header, "Music"
     And I should see page summary text that reads "Here, you will find information about EVBP's entire discography, including summaries behind each release, interesting tidbits, and possibly clues about other things..."
+    And I should see the release tiles
+
+  Scenario: Verify correct order of release tiles
+    Given I am on the "music" page
+    Then I should see the release tiles
     And the "first" release tile will be "Only Criminals Get Caught I (EP)"
     And the "second" release tile will be "The X of Art (Deluxe) (LP)"
     And the "third" release tile will be "Faux Pleasure (LP)"

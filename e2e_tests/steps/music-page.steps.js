@@ -40,6 +40,13 @@ Then(
   },
 );
 
+Then("I should see the release tiles", async function () {
+  await this.page.waitForSelector("article");
+  const releaseList = await this.page.locator("article").all();
+
+  expect(releaseList).toHaveLength(8);
+});
+
 Then(
   "the {string} release tile will be {string}",
   async function (numericOrder, releaseTitle) {

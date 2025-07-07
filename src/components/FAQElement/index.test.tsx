@@ -10,6 +10,7 @@ describe("FAQElement", () => {
 
     render(<FAQElement question={question} answer={answer} index={index} />);
 
+    expect(screen.getByText((index + 1).toString())).toBeInTheDocument();
     expect(screen.getByText(question)).toBeInTheDocument();
     expect(screen.getByText(answer)).toBeInTheDocument();
   });

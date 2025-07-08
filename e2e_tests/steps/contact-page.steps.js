@@ -59,3 +59,33 @@ Then(
     await button.click();
   },
 );
+
+When("The send message API is unavailable", async function () {
+  await this.page.route(
+    `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/send-email`,
+    async (route) => {
+      const json = { status: 500 };
+
+      await route.fulfill(json);
+    },
+  );
+});
+
+When("I fill in and submit the form", async function () {
+  await this.page.getByLabel("Email").fill("johndoe@exene.com");
+  await this.page.getByLabel("Subject").selectOption("Support");
+  await this.page.getByLabel("Message").fill("mock message");
+
+  const button = await this.page.getByRole("button", { name: "Send" });
+  await button.click();
+});
+
+Then(
+  "I should see an alert that says {string}",
+  async function (expectedErrorMessage) {
+    this.page.on("dialog", async (dialog) => {
+      expect(dialog.type()).toEqual("alert");
+      expect(dialog.message()).toEqual(expectedErrorMessage);
+    });
+  },
+);

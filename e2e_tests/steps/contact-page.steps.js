@@ -48,7 +48,6 @@ Then(
     const button = await this.page.getByRole("button", { name: buttonName });
 
     await this.page.route(`**/api/send-email`, async (route) => {
-      console.log("Intercepted /api/send-email request");
       const json = {
         status: 200,
         contentType: "application/json",
@@ -66,7 +65,13 @@ Then(
 
 When("The send message API is unavailable", async function () {
   await this.page.route(`**/api/send-email`, async (route) => {
-    const json = { status: 500 };
+    const json = {
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({
+        error: "Failed to send email",
+      }),
+    };
 
     await route.fulfill(json);
   });

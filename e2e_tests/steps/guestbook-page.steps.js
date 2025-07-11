@@ -9,14 +9,10 @@ setDefaultTimeout(60 * 1000);
 
 Then("I should see the guestbook entries", async function () {
   await this.page.route(`**/api/guestbook-entries`, async (route) => {
-    console.log("Intercept of guestbook entries API");
-    console.log("mockGuestbookEntries = ", mockGuestbookEntries);
     const json = {
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({
-        message: mockGuestbookEntries,
-      }),
+      body: JSON.stringify(mockGuestbookEntries),
     };
 
     await route.fulfill(json);

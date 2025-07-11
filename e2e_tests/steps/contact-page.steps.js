@@ -50,9 +50,15 @@ Then(
     await this.page.route(
       `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/send-email`,
       async (route) => {
-        const json = { status: 200 };
+        const json = {
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({
+            message: message,
+          }),
+        };
 
-        await route.fulfill({ json });
+        await route.fulfill(json);
       },
     );
 

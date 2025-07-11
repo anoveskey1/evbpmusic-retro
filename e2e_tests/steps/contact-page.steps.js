@@ -47,34 +47,29 @@ Then(
 
     const button = await this.page.getByRole("button", { name: buttonName });
 
-    await this.page.route(
-      `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/send-email`,
-      async (route) => {
-        const json = {
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({
-            message: message,
-          }),
-        };
+    await this.page.route(`**/api/send-email`, async (route) => {
+      console.log("Intercepted /api/send-email request");
+      const json = {
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          message: message,
+        }),
+      };
 
-        await route.fulfill(json);
-      },
-    );
+      await route.fulfill(json);
+    });
 
     await button.click();
   },
 );
 
 When("The send message API is unavailable", async function () {
-  await this.page.route(
-    `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/send-email`,
-    async (route) => {
-      const json = { status: 500 };
+  await this.page.route(`**/api/send-email`, async (route) => {
+    const json = { status: 500 };
 
-      await route.fulfill(json);
-    },
-  );
+    await route.fulfill(json);
+  });
 });
 
 When("I fill in and submit the form", async function () {

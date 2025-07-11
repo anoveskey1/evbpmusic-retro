@@ -1,14 +1,15 @@
 Feature: Guestbook page
   Scenario: User visits the Guestbook page
-    Given I have navigated to the "guestbook" page
+    Given the guestbook API returns entries
+    And I have navigated to the "guestbook" page
     Then I should see the main page header, "Guestbook"
     And I should see page summary text that reads "Welcome to the guestbook page! Immortalize yourself in internet history... at least until Adam gets the urge to redesign the site again. ;)"
     And I should see the "guestbook" form
     And I should see the guestbook entries
 
   Scenario: User visits the Guestbook page (unhappy path)
-    Given I am on the "guestbook" page
-    When The get guestbook entries API is unavailable
+    Given the guestbook entries API is unavailable
+    When I am on the "guestbook" page
     Then I should not see the guestbook entries
 
   Scenario: User signs the guestbook (happy path)

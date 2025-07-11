@@ -68,7 +68,12 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
   };
 
   return (
-    <form className="contact-form" name="contact-form" onSubmit={handleSubmit}>
+    <form
+      aria-label="contact-form"
+      className="contact-form"
+      name="contact-form"
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="email">Email</label>
       <input
         id="email"

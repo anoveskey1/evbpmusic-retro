@@ -6,14 +6,6 @@ dotenv.config();
 
 setDefaultTimeout(60 * 1000);
 
-Then("I should see the contact form", async function () {
-  await this.page.waitForSelector("form");
-
-  const contactForm = await this.page.locator("form");
-
-  await expect(contactForm).toBeVisible();
-});
-
 Then("I see the contact form", async function () {
   await this.page.waitForSelector("form");
 

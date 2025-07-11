@@ -1,6 +1,6 @@
 Feature: FAQ Page
   Scenario: Verify FAQ page basic layout
-    Given I am on the "faq" page
+    Given I have navigated to the "faq" page
     Then I should see the main page header, "FAQ"
     And I should see page summary text that reads "Have questions? We've got answers!"
     And I should see the frequently asked questions

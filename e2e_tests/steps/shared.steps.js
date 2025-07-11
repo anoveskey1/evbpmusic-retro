@@ -1,6 +1,14 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
+Then("I should see the {string} form", async function (formName) {
+  await this.page.waitForSelector("form");
+
+  const form = await this.page.getByRole("form", { name: `${formName}-form` });
+
+  await expect(form).toBeVisible();
+});
+
 Then("I should see the main navigation menu", async function () {
   const navigationContainer = await this.page.locator("role:navigation");
 

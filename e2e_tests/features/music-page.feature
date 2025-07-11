@@ -1,12 +1,12 @@
 Feature: Music page
-  Scenario: Verify music page basic layout
+  Scenario: User visits the music page
     Given I have navigated to the "music" page
     Then I should see the main navigation menu
     And I should see the main page header, "Music"
     And I should see page summary text that reads "Here, you will find information about EVBP's entire discography, including summaries behind each release, interesting tidbits, and possibly clues about other things..."
     And I should see the release tiles
 
-  Scenario: Verify correct order of release tiles
+  Scenario: User sees the release tiles
     Given I am on the "music" page
     Then I should see the release tiles
     And the "first" release tile will be "Only Criminals Get Caught I (EP)"
@@ -18,7 +18,7 @@ Feature: Music page
     And the "seventh" release tile will be "The Second EP (EP)"
     And the "eighth" release tile will be "Lo-Fi Mouth (LP)"
 
-  Scenario: Verify content and behavior of the "Only Criminals Get Caught" album tile
+  Scenario: User explores the "Only Criminals Get Caught" album tile
     Given I am on the "music" page
     When I see the "Only Criminals Get Caught I (EP)" release tile
     Then I should see the cover image for "Only Criminals Get Caught I"
@@ -42,7 +42,7 @@ Feature: Music page
     When I click on the Bandcamp link
     Then I should be redirected to the Bandcamp release page for "Only Criminals Get Caught I"
 
-  Scenario: Verify content and behavior of the "The X of Art Deluxe Edition" album tile
+  Scenario: User explores the "The X of Art Deluxe Edition" album tile
     Given I am on the "music" page
     When I see the "The X of Art (Deluxe) (LP)" release tile
     Then I should see the cover image for "The X of Art (Deluxe)"
@@ -72,7 +72,7 @@ Feature: Music page
     When I click on the Bandcamp link
     Then I should be redirected to the Bandcamp release page for "The X of Art Deluxe Edition"
 
-  Scenario: Verify content and behavior of the "Faux Pleasure" album tile
+  Scenario: User explores the "Faux Pleasure" album tile
     Given I am on the "music" page
     When I see the "Faux Pleasure (LP)" release tile
     Then I should see the cover image for "Faux Pleasure"
@@ -105,7 +105,7 @@ Feature: Music page
     When I click on the Bandcamp link
     Then I should be redirected to the Bandcamp release page for "Faux Pleasure"
 
-  Scenario: Verify content and behavior of the "パラメータの特定のセット (A Certain Set of Parameters)" album tile
+  Scenario: User explores the "パラメータの特定のセット (A Certain Set of Parameters)" album tile
     Given I am on the "music" page
     When I see the "パラメータの特定のセット (A Certain Set of Parameters) (EP)" release tile
     Then I should see the cover image for "パラメータの特定のセット (A Certain Set of Parameters)"
@@ -138,7 +138,7 @@ Feature: Music page
     And I click on the Youtube link
     Then I should be redirected to the Youtube release page for "パラメータの特定のセット"
 
-  Scenario: Verify content and behavior of the "The Mechanical Essence of Whiskers" album tile
+  Scenario: User explores the "The Mechanical Essence of Whiskers" album tile
     Given I am on the "music" page
     When I see the "The Mechanical Essence of Whiskers (MEOW) (LP)" release tile
     Then I should see the cover image for "The Mechanical Essence of Whiskers (MEOW)"
@@ -175,7 +175,7 @@ Feature: Music page
     And I click on the Youtube link
     Then I should be redirected to the Youtube release page for "The Mechanical Essence of Whiskers"
 
-  Scenario: Verify content and behavior of the "The X of Art" album tile
+  Scenario: User explores the "The X of Art" album tile
     Given I am on the "music" page
     When I see the "The X of Art (EP)" release tile
     Then I should see the cover image for "The X of Art"
@@ -199,7 +199,7 @@ Feature: Music page
     When I click on the Bandcamp link
     Then I should be redirected to the Bandcamp release page for "The X of Art Deluxe Edition"
 
-  Scenario: Verify content and behavior of the "The Second EP" album tile
+  Scenario: User explores the "The Second EP" album tile
     Given I am on the "music" page
     When I see the "The Second EP (EP)" release tile
     Then I should see the cover image for "The Second EP"
@@ -226,7 +226,7 @@ Feature: Music page
     When I click on the Bandcamp link
     Then I should be redirected to the Bandcamp release page for "Second EP"
 
-  Scenario: Verify content and behavior of the "Lo-Fi Mouth" album tile
+  Scenario: User explores the "Lo-Fi Mouth" album tile
     Given I am on the "music" page
     When I see the "Lo-Fi Mouth (LP)" release tile
     Then I should see the cover image for "Lo-Fi Mouth"

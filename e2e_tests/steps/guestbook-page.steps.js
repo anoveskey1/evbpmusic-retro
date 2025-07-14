@@ -50,8 +50,86 @@ Then("I should not see the guestbook entries", async function () {
   await expect(guestbookEntriesElement).not.toBeVisible();
 });
 
+Given(
+  "I have filled in the {string} and {string} fields with the values {string} and {string}",
+  async function (fieldName1, fieldName2, fieldValue1, fieldValue2) {
+    const inputInformation = [
+      {
+        name: fieldName1,
+        value: fieldValue1,
+      },
+      {
+        name: fieldName2,
+        value: fieldValue2,
+      },
+    ];
+
+    await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/guestbook`);
+
+    expect(this.page.url()).toEqual(
+      `${process.env.VITE_EVBP_MUSIC_BASE_URL}/guestbook`,
+    );
+
+    inputInformation.map(async (inputInfo) => {
+      const inputField = await this.page.getByRole("textbox", {
+        name: `guestbook-input-${inputInfo.name}`,
+      });
+
+      await inputField.fill(inputInfo.value);
+    });
+  },
+);
+
+Given("I have clicked the Get Validation Code button", async function () {
+  await this.page.route(
+    `**/api/send-validation-code-to-email`,
+    async (route) => {
+      const json = {
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          message:
+            "A validation code has been sent to the email address you provided. Please enter it into the validation code input field to continue.",
+        }),
+      };
+
+      await route.fulfill(json);
+    },
+  );
+
+  this.page.once("dialog", async (dialog) => {
+    expect(dialog.type()).toEqual("alert");
+  });
+
+  const button = await this.page.getByRole("button", {
+    name: "Get Validation Code",
+  });
+
+  await button.click();
+});
+
+Given("I see an alert that says {string}", async function (alertMessage) {
+  this.page.once("dialog", async (dialog) => {
+    expect(dialog.type()).toEqual("alert");
+    expect(dialog.message()).toEqual(alertMessage);
+
+    await dialog.accept();
+  });
+});
+
+Given(
+  "I have filled in the validation code field with {string}",
+  async function (validationCode) {
+    const inputField = await this.page.getByRole("textbox", {
+      name: "guestbook-input-validation-code",
+    });
+
+    await inputField.fill(validationCode);
+  },
+);
+
 When(
-  "I fill in the {string} field with {string}",
+  "I fill in the {string} field with the value {string}",
   async function (fieldName, fieldValue) {
     const inputField = await this.page.getByRole("textbox", {
       name: `guestbook-input-${fieldName}`,
@@ -61,28 +139,52 @@ When(
   },
 );
 
-When("I click the {string} button", async function (buttonName) {
-  await this.page.route(
-    `**/api/send-validation-code-to-email`,
-    async (route) => {
-      const json = {
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({
-          message:
-            "A validation code has been sent to the email address you provided.",
-        }),
-      };
+Given("I click the Sign The Guestbook button", async function () {
+  await this.page.route(`**/api/sign-guestbook`, async (route) => {
+    const json = {
+      status: 201,
+      contentType: "application/json",
+      body: JSON.stringify({
+        message: "Thanks for signing my guestbook. You rock!",
+      }),
+    };
 
-      await route.fulfill(json);
-    },
-  );
+    await route.fulfill(json);
+  });
 
   this.page.on("dialog", async (dialog) => {
     expect(dialog.type()).toEqual("alert");
   });
 
-  const button = await this.page.getByRole("button", { name: buttonName });
+  const button = await this.page.getByRole("button", {
+    name: "Sign The Guestbook",
+  });
+
+  await button.click();
+});
+
+Given("I click the Validate User button", async function () {
+  await this.page.route(`**/api/validate-user`, async (route) => {
+    const json = {
+      status: 201,
+      contentType: "application/json",
+      body: JSON.stringify({
+        message: "User validation successful. You can now sign the guestbook!",
+        user: {
+          username: "McnuggetKing97",
+          email: "john.mcnugget@gmail.com",
+        },
+      }),
+    };
+
+    await route.fulfill(json);
+  });
+
+  this.page.on("dialog", async (dialog) => {
+    expect(dialog.type()).toEqual("alert");
+  });
+
+  const button = await this.page.getByRole("button", { name: "Validate User" });
 
   await button.click();
 });

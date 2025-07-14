@@ -17,7 +17,8 @@ const signGuestbook = async (
   );
 
   if (response.ok) {
-    return "Guestbook signed successfully!";
+    const data = await response.json();
+    return data.message;
   } else {
     const errorData = await response.json();
     console.error("Error signing guestbook:", errorData.code);

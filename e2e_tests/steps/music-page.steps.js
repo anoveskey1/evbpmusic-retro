@@ -1,4 +1,4 @@
-import { Given, setDefaultTimeout, Then, When } from "@cucumber/cucumber";
+import { setDefaultTimeout, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import dotenv from "dotenv";
 import albumUrls from "../constants/albumUrls.js";
@@ -7,18 +7,6 @@ import numericConversion from "../constants/numericConversion.js";
 dotenv.config();
 
 setDefaultTimeout(60 * 1000);
-
-Given("I have navigated to the {string} page", async function (pageName) {
-  await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
-});
-
-Given("I am on the {string} page", async function (pageName) {
-  await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
-
-  expect(this.page.url()).toEqual(
-    `${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`,
-  );
-});
 
 Then(
   "I should see the main page header, {string}",

@@ -13,9 +13,12 @@ Feature: Guestbook page
     Then I should not see the guestbook entries
 
   Scenario: User signs the guestbook (happy path)
-    Given I am on the "guestbook" page
-    When I fill in the "username" field with "McNuggetKing97"
-    And I fill in the "email" field with "john.mcnugget@gmail.com"
-    And I click the "Get Validation Code" button
-    Then I should see an alert that says "Validation code sent to your email. Please check your inbox."
-    # TODO: next step - enter validation code in code input
+  Given I have filled in the "username" and "email" fields with the values "McNuggetKing97" and "john.mcnugget@gmail.com"
+  And I have clicked the Get Validation Code button
+  And I see an alert that says "Validation code sent to your email. Please check your inbox."
+  And I have filled in the validation code field with "123456"
+  And I click the Validate User button
+  And I see an alert that says "Email validated successfully. You can now sign the guestbook!"
+  When I fill in the "message" field with the value "I love McNuggets!"
+  And I click the Sign The Guestbook button
+  Then I should see an alert that says "Thanks for signing my guestbook. You rock!"

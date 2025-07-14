@@ -1,5 +1,17 @@
-import { Then, When } from "@cucumber/cucumber";
+import { Given, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
+
+Given("I have navigated to the {string} page", async function (pageName) {
+  await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
+});
+
+Given("I am on the {string} page", async function (pageName) {
+  await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
+
+  expect(this.page.url()).toEqual(
+    `${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`,
+  );
+});
 
 Then("I should see the {string} form", async function (formName) {
   await this.page.waitForSelector("form");

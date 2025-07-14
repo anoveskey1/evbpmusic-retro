@@ -8,7 +8,10 @@ const mockFetch = (responseOk: boolean) => {
       json: () =>
         Promise.resolve(
           responseOk
-            ? { success: true }
+            ? {
+                success: true,
+                message: "Guestbook signed successfully!",
+              }
             : {
                 code: "MOCK_ERROR",
                 message: "Whaddya think yer doin up in here?!",

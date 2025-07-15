@@ -108,6 +108,35 @@ Given("I have clicked the Get Validation Code button", async function () {
   await button.click();
 });
 
+Given("I have clicked the Get Validation Code button again", async function () {
+  await this.page.route(
+    `**/api/send-validation-code-to-email`,
+    async (route) => {
+      const json = {
+        status: 400,
+        contentType: "application/json",
+        body: JSON.stringify({
+          code: "USER_ALREADY_EXISTS",
+          message:
+            "Everybody gets one. If you feel you have reached this message in error, please contact us - include your email and username - and we'll see what we can do to help!",
+        }),
+      };
+
+      await route.fulfill(json);
+    },
+  );
+
+  this.page.once("dialog", async (dialog) => {
+    expect(dialog.type()).toEqual("alert");
+  });
+
+  const button = await this.page.getByRole("button", {
+    name: "Get Validation Code",
+  });
+
+  await button.click();
+});
+
 Given("I see an alert that says {string}", async function (alertMessage) {
   this.page.once("dialog", async (dialog) => {
     expect(dialog.type()).toEqual("alert");
@@ -188,3 +217,31 @@ Given("I click the Validate User button", async function () {
 
   await button.click();
 });
+
+When(
+  "I have provided an incorrect validation code and clicked the Validate User button",
+  async function () {
+    await this.page.route(`**/api/validate-user`, async (route) => {
+      const json = {
+        status: 401,
+        contentType: "application/json",
+        body: JSON.stringify({
+          code: "USER_ENTRY_NOT_FOUND",
+          message: "User entry not found. Please contact the site admin.",
+        }),
+      };
+
+      await route.fulfill(json);
+    });
+
+    this.page.once("dialog", async (dialog) => {
+      expect(dialog.type()).toEqual("alert");
+    });
+
+    const button = await this.page.getByRole("button", {
+      name: "Validate User",
+    });
+
+    await button.click();
+  },
+);

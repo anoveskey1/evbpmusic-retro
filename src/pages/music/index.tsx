@@ -3,18 +3,17 @@ import AlbumContainer from "../../components/AlbumContainer";
 import IAlbumContainer from "../../types/IAlbumContainer";
 import albums from "../../../public/albums.json";
 import PageContainer from "../../components/PageContainer";
+import PageIntro from "../../components/PageIntro";
 
 const Music: React.FC = () => {
   const reverseAlbums = albums.slice(0).reverse();
 
   return (
     <PageContainer>
-      <h1>Music</h1>
-      <p style={{ maxWidth: 768 }}>
-        Here, you will find information about EVBP&apos;s entire discography,
-        including summaries behind each release, interesting tidbits, and
-        possibly clues about other things...
-      </p>
+      <PageIntro
+        description="Here, you will find information about EVBP's entire discography, including summaries behind each release, interesting tidbits, and possibly clues about other things..."
+        header="Music"
+      />
       {reverseAlbums.map((album: IAlbumContainer, index: number) => (
         <AlbumContainer
           coverUrl={album.coverUrl}

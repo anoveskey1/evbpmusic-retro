@@ -1,5 +1,5 @@
 interface IContactForm {
-  turnstileSiteKey: string;
+  turnstileSiteKey?: string;
 }
 
 export default IContactForm;

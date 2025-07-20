@@ -1,5 +1,5 @@
 import emailValidator from "email-validator";
-import { useState } from "react";
+import React, { useState } from "react";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import IContactForm from "../../types/IContactForm";
 import sanitizeInput from "./sanitizeInput";

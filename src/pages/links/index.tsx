@@ -1,9 +1,10 @@
 import PageContainer from "../../components/PageContainer";
+import PageIntro from "../../components/PageIntro";
 
 const Links: React.FC = () => {
   return (
     <PageContainer>
-      <h1>Links</h1>
+      <PageIntro header="Links" />
       <h2>Social Media</h2>
       <ul>
         <li>

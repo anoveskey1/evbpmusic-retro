@@ -37,6 +37,12 @@ jobs:
       - name: Start server
         run: nohup npm run dev > server.log 2>&1 &
 
+      - name: Set dummy env for Dependabot
+        if: github.event.pull_request.user.login == 'dependabot[bot]'
+        run: |
+          echo "VITE_EVBP_MUSIC_BASE_URL=http://localhost:3000" >> $GITHUB_ENV
+          echo "VITE_EVBP_MUSIC_API_BASE_URL=http://localhost:3001" >> $GITHUB_ENV
+
       - name: Verify environment variables
         run: node e2e_tests/setup/checkEnv.js
 

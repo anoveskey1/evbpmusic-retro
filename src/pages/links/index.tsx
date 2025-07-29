@@ -1,49 +1,21 @@
 import PageContainer from "../../components/PageContainer";
 import PageIntro from "../../components/PageIntro";
+import LinksContainer from "../../components/LinksContainer";
+import { ILink } from "../../types/links";
+import links from "./links.json";
 
 const Links: React.FC = () => {
+  const relatedLinks: ILink[] = links["EVBPRelatedLinks"];
+  const unrelatedLinks: ILink[] = links["NonEVBPRelatedLinks"];
+
   return (
     <PageContainer>
-      <PageIntro header="Links" />
-      <h2>Social Media</h2>
-      <ul>
-        <li>
-          <a href="https://www.facebook.com/evbpband">Facebook</a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/evbpband">Instagram</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/@evbpband">YouTube</a>
-        </li>
-        <li>
-          <a href="https://www.tiktok.com/@evbpband">TikTok</a>
-        </li>
-      </ul>
-      <h2>Cool Stuff You Should Check Out</h2>
-      <ul>
-        <li>
-          <a href="https://www.bandcamp.com">Bandcamp</a>
-        </li>
-        <li>
-          <a href="https://www.soundcloud.com">SoundCloud</a>
-        </li>
-        <li>
-          <a href="https://www.spotify.com">Spotify</a>
-        </li>
-      </ul>
-      <h2>Miscellaneous Links</h2>
-      <ul>
-        <li>
-          <a href="https://www.google.com">Google</a>
-        </li>
-        <li>
-          <a href="https://www.bing.com">Bing</a>
-        </li>
-        <li>
-          <a href="https://www.duckduckgo.com">DuckDuckGo</a>
-        </li>
-      </ul>
+      <PageIntro
+        description="The internet is wonderful place. Full of hyperlinks, memes, and other things to waste your afternoon with. Here are some that I thought were worth your attention."
+        header="Links"
+      />
+      <LinksContainer header={"EVBP Related:"} links={relatedLinks} />
+      <LinksContainer header={"EVBP-Free Content:"} links={unrelatedLinks} />
     </PageContainer>
   );
 };

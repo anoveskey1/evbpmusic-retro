@@ -1,0 +1,18 @@
+ul.links {
+  background-image: url("/images/pale-gray-grained-wall-template.jpg");
+  border-radius: 1px;
+  color: black;
+  padding: 5% 10%;
+  text-align: start;
+
+  a {
+    color: #00e; // unvisited link (blue)
+    &:visited {
+      color: #551a8b; // visited link (purple)
+    }
+
+    &:active {
+      color: #f00; // active link (red)
+    }
+  }
+}

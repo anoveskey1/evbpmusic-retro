@@ -19,7 +19,7 @@ describe("LinksContainer", () => {
     render(<LinksContainer header="Awesome Links" links={mockLinks} />);
 
     const headerElement = screen.getByRole("heading", {
-      name: "Awesome Links",
+      name: "Awesome Links:",
     });
     const listElements = screen.getAllByRole("listitem");
     const paragraphElements = screen.getAllByRole("paragraph");

@@ -27,7 +27,7 @@ module.exports = {
       statements: 80,
     },
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}),
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}, { prefix: '<rootDir>/'}),
   modulePaths: [`${compilerOptions.baseUrl}\src`],
   passWithNoTests: true,
   preset: "ts-jest",

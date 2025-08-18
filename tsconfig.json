@@ -1,12 +1,20 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
     "lib": ["dom", "es2021"],
     "module": "ESNext",
     "moduleResolution": "Node",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@types/*": ["src/types/*"],
+      "@typeDefs": ["src/types"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

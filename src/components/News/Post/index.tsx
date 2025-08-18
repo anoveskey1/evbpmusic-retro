@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { Helmet } from "react-helmet-async";
-import ImageUnavailable from "../../ImageUnavailable";
 import tagMappings from "../../../constants/tagMappings";
 import INewsPost from "../../../types/INewsPost";
+import preprocessBody from "./functions/preprocessBody";
 import "./style.less";
 
 const Post: FC<INewsPost> = (props: INewsPost) => {
@@ -18,31 +18,7 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
     year: "numeric",
   }).format(dateStringToDate);
 
-  // preprocess the body to replace images with <ImageUnavailable />
-  const preprocessBody = (html: string) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-
-    const children: React.ReactNode[] = [];
-    doc.body.childNodes.forEach((node) => {
-      if (node.nodeName === "FIGURE") {
-        children.push(<ImageUnavailable key={children.length} width={50} />);
-      } else {
-        children.push(
-          <div
-            dangerouslySetInnerHTML={{
-              __html: node instanceof Element ? node.outerHTML : "",
-            }}
-            key={children.length}
-          />,
-        );
-      }
-    });
-
-    return children;
-  };
-
-  const processedBody = preprocessBody(body);
+  const processedBody = preprocessBody(body, images);
 
   return (
     <>
@@ -57,13 +33,6 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
         </Helmet>
       )}
       <article className="news-post">
-        {images && images.length > 0 && (
-          <img
-            alt={`${header} post image 1`}
-            className="news-post-image"
-            src={images[0]}
-          />
-        )}
         <header>
           <h2>{header}</h2>
           <time dateTime={dateStringToDate.toISOString()}>{formattedDate}</time>

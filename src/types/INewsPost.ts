@@ -1,8 +1,10 @@
+import Image from "./image";
+
 interface INewsPost {
   body: string;
   date: string;
   header: string;
-  images?: string[];
+  images?: Image[];
   isSlugPost?: boolean;
   metaTags?: number[];
   slug: string;

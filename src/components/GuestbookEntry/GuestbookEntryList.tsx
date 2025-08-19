@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import GuestbookEntry from "./GuestbookEntry";
-import IGuestbookEntry from "../../types/IGuestbookEntry";
+import IGuestbookEntry from "@typeDefs/IGuestbookEntry";
 
 const GuestbookEntryList = () => {
   const [entries, setEntries] = useState<IGuestbookEntry[]>([]);

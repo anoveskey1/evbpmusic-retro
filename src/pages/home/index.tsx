@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import Navigation from "../../components/MobileNavigation";
-import PageContainer from "../../components/PageContainer";
-import NewRetroImageLoader from "../../components/RetroImageLoader";
-import VisitorCounter from "../../components/VisitorCounter";
+import MenuButton from "@components/MenuButton";
+import Navigation from "@components/MobileNavigation";
+import PageContainer from "@components/PageContainer";
+import NewRetroImageLoader from "@components/RetroImageLoader";
 
+import VisitorCounter from "@components/VisitorCounter";
 import getLogoImageWidth from "./getLogoImageWidth";
 import getPortraitImageWidth from "./getPortraitImageWidth";
 import "./style.less";
-import MenuButton from "../../components/MenuButton";
 
 const Home: React.FC = () => {
   const [logoImageWidth, setLogoImageWidth] = useState(getLogoImageWidth());

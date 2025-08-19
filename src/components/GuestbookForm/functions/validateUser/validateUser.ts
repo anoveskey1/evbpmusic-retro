@@ -1,5 +1,5 @@
-import IApiSuccess from "../../../../types/IApiSuccess";
-import IApiError from "../../../../types/IApiError";
+import IApiError from "@typeDefs/IApiError";
+import IApiSuccess from "@typeDefs/IApiSuccess";
 
 const validateUser = async (
   validationCode: string,

@@ -1,9 +1,9 @@
 import React from "react";
-import AlbumContainer from "../../components/AlbumContainer";
-import IAlbumContainer from "../../types/IAlbumContainer";
+import AlbumContainer from "@components/AlbumContainer";
+import PageContainer from "@components/PageContainer";
+import PageIntro from "@components/PageIntro";
+import IAlbumContainer from "@typeDefs/IAlbumContainer";
 import albums from "../../../public/albums.json";
-import PageContainer from "../../components/PageContainer";
-import PageIntro from "../../components/PageIntro";
 
 const Music: React.FC = () => {
   const reverseAlbums = albums.slice(0).reverse();

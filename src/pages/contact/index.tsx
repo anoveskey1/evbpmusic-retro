@@ -1,7 +1,7 @@
 import React from "react";
-import ContactForm from "../../components/ContactForm";
-import PageContainer from "../../components/PageContainer";
-import PageIntro from "../../components/PageIntro";
+import ContactForm from "@components/ContactForm";
+import PageContainer from "@components/PageContainer";
+import PageIntro from "@components/PageIntro";
 
 const ContactPage: React.FC = () => {
   return (

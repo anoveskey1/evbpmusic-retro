@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ContactForm from "./index";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
-import IContactForm from "../../types/IContactForm";
+import IContactForm from "@typeDefs/IContactForm";
 
 const mockProps: IContactForm = {
   turnstileSiteKey: "test_turnstile_key",

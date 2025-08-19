@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from "react";
 import "./style.less";
-import IAlbumContainer, { IUrlLink } from "../../types/IAlbumContainer";
-import RetroImageLoader from "../RetroImageLoader";
+import IAlbumContainer, { IUrlLink } from "@typeDefs/IAlbumContainer";
+import RetroImageLoader from "@components/RetroImageLoader";
 
 const AlbumContainer: FC<IAlbumContainer> = (props: IAlbumContainer) => {
   const {

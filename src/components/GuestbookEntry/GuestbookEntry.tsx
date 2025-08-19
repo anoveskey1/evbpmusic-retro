@@ -1,4 +1,4 @@
-import IGuestbookEntry from "../../types/IGuestbookEntry";
+import IGuestbookEntry from "@typeDefs/IGuestbookEntry";
 import "./style.less";
 
 const GuestbookEntry = (props: IGuestbookEntry) => {

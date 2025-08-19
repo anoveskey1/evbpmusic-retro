@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import "./style.less";
-import NavigationButtons from "../NavigationButtons";
+import NavigationButtons from "@components/NavigationButtons";
 
 interface IPageContainerProps {
   children: ReactNode;

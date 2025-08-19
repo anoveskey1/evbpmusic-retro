@@ -1,4 +1,4 @@
-import IApiError from "../../../../types/IApiError";
+import IApiError from "@typeDefs/IApiError";
 
 const sendValidationCode = async (
   email: string,

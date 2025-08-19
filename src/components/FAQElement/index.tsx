@@ -1,4 +1,4 @@
-import IFAQElement from "../../types/IFAQElement";
+import IFAQElement from "@typeDefs/IFAQElement";
 import "./style.less";
 
 const FAQElement: React.FC<IFAQElement> = (props: IFAQElement) => {

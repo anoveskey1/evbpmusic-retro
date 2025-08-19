@@ -1,8 +1,8 @@
 import React from "react";
-import PageContainer from "../../components/PageContainer";
-import PageIntro from "../../components/PageIntro";
-import LinksContainer from "../../components/LinksContainer";
-import { ILink } from "../../types/links";
+import PageContainer from "@components/PageContainer";
+import PageIntro from "@components/PageIntro";
+import LinksContainer from "@components/LinksContainer";
+import { ILink } from "@typeDefs/links";
 import links from "./links.json";
 
 const Links: React.FC = () => {

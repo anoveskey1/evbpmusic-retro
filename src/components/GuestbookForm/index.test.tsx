@@ -1,10 +1,10 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import GuestbookForm from "./index";
+import IApiError from "@typeDefs/IApiError";
 import sendValidationCode from "./functions/sendValidationCode/sendValidationCode";
 import signGuestbook from "./functions/signGuestbook/signGuestbook";
 import validateUser from "./functions/validateUser/validateUser";
-import IApiError from "../../types/IApiError";
+import GuestbookForm from "./index";
 
 jest.mock("./functions/sendValidationCode/sendValidationCode");
 jest.mock("./functions/signGuestbook/signGuestbook");

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Helmet } from "react-helmet-async";
+import INewsPost from "@typeDefs/INewsPost";
 import tagMappings from "../../../constants/tagMappings";
-import INewsPost from "../../../types/INewsPost";
 import preprocessBody from "./functions/preprocessBody";
 import "./style.less";
 

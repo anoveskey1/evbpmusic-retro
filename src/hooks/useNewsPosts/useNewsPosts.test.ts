@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
+import INewsPost from "@typeDefs/INewsPost";
 import useNewsPosts from "./useNewsPosts";
-import INewsPost from "../../types/INewsPost";
 import newsPosts from "../../../public/evbp-blog-data.json";
 
 describe("useNewsPosts", () => {

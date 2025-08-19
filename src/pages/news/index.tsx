@@ -1,8 +1,8 @@
-import NewsFeed from "../../components/News/Feed";
-import PageContainer from "../../components/PageContainer";
-import { useNewsPosts } from "../../hooks";
-import INewsPost from "../../types/INewsPost";
-import PageIntro from "../../components/PageIntro";
+import NewsFeed from "@components/News/Feed";
+import PageContainer from "@components/PageContainer";
+import PageIntro from "@components/PageIntro";
+import { useNewsPosts } from "@hooks";
+import INewsPost from "@typeDefs/INewsPost";
 
 const News = () => {
   const rawNewsPosts = useNewsPosts();

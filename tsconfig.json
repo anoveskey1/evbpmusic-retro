@@ -10,9 +10,11 @@
     "moduleResolution": "Node",
     "paths": {
       "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@hooks": ["src/hooks/index.ts"],
       "@hooks/*": ["src/hooks/*"],
-      "@types/*": ["src/types/*"],
+      "@typeDefs/*": ["src/types/*"],
       "@typeDefs": ["src/types"]
     },
     "resolveJsonModule": true,

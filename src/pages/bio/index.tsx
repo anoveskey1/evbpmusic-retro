@@ -1,6 +1,6 @@
 import { FC } from "react";
-import PageContainer from "../../components/PageContainer";
 import { Helmet } from "react-helmet-async";
+import PageContainer from "@components/PageContainer";
 
 const Bio: FC = () => {
   return (

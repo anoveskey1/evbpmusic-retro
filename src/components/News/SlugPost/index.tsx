@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useNewsPosts } from "../../../hooks";
-import INewsPost from "../../../types/INewsPost";
+import { useNewsPosts } from "@hooks";
+import INewsPost from "@typeDefs/INewsPost";
 import Post from "../Post";
 
 const SlugPost = () => {

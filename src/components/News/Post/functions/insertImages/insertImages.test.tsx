@@ -1,6 +1,6 @@
 import React from "react";
+import ImageUnavailable from "@components/ImageUnavailable";
 import insertImages from "./insertImages";
-import ImageUnavailable from "../../../../ImageUnavailable";
 
 describe("insertImages - function", () => {
   it("should replace [[image:X]] placeholders with img elements", () => {
@@ -10,7 +10,7 @@ describe("insertImages - function", () => {
 
     const images = [
       {
-        url: "http://example.com/image1.jpg",
+        url: "https://example.com/image1.jpg",
         alt: "Image 1",
         customClass: "img-class",
       },
@@ -26,7 +26,7 @@ describe("insertImages - function", () => {
     ) as React.ReactElement;
 
     expect(imgElement).toBeDefined();
-    expect(imgElement.props.src).toBe("http://example.com/image1.jpg");
+    expect(imgElement.props.src).toBe("https://example.com/image1.jpg");
     expect(imgElement.props.alt).toBe("Image 1");
     expect(imgElement.props.className).toBe("img-class");
     expect(divChildren.length).toBe(3); // Should contain the text and the image
@@ -37,7 +37,7 @@ describe("insertImages - function", () => {
     const node = document.createElement("div");
     node.innerHTML = "This is a test with an image [[image:0]] and some text.";
 
-    const images = [{ url: "http://example.com/image1.jpg", alt: "" }];
+    const images = [{ url: "https://example.com/image1.jpg", alt: "" }];
 
     insertImages(children, node, images);
 
@@ -49,7 +49,7 @@ describe("insertImages - function", () => {
     ) as React.ReactElement;
 
     expect(imgElement).toBeDefined();
-    expect(imgElement.props.src).toBe("http://example.com/image1.jpg");
+    expect(imgElement.props.src).toBe("https://example.com/image1.jpg");
     expect(imgElement.props.alt).toBe("Image 0");
     expect(imgElement.props.className).toBe("");
     expect(divChildren.length).toBe(3); // Should contain the text and the image
@@ -70,6 +70,26 @@ describe("insertImages - function", () => {
     );
     expect(unavailableElement).toBeDefined();
     expect(divChildren.length).toBe(2);
+  });
+
+  it("should render plain HTML span when part does not match image placeholder", () => {
+    const children: React.ReactNode[] = [];
+    const node = document.createElement("div");
+    node.innerHTML = "This is just normal text. No image.";
+
+    insertImages(children, node);
+
+    const result = children[0] as React.ReactElement;
+    const divChildren = React.Children.toArray(result.props.children);
+
+    const spanElement = divChildren.find(
+      (child) => React.isValidElement(child) && child.type === "span",
+    ) as React.ReactElement;
+
+    expect(spanElement).toBeDefined();
+    expect(spanElement.props.dangerouslySetInnerHTML.__html).toContain(
+      "This is just normal text",
+    );
   });
 
   it("should handle text nodes (like '\n')gracefully", () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { ILinkContainer } from "../../types/links";
+import { ILinkContainer } from "@typeDefs/links";
 import "./style.less";
 
 const LinksContainer: React.FC<ILinkContainer> = (props: ILinkContainer) => {

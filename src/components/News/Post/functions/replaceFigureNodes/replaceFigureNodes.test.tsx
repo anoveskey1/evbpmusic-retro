@@ -1,5 +1,5 @@
 import React from "react";
-import ImageUnavailable from "../../../../ImageUnavailable";
+import ImageUnavailable from "@components/ImageUnavailable";
 import replaceFigureNodes from "./replaceFigureNodes";
 
 describe("replaceFigureNodes - function", () => {

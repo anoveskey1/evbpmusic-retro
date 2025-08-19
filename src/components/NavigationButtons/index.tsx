@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useNavigation } from "../../hooks";
+import { useNavigation } from "@hooks";
 import "./style.less";
 
 const NavigationButtons = () => {

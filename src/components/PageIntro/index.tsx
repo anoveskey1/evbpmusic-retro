@@ -4,6 +4,7 @@ interface IPageIntro {
   description?: string;
   header: string;
 }
+
 const PageIntro: FC<IPageIntro> = (props: IPageIntro) => {
   const { description, header } = props;
 

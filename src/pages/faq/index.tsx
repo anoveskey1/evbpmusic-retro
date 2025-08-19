@@ -1,8 +1,8 @@
 import { FC } from "react";
-import PageContainer from "../../components/PageContainer";
-import FAQElement from "../../components/FAQElement";
+import FAQElement from "@components/FAQElement";
+import PageContainer from "@components/PageContainer";
+import PageIntro from "@components/PageIntro";
 import faqs from "../../../public/faqs.json";
-import PageIntro from "../../components/PageIntro";
 
 const Faq: FC = () => {
   return (

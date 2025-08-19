@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Helmet } from "react-helmet-async";
+import INewsFeed from "@typeDefs/INewsFeed";
 import Post from "../Post";
-import INewsFeed from "../../../types/INewsFeed";
 import "./style.less";
 
 const NewsFeed: FC<INewsFeed> = (props: INewsFeed) => {

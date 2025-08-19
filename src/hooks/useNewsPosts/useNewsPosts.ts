@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import INewsPost from "@typeDefs/INewsPost";
 import newsPosts from "../../../public/evbp-blog-data.json";
-import INewsPost from "../../types/INewsPost";
 
 const useNewsPosts = (slug?: string, getMostRecent?: boolean) => {
   const [posts, setPosts] = useState<INewsPost[]>([]);

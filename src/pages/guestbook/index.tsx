@@ -1,8 +1,8 @@
 import { FC } from "react";
-import GuestbookForm from "../../components/GuestbookForm";
-import PageContainer from "../../components/PageContainer";
-import GuestbookEntryList from "../../components/GuestbookEntry/GuestbookEntryList";
-import PageIntro from "../../components/PageIntro";
+import GuestbookEntryList from "@components/GuestbookEntry/GuestbookEntryList";
+import GuestbookForm from "@components/GuestbookForm";
+import PageContainer from "@components/PageContainer";
+import PageIntro from "@components/PageIntro";
 
 const Guestbook: FC = () => {
   return (

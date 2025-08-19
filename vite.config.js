@@ -9,8 +9,6 @@ dotenv.config();
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
-  console.log("resolved path:", path.resolve(__dirname, "src"));
-
   return {
     define: {
       // "process.env.VITE_EVBP_MUSIC_API_BASE_URL": JSON.stringify(env.SOME_KEY),

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import IGuestbookEntry from "@typeDefs/IGuestbookEntry";
 import GuestbookEntryList from "./GuestbookEntryList";
-import IGuestbookEntry from "../../types/IGuestbookEntry";
 
 const mockGuestbookEntries: IGuestbookEntry[] = [
   {

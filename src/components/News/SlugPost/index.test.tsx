@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SlugPost from "./index";
-import * as useNewsPostsModule from "../../../hooks/useNewsPosts/useNewsPosts";
+import * as useNewsPostsModule from "@hooks/useNewsPosts/useNewsPosts";
 
 describe("SlugPost", () => {
   let consoleErrorSpy: jest.SpyInstance;

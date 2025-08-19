@@ -1,5 +1,5 @@
 import { FC, useEffect, useState, useRef, useMemo } from "react";
-import IRetroImageLoader from "../../types/IRetroImageLoader";
+import IRetroImageLoader from "@typeDefs/IRetroImageLoader";
 
 const RetroImageLoader: FC<IRetroImageLoader> = ({
   alt,

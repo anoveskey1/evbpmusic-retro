@@ -5,9 +5,9 @@ import { useNewsPosts } from "@hooks";
 import INewsPost from "@typeDefs/INewsPost";
 
 const News = () => {
-  const rawNewsPosts = useNewsPosts();
-  const newsPosts: INewsPost[] = Array.isArray(rawNewsPosts)
-    ? rawNewsPosts
+  const legacyNewsPosts = useNewsPosts();
+  const newsPosts: INewsPost[] = Array.isArray(legacyNewsPosts)
+    ? legacyNewsPosts
     : [];
 
   return (

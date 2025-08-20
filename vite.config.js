@@ -11,7 +11,6 @@ export default defineConfig(({ mode }) => {
 
   return {
     define: {
-      // "process.env.VITE_EVBP_MUSIC_API_BASE_URL": JSON.stringify(env.SOME_KEY),
       "process.env": process.env,
     },
     plugins: [react(), tsconfigPaths()],

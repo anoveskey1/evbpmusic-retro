@@ -8,7 +8,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     "src/components/**/*.{js,jsx,ts,tsx}",
-    "src/hooks/**/*.{js,jsx,ts,tsx}"
+    "src/hooks/**/*.{js,jsx,ts,tsx}",
   ],
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: [
@@ -44,6 +44,6 @@ module.exports = {
       "jest-transform-stub",
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(nanoid|@sanity/client|@sanity/image-url)/)"
+    "/node_modules/(?!(nanoid|@sanity/client|@sanity/image-url)/)",
   ],
 };

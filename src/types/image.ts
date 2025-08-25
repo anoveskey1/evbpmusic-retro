@@ -1,7 +1,8 @@
 export type Image = {
   alt?: string;
   customClass?: string;
-  url: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  };
 };
-
-// export default Image;

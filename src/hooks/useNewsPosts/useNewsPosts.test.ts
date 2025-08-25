@@ -1,38 +1,95 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import INewsPost from "@typeDefs/INewsPost";
 import useNewsPosts from "./useNewsPosts";
-import newsPosts from "../../../public/evbp-blog-data.json";
+
+const mockPosts: INewsPost[] = [
+  {
+    body: "This is the body of the first post.",
+    date: "2023-01-01",
+    header: "First Post",
+    slug: "first-post",
+  },
+  {
+    body: "This is the body of the second post.",
+    date: "2023-02-01",
+    header: "Second Post",
+    slug: "second-post",
+  },
+];
+
+const mockFetch = (ok: boolean, jsonResponse: object) => {
+  global.fetch = jest.fn().mockResolvedValue({
+    ok,
+    json: async () => jsonResponse,
+  });
+};
 
 describe("useNewsPosts", () => {
-  it("should return an array of posts when no parameters are provided", () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it("should return an array of posts when no parameters are provided", async () => {
+    mockFetch(true, { result: mockPosts });
     const { result } = renderHook(() => useNewsPosts());
 
-    expect(result.current).toBeInstanceOf(Array);
-    expect((result.current as Array<INewsPost>).length).toBeGreaterThan(0);
+    await waitFor(() => {
+      expect(result.current).toBeInstanceOf(Array);
+      expect((result.current as Array<INewsPost>).length).toBe(2);
+    });
   });
 
-  it("should return a single post when a valid slug is provided", () => {
-    const { result } = renderHook(() => useNewsPosts("an-exciting-update"));
-
-    expect(result.current).toBeInstanceOf(Object);
-    expect(result.current).toHaveProperty("body");
-    expect(result.current).toHaveProperty("date");
-    expect(result.current).toHaveProperty("header");
-    expect(result.current).toHaveProperty("metaTags");
-    expect(result.current).toHaveProperty("slug");
-  });
-
-  it("should return null when an invalid slug is provided", () => {
-    const { result } = renderHook(() => useNewsPosts("i-totally-made-this-up"));
-
-    expect(result.current).toBeNull();
-  });
-
-  it("should return the most recent post when getMostRecent is true", () => {
+  it("should return the most recent post when getMostRecent is true", async () => {
+    mockFetch(true, { result: mockPosts });
     const { result } = renderHook(() => useNewsPosts(undefined, true));
-    const mostRecentPost = newsPosts[0];
+    const mostRecentPost = mockPosts[1];
 
-    expect(result.current).toBeInstanceOf(Object);
-    expect(result.current).toEqual(mostRecentPost);
+    await waitFor(() => {
+      expect(result.current).toBeInstanceOf(Object);
+      expect(result.current).toEqual(mostRecentPost);
+    });
+  });
+
+  it("should return a single post when a valid slug is provided", async () => {
+    mockFetch(true, { result: mockPosts });
+    const { result } = renderHook(() => useNewsPosts("first-post"));
+
+    await waitFor(() => {
+      expect(result.current).toBeInstanceOf(Object);
+      expect(result.current).toHaveProperty(
+        "body",
+        "This is the body of the first post.",
+      );
+    });
+  });
+
+  it("should return a null when a invalid slug is provided", async () => {
+    mockFetch(true, { result: mockPosts });
+    const { result } = renderHook(() => useNewsPosts("third-post"));
+
+    await waitFor(() => {
+      expect(result.current).toBeNull();
+    });
+  });
+
+  it("should throw an error when the response is not ok", async () => {
+    const consoleSpy = jest
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const errorMessage = "mock error";
+
+    mockFetch(false, { message: errorMessage });
+
+    const { result } = renderHook(() => useNewsPosts());
+
+    await waitFor(() => {
+      expect(result.current).toEqual([]);
+      expect(consoleSpy).toHaveBeenCalledWith(
+        "Unexpected fetch error:",
+        expect.any(Error),
+      );
+    });
+
+    consoleSpy.mockRestore();
   });
 });

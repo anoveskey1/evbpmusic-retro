@@ -1,6 +1,11 @@
 import React from "react";
 import ImageUnavailable from "@components/ImageUnavailable";
 import insertImages from "./insertImages";
+import { Image } from "@/types";
+
+jest.mock("@sanity/client");
+jest.mock("@sanity/image-url");
+jest.mock("nanoid");
 
 describe("insertImages - function", () => {
   it("should replace [[image:X]] placeholders with img elements", () => {
@@ -8,10 +13,13 @@ describe("insertImages - function", () => {
     const node = document.createElement("div");
     node.innerHTML = "This is a test with an image [[image:0]] and some text.";
 
-    const images = [
+    const images: Image[] = [
       {
-        url: "https://example.com/image1.jpg",
         alt: "Image 1",
+        asset: {
+          _ref: "image-12345",
+          _type: "sanity.imageAsset",
+        },
         customClass: "img-class",
       },
     ];
@@ -26,7 +34,7 @@ describe("insertImages - function", () => {
     ) as React.ReactElement;
 
     expect(imgElement).toBeDefined();
-    expect(imgElement.props.src).toBe("https://example.com/image1.jpg");
+    expect(imgElement.props.src).toBe("https://mocked.cdn/image.jpg");
     expect(imgElement.props.alt).toBe("Image 1");
     expect(imgElement.props.className).toBe("img-class");
     expect(divChildren.length).toBe(3); // Should contain the text and the image
@@ -37,7 +45,15 @@ describe("insertImages - function", () => {
     const node = document.createElement("div");
     node.innerHTML = "This is a test with an image [[image:0]] and some text.";
 
-    const images = [{ url: "https://example.com/image1.jpg", alt: "" }];
+    const images: Image[] = [
+      {
+        asset: {
+          _ref: "image-12345",
+          _type: "sanity.imageAsset",
+        },
+        alt: "",
+      },
+    ];
 
     insertImages(children, node, images);
 
@@ -49,7 +65,7 @@ describe("insertImages - function", () => {
     ) as React.ReactElement;
 
     expect(imgElement).toBeDefined();
-    expect(imgElement.props.src).toBe("https://example.com/image1.jpg");
+    expect(imgElement.props.src).toBe("https://mocked.cdn/image.jpg");
     expect(imgElement.props.alt).toBe("Image 0");
     expect(imgElement.props.className).toBe("");
     expect(divChildren.length).toBe(3); // Should contain the text and the image
@@ -105,7 +121,7 @@ describe("insertImages - function", () => {
     expect(result.props.dangerouslySetInnerHTML.__html).toBe("Just plain text");
   });
 
-  it("should return an empty text nodes if textContent is empty", () => {
+  it("should return nothing if textContent is empty", () => {
     const children: React.ReactNode[] = [];
     const node = document.createTextNode("");
 
@@ -113,7 +129,6 @@ describe("insertImages - function", () => {
 
     const result = children[0] as React.ReactElement;
 
-    expect(result.type).toBe("div");
-    expect(result.props.dangerouslySetInnerHTML.__html).toBe("");
+    expect(result).not.toBeDefined();
   });
 });

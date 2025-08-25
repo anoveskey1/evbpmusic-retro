@@ -10,8 +10,11 @@ let mockProps = {
   images: [
     {
       alt: "Test Image",
+      asset: {
+        _ref: "image-12345",
+        _type: "sanity.imageAsset",
+      },
       customClass: "test-class",
-      url: "https://example.com/image1.jpg",
     },
   ],
   metaTags: [20, 5],
@@ -40,7 +43,7 @@ describe("News Post", () => {
     expect(processedBody.querySelectorAll("img")).toHaveLength(1);
     expect(processedBody.querySelector("img")).toHaveAttribute(
       "src",
-      "https://example.com/image1.jpg",
+      "https://mocked.cdn/image.jpg",
     );
     expect(processedBody.querySelector("img")).toHaveAttribute(
       "alt",

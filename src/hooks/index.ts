@@ -1,2 +1,2 @@
 export { default as useNavigation } from "./useNavigation/useNavigation";
-export { default as useNewsPosts } from "./useNewsPosts/useNewsPosts";
+export { default as useLegacyNewsPosts } from "@hooks/useLegacyNewsPosts/useLegacyNewsPosts";

@@ -13,11 +13,14 @@ import parse from "@typescript-eslint/parser";
 export default [
   {
     ignores: [
+      "__mocks__/**",
       "coverage",
       "dist",
       "eslint.config.js",
       "jest.setup.ts",
       "node_modules",
+      "package.json",
+      "package-lock.json",
       "scripts",
       "test-examples",
       "vite.config.js",

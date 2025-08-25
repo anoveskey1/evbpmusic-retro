@@ -11,7 +11,6 @@ try {
     .map((file) => `'${file}'`);
 
   if (stagedFiles.length === 0) {
-    console.log("");
     process.exit(0);
   }
 

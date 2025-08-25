@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SlugPost from "./index";
-import * as useNewsPostsModule from "@hooks/useNewsPosts/useNewsPosts";
+import * as useLegacyNewsPostsModule from "@hooks/useLegacyNewsPosts/useLegacyNewsPosts";
 
 describe("SlugPost", () => {
   let consoleErrorSpy: jest.SpyInstance;
@@ -28,7 +28,9 @@ describe("SlugPost", () => {
   });
 
   it("should render the text 'Post not found' if the useNewsPost hook returns null", () => {
-    const spy = jest.spyOn(useNewsPostsModule, "default").mockReturnValue(null);
+    const spy = jest
+      .spyOn(useLegacyNewsPostsModule, "default")
+      .mockReturnValue(null);
 
     render(
       <HelmetProvider>
@@ -42,15 +44,17 @@ describe("SlugPost", () => {
   });
 
   it("should render the Post with all its corresponding values", () => {
-    const spy = jest.spyOn(useNewsPostsModule, "default").mockReturnValue({
-      body: "<p>This is a test body</p>",
-      date: "2023-10-01",
-      excerpt: "This is...",
-      header: "Test Header",
-      id: 12,
-      metaTags: [5, 6],
-      slug: "test-slug",
-    });
+    const spy = jest
+      .spyOn(useLegacyNewsPostsModule, "default")
+      .mockReturnValue({
+        body: "<p>This is a test body</p>",
+        date: "2023-10-01",
+        excerpt: "This is...",
+        header: "Test Header",
+        id: 12,
+        metaTags: [5, 6],
+        slug: "test-slug",
+      });
 
     render(
       <HelmetProvider>

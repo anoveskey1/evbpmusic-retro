@@ -1,12 +1,17 @@
 import React from "react";
+import imageUrlBuilder from "@sanity/image-url";
 import ImageUnavailable from "@components/ImageUnavailable";
 import type { Image } from "@typeDefs";
+import sanityClient from "../../../../../services/sanity";
 
 const insertImages = (
   children: React.ReactNode[],
   node: ChildNode,
   images?: Image[],
 ) => {
+  const builder = imageUrlBuilder(sanityClient);
+  const urlFor = (source: any) => builder.image(source);
+
   if (node.nodeType === Node.ELEMENT_NODE && node instanceof Element) {
     // Replace [[image:X]] placeholders inside the HTML string
     const inner = node.innerHTML;
@@ -29,7 +34,7 @@ const insertImages = (
               alt={image.alt || `Image ${imageIndex}`}
               className={image.customClass || ""}
               key={`image-${imageIndex}-${index}`}
-              src={image.url}
+              src={urlFor(image.asset).url()}
             />,
           );
         } else {
@@ -58,17 +63,16 @@ const insertImages = (
     return;
   } else {
     // handle text nodes by rendering their textContent
-    children.push(
-      <div
-        dangerouslySetInnerHTML={{
-          __html:
-            node.nodeType === Node.TEXT_NODE
-              ? (node as Text).textContent || ""
-              : "",
-        }}
-        key={children.length}
-      />,
-    );
+    const text = (node as Text).textContent || "";
+
+    if (text.trim()) {
+      children.push(
+        <div
+          dangerouslySetInnerHTML={{ __html: text }}
+          key={children.length}
+        />,
+      );
+    }
   }
 };
 

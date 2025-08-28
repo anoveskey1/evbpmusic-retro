@@ -19,6 +19,12 @@ const NewsFeed: FC<INewsFeed> = (props: INewsFeed) => {
     currentPage * ITEMS_PER_PAGE,
   );
 
+  const getKeyFromSlug = (
+    slug: { _type: string; current: string } | string,
+  ): string => {
+    return typeof slug === "string" ? slug : slug.current;
+  };
+
   if (!newsPosts || newsPosts.length === 0) {
     return <div>No news posts available.</div>;
   }
@@ -33,7 +39,7 @@ const NewsFeed: FC<INewsFeed> = (props: INewsFeed) => {
         <title>EVBPMusic.com | News Feed</title>
       </Helmet>
       {paginatedOrder.map((post) => (
-        <Post key={post.slug} {...post} />
+        <Post key={getKeyFromSlug(post.slug)} {...post} />
       ))}
       <Pagination
         currentPage={currentPage}

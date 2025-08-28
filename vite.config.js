@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import dotenv from "dotenv";
 import react from "@vitejs/plugin-react";
+import { visualizer } from "rollup-plugin-visualizer";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 
@@ -13,7 +14,16 @@ export default defineConfig(({ mode }) => {
     define: {
       "process.env": process.env,
     },
-    plugins: [react(), tsconfigPaths()],
+    plugins: [
+      react(),
+      tsconfigPaths(),
+      visualizer({
+        brotliSize: true,
+        gzipSize: true,
+        open: true,
+        template: "treemap",
+      }),
+    ],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),

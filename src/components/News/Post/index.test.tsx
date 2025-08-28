@@ -3,7 +3,15 @@ import "@testing-library/jest-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Post from "./index";
 
-let mockProps = {
+let legacyMockProps = {
+  body: "<p>This is a test body</p>",
+  date: "2023-10-01",
+  header: "Test Header",
+  metaTags: [20, 5],
+  slug: "test-header",
+};
+
+let newMockProps = {
   body: "<p>This is a test body</p>",
   date: "2023-10-01",
   header: "Test Header",
@@ -11,21 +19,26 @@ let mockProps = {
     {
       alt: "Test Image",
       asset: {
-        _ref: "image-12345",
-        _type: "sanity.imageAsset",
+        _ref: "image-abc123-800x600-jpg",
+        _type: "reference",
       },
       customClass: "test-class",
+      _type: "image",
     },
   ],
-  metaTags: [20, 5],
-  slug: "test-header",
+  metaTags: [
+    { id: 1, label: "A E S T H E T I C" },
+    { id: 2, label: "Vaporwave" },
+  ],
+  slug: { _type: "slug", current: "test-header" },
 };
 
 describe("News Post", () => {
-  it("should render the Post component without error", () => {
+  it("should render the Post component without error - new post", () => {
     const mockPropsWithBodyImage = {
-      ...mockProps,
+      ...newMockProps,
       body: `<p>This is a test body [[image:0]]</p>`,
+      isSlugPost: true,
     };
 
     render(
@@ -52,9 +65,29 @@ describe("News Post", () => {
     expect(processedBody.querySelector("img")).toHaveClass("test-class");
   });
 
-  it("should not contain image tags when the images property is an empty array", () => {
+  it("should render the Post component without error - legacy post", () => {
+    const mockPropsWithBodyImage = {
+      ...legacyMockProps,
+    };
+
+    render(
+      <HelmetProvider>
+        <Post {...mockPropsWithBodyImage} />
+      </HelmetProvider>,
+    );
+
+    expect(screen.getByText("Test Header")).toBeInTheDocument();
+    expect(screen.getByText("This is a test body")).toBeInTheDocument();
+    expect(screen.getByText("A E S T H E T I C")).toBeInTheDocument();
+    expect(screen.getByText("Vaporwave")).toBeInTheDocument();
+
+    const processedBody = screen.getByRole("paragraph");
+    expect(processedBody.querySelectorAll("img")).toHaveLength(0);
+  });
+
+  it("should not contain image tags when the images property is an empty array - new post", () => {
     const noImagesProps = {
-      ...mockProps,
+      ...newMockProps,
       images: [],
     };
 
@@ -67,9 +100,9 @@ describe("News Post", () => {
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
-  it("should not contain image tags when the images property is undefined", () => {
+  it("should not contain image tags when the images property is undefined - new post", () => {
     const noImagesProps = {
-      ...mockProps,
+      ...newMockProps,
       images: undefined,
     };
 
@@ -78,9 +111,9 @@ describe("News Post", () => {
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
-  it("should not render meta tags when metaTags property is an empty array", () => {
+  it("should not render meta tags when metaTags property is an empty array - new post", () => {
     const noImagesProps = {
-      ...mockProps,
+      ...newMockProps,
       images: [],
       metaTags: [],
     };
@@ -94,9 +127,9 @@ describe("News Post", () => {
     expect(screen.getByRole("contentinfo").children).toHaveLength(0);
   });
 
-  it("should not render meta tags when metaTags property is undefined", () => {
+  it("should not render meta tags when metaTags property is undefined - new post", () => {
     const noImagesProps = {
-      ...mockProps,
+      ...newMockProps,
       images: [],
       metaTags: undefined,
     };

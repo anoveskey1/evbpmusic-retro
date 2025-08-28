@@ -1,15 +1,14 @@
 import NewsFeed from "@components/News/Feed";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
-import { useLegacyNewsPosts } from "@hooks";
-import INewsPost from "@typeDefs/INewsPost";
-import useNewsPosts from "@hooks/useNewsPosts/useNewsPosts";
+import { useLegacyNewsPosts, useNewsPosts } from "@hooks";
+import { NewsPost } from "@/types/INewsFeed";
 
 const News = () => {
   const legacyNewsPosts = useLegacyNewsPosts();
   const currentPosts = useNewsPosts();
 
-  const newsPosts: INewsPost[] =
+  const newsPosts: NewsPost[] =
     Array.isArray(legacyNewsPosts) && Array.isArray(currentPosts)
       ? [...currentPosts, ...legacyNewsPosts]
       : [];

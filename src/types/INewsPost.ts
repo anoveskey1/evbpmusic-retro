@@ -1,13 +1,16 @@
 import { Image } from "./image";
+import { MetaTag } from "./metaTag";
+import IBasePost from "@/types/IBasePost";
 
-interface INewsPost {
-  body: string;
-  date: string;
-  header: string;
+interface ISlug {
+  _type: string;
+  current: string;
+}
+
+interface INewsPost extends IBasePost {
   images?: Image[];
-  isSlugPost?: boolean;
-  metaTags?: number[];
-  slug: string;
+  metaTags?: MetaTag[];
+  slug: ISlug;
 }
 
 export default INewsPost;

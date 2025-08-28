@@ -4,9 +4,18 @@ import INewsPost from "@typeDefs/INewsPost";
 import tagMappings from "../../../constants/tagMappings";
 import preprocessBody from "./functions/preprocessBody";
 import "./style.less";
+import { MetaTag } from "@/types/metaTag";
+import ILegacyNewsPost from "@/types/ILegacyNewsPost";
 
-const Post: FC<INewsPost> = (props: INewsPost) => {
-  const { body, date, header, images, isSlugPost, metaTags, slug } = props;
+const Post: FC<ILegacyNewsPost | INewsPost> = (
+  props: ILegacyNewsPost | INewsPost,
+) => {
+  const { body, date, header, isSlugPost, metaTags, slug } = props;
+
+  const isLegacyPost = (
+    post: ILegacyNewsPost | INewsPost,
+  ): post is ILegacyNewsPost => typeof post.slug === "string";
+  const images = !isLegacyPost(props) ? props.images : [];
 
   // format the date
   const dateStringToDate = new Date(date);
@@ -19,16 +28,35 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
   }).format(dateStringToDate);
 
   const processedBody = preprocessBody(body, images);
+  const formatMetaKeywords = (metaTags: number[] | MetaTag[]): string => {
+    return metaTags
+      ?.map((tag) => (typeof tag === "number" ? tagMappings[tag] : tag.label))
+      .join(", ");
+  };
+  const renderMetaTag = (tag: number | MetaTag) => {
+    if (typeof tag === "number") {
+      return (
+        <span className="meta-tag" key={tag}>
+          {tagMappings[tag]}
+        </span>
+      );
+    } else {
+      return (
+        <span className="meta-tag" key={tag.id}>
+          {tag.label}
+        </span>
+      );
+    }
+  };
 
   return (
     <>
       {isSlugPost && (
         <Helmet>
           <link rel="canonical" href={`https://evbpmusic.com/news/${slug}`} />
-          <meta
-            name="keywords"
-            content={metaTags?.map((tag) => tagMappings[tag]).join(", ") || ""}
-          />
+          {metaTags && (
+            <meta content={formatMetaKeywords(metaTags)} name="keywords" />
+          )}
           <title>EVBPMusic.com | News | {header}</title>
         </Helmet>
       )}
@@ -40,11 +68,7 @@ const Post: FC<INewsPost> = (props: INewsPost) => {
         <section className="news-post-body">{processedBody}</section>
         <footer>
           {metaTags && metaTags.length > 0 && <h3>Tags:</h3>}
-          {metaTags?.map((tag) => (
-            <span className="meta-tag" key={tag}>
-              {tagMappings[tag]}
-            </span>
-          ))}
+          {metaTags?.map((tag) => renderMetaTag(tag))}
         </footer>
       </article>
     </>

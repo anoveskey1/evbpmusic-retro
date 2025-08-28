@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import INewsPost from "@/types/INewsPost";
 
 const apiVersion = process.env.VITE_EVBP_MUSIC_SANITY_API_VERSION;
 const dataset = process.env.VITE_EVBP_MUSIC_SANITY_DATASET;
 const projectId = process.env.VITE_EVBP_MUSIC_SANITY_PROJECT_ID;
 
-function useNewsPosts(slug?: string, getMostRecent?: boolean) {
+function useNewsPosts() {
   const [posts, setPosts] = useState<INewsPost[]>([]);
 
   // fetch posts and assign them to posts state
@@ -13,9 +13,21 @@ function useNewsPosts(slug?: string, getMostRecent?: boolean) {
     const controller = new AbortController();
 
     const getNewsPosts = async (): Promise<INewsPost[]> => {
-      const query = encodeURIComponent(
-        '*[_type == "post"] | order(_createdAt desc)',
-      );
+      const query = encodeURIComponent(`
+        *[_type == "post"] | order(_createdAt desc){
+        _id,
+        header,
+        slug,
+        date,
+        body,
+        images,
+        metaTags[]->{
+          _id,
+          id,
+          label
+        }
+      }`);
+
       const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${query}`;
 
       const response = await fetch(url, {
@@ -45,32 +57,7 @@ function useNewsPosts(slug?: string, getMostRecent?: boolean) {
     };
   }, []);
 
-  const filteredPost = useMemo(() => {
-    if (slug) {
-      return posts.find((post) => post.slug === slug) || null;
-    }
-    return null;
-  }, [posts, slug]);
-
-  const mostRecentPost = useMemo(() => {
-    if (getMostRecent) {
-      return posts.reduce((latest, current) => {
-        return new Date(current.date) > new Date(latest.date)
-          ? current
-          : latest;
-      }, posts[0]);
-    }
-    return null;
-  }, [getMostRecent, posts]);
-
-  // return based on parameters
-  if (slug) {
-    return filteredPost;
-  } else if (getMostRecent) {
-    return mostRecentPost;
-  } else {
-    return posts;
-  }
+  return posts;
 }
 
 export default useNewsPosts;

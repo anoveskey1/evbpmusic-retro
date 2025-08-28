@@ -117,7 +117,7 @@ describe("insertImages - function", () => {
     // access first and only child of children
     const result = children[0] as React.ReactElement;
 
-    expect(result.type).toBe("div");
+    expect(result.type).toBe("p");
     expect(result.props.dangerouslySetInnerHTML.__html).toBe("Just plain text");
   });
 

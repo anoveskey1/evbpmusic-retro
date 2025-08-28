@@ -7,9 +7,12 @@
   text-align: start;
 
   &-body {
+    display: flex;
+    flex-direction: column;
     font-family: monospace;
 
     p {
+      overflow: hidden;
       padding: 4px;
     }
   }
@@ -24,16 +27,18 @@
   }
 
   .img-half-width {
+    height: auto;
+    max-width: 50%;
     width: 50%;
 
-    .left {
+    &.left {
       float: left;
-      margin-right: 1rem;
+      margin: 5px 5px 5px 0;
     }
 
-    .right {
+    &.right {
       float: right;
-      margin-left: 1rem;
+      margin: 5px 0 5px 5px;
     }
   }
 

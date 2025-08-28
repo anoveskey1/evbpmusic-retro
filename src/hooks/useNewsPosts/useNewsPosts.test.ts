@@ -7,13 +7,13 @@ const mockPosts: INewsPost[] = [
     body: "This is the body of the first post.",
     date: "2023-01-01",
     header: "First Post",
-    slug: "first-post",
+    slug: { _type: "slug", current: "first-post" },
   },
   {
     body: "This is the body of the second post.",
     date: "2023-02-01",
     header: "Second Post",
-    slug: "second-post",
+    slug: { _type: "slug", current: "second-post" },
   },
 ];
 
@@ -29,46 +29,13 @@ describe("useNewsPosts", () => {
     jest.resetAllMocks();
   });
 
-  it("should return an array of posts when no parameters are provided", async () => {
+  it("should return an array of posts", async () => {
     mockFetch(true, { result: mockPosts });
     const { result } = renderHook(() => useNewsPosts());
 
     await waitFor(() => {
       expect(result.current).toBeInstanceOf(Array);
       expect((result.current as Array<INewsPost>).length).toBe(2);
-    });
-  });
-
-  it("should return the most recent post when getMostRecent is true", async () => {
-    mockFetch(true, { result: mockPosts });
-    const { result } = renderHook(() => useNewsPosts(undefined, true));
-    const mostRecentPost = mockPosts[1];
-
-    await waitFor(() => {
-      expect(result.current).toBeInstanceOf(Object);
-      expect(result.current).toEqual(mostRecentPost);
-    });
-  });
-
-  it("should return a single post when a valid slug is provided", async () => {
-    mockFetch(true, { result: mockPosts });
-    const { result } = renderHook(() => useNewsPosts("first-post"));
-
-    await waitFor(() => {
-      expect(result.current).toBeInstanceOf(Object);
-      expect(result.current).toHaveProperty(
-        "body",
-        "This is the body of the first post.",
-      );
-    });
-  });
-
-  it("should return a null when a invalid slug is provided", async () => {
-    mockFetch(true, { result: mockPosts });
-    const { result } = renderHook(() => useNewsPosts("third-post"));
-
-    await waitFor(() => {
-      expect(result.current).toBeNull();
     });
   });
 

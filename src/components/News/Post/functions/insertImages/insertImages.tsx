@@ -67,10 +67,7 @@ const insertImages = (
 
     if (text.trim()) {
       children.push(
-        <div
-          dangerouslySetInnerHTML={{ __html: text }}
-          key={children.length}
-        />,
+        <p dangerouslySetInnerHTML={{ __html: text }} key={children.length} />,
       );
     }
   }

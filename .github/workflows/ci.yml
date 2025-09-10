@@ -48,7 +48,11 @@ jobs:
 
       - name: Debug BASE_URL
         run: |
-          echo "Base URL: ${{ secrets.BASE_URL }}"
+          if [[ "${{ secrets.BASE_URL }}" == "http://localhost:3000" ]]; then
+            echo "BASE_URL is localhost"
+          else
+            echo "BASE_URL is something else"
+          fi
 
       - name: Wait for server to be ready
         run: npx wait-on ${{ secrets.BASE_URL }}

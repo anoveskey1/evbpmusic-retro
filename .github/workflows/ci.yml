@@ -47,7 +47,7 @@ jobs:
         run: node e2e_tests/setup/checkEnv.js
 
       - name: Debug BASE_URL
-        run:
+        run: |
           echo "Base URL: ${{ secrets.BASE_URL }}"
 
       - name: Wait for server to be ready

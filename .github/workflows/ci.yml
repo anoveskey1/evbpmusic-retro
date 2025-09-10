@@ -46,6 +46,10 @@ jobs:
       - name: Verify environment variables
         run: node e2e_tests/setup/checkEnv.js
 
+      - name: Debug BASE_URL
+        run:
+          echo "Base URL: ${{ secrets.BASE_URL }}"
+
       - name: Wait for server to be ready
         run: npx wait-on ${{ secrets.BASE_URL }}
 

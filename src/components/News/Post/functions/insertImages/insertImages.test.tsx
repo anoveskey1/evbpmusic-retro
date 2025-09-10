@@ -8,6 +8,9 @@ jest.mock("@sanity/image-url");
 jest.mock("nanoid");
 
 describe("insertImages - function", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   it("should replace [[image:X]] placeholders with img elements", () => {
     const children: React.ReactNode[] = [];
     const node = document.createElement("div");

@@ -35,11 +35,7 @@ const NavigationButtons = () => {
         Home
       </button>
 
-      <button
-        className="nav-button-forward"
-        disabled={!goForward()}
-        onClick={handleNext}
-      >
+      <button className="nav-button-forward" onClick={handleNext}>
         Next
       </button>
     </div>

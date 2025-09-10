@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SlugPost from "./index";
-import * as useLegacyPostModule from "@hooks/useLegacyPost/useLegacyPost";
+import * as hooks from "@hooks";
 
 describe("SlugPost", () => {
   let consoleErrorSpy: jest.SpyInstance;
@@ -18,9 +18,7 @@ describe("SlugPost", () => {
   });
 
   it("should render the text 'Post not found' if the useNewsPost hook returns null", () => {
-    const spy = jest
-      .spyOn(useLegacyPostModule, "default")
-      .mockReturnValue(null);
+    const spy = jest.spyOn(hooks, "useLegacyPost").mockReturnValue(null);
 
     render(
       <HelmetProvider>
@@ -34,7 +32,7 @@ describe("SlugPost", () => {
   });
 
   it("should render the Post with all its corresponding values", () => {
-    const spy = jest.spyOn(useLegacyPostModule, "default").mockReturnValue({
+    const spy = jest.spyOn(hooks, "useLegacyPost").mockReturnValue({
       body: "<p>This is a test body</p>",
       date: "2023-10-01",
       header: "Test Header",

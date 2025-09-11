@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import useNewsPost from "@hooks/useNewsPost/useNewsPost";
+import useNewsPost from "./useNewsPost";
 import INewsPost from "@/types/INewsPost";
 
 const mockPost: INewsPost = {

@@ -1,17 +1,13 @@
 import React from "react";
-import imageUrlBuilder from "@sanity/image-url";
 import ImageUnavailable from "@components/ImageUnavailable";
+import { urlFor } from "@services/sanity";
 import type { Image } from "@typeDefs";
-import sanityClient from "../../../../../services/sanity";
 
 const insertImages = (
   children: React.ReactNode[],
   node: ChildNode,
   images?: Image[],
 ) => {
-  const builder = imageUrlBuilder(sanityClient);
-  const urlFor = (source: any) => builder.image(source);
-
   if (node.nodeType === Node.ELEMENT_NODE && node instanceof Element) {
     // Replace [[image:X]] placeholders inside the HTML string
     const inner = node.innerHTML;

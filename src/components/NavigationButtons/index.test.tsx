@@ -1,19 +1,24 @@
-import { screen, render } from "@testing-library/react";
+import { act, screen, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavigationButtons from "./index";
 import NavigationProvider from "../../context/NavigationProvider";
 
 // Mock the useNavigation hook
-const mockGoForward = jest.fn(() => "/contact");
+const mockGoForward = jest.fn(() => {
+  return mockHistory.length > 0 ? mockHistory[mockHistory.length - 1] : null;
+});
 let mockHistory: string[] = [];
+const mockGoBack = jest.fn(() => {
+  return mockHistory.length > 1 ? mockHistory[mockHistory.length - 2] : null;
+});
 
-jest.mock("@hooks/useNavigation/useNavigation", () => ({
+jest.mock("@hooks", () => ({
   __esModule: true,
-  default: () => ({
+  useNavigation: () => ({
     goForward: mockGoForward,
     history: mockHistory,
-    goBack: jest.fn(),
+    goBack: mockGoBack,
     updateHistory: jest.fn(),
   }),
 }));
@@ -67,5 +72,37 @@ describe("NavigationButtons", () => {
     );
     const backButton = screen.getByRole("button", { name: /back/i });
     expect(backButton).not.toBeDisabled();
+  });
+
+  it("should call the goBack function when the Back button is clicked", () => {
+    mockHistory = ["/music", "/bio"];
+
+    render(
+      <Router>
+        <NavigationProvider>
+          <NavigationButtons />
+        </NavigationProvider>
+      </Router>,
+    );
+    const backButton = screen.getByRole("button", { name: /back/i });
+
+    act(() => backButton.click());
+    expect(mockGoBack).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call the goForward function when the Next button is clicked", () => {
+    mockHistory = ["/music", "/bio"];
+
+    render(
+      <Router>
+        <NavigationProvider>
+          <NavigationButtons />
+        </NavigationProvider>
+      </Router>,
+    );
+    const nextButton = screen.getByRole("button", { name: /next/i });
+
+    act(() => nextButton.click());
+    expect(mockGoForward).toHaveBeenCalledTimes(1);
   });
 });

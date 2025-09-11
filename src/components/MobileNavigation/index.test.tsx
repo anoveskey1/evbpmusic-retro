@@ -22,7 +22,7 @@ describe("MobileNavigation", () => {
     expect(screen.getByText("faq")).toBeInTheDocument();
     expect(screen.getByText("music")).toBeInTheDocument();
     expect(screen.getByText("links")).toBeInTheDocument();
-    expect(screen.getByText("pics")).toBeInTheDocument();
+    expect(screen.getByText("gallery")).toBeInTheDocument();
     expect(screen.getByText("guestbook")).toBeInTheDocument();
     expect(screen.getByText("contact")).toBeInTheDocument();
   });

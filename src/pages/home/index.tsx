@@ -6,6 +6,7 @@ import PageContainer from "@components/PageContainer";
 import NewRetroImageLoader from "@components/RetroImageLoader";
 
 import VisitorCounter from "@components/VisitorCounter";
+import { useWindowWidth } from "@hooks";
 import getLogoImageWidth from "./getLogoImageWidth";
 import getPortraitImageWidth from "./getPortraitImageWidth";
 import "./style.less";
@@ -15,18 +16,12 @@ const Home: React.FC = () => {
   const [portraitImageWidth, setPortraitImageWidth] = useState(
     getPortraitImageWidth(),
   );
+  const screenWidth = useWindowWidth();
 
   useEffect(() => {
-    const handleResize = () => {
-      setLogoImageWidth(getLogoImageWidth(window.innerWidth));
-      setPortraitImageWidth(getPortraitImageWidth(window.innerWidth));
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    setLogoImageWidth(getLogoImageWidth(screenWidth));
+    setPortraitImageWidth(getPortraitImageWidth(screenWidth));
+  }, [screenWidth]);
 
   return (
     <PageContainer>
@@ -49,7 +44,7 @@ const Home: React.FC = () => {
           <MenuButton text={"faq"} to="/faq" />
           <MenuButton text={"bio"} to="/bio" />
           <MenuButton text={"music"} to="/music" />
-          <MenuButton text={"pics"} to="/pics" />
+          <MenuButton text={"gallery"} to="/gallery" />
         </div>
         <div className="profile-center">
           <NewRetroImageLoader

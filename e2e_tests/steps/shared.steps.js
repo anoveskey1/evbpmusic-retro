@@ -8,6 +8,8 @@ Given("I have navigated to the {string} page", async function (pageName) {
 Given("I am on the {string} page", async function (pageName) {
   await this.page.goto(`${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`);
 
+  console.log("Current URL:", this.page.url());
+
   expect(this.page.url()).toEqual(
     `${process.env.VITE_EVBP_MUSIC_BASE_URL}/${pageName}`,
   );

@@ -6,7 +6,7 @@ const Bio = lazy(() => import("./pages/bio/index.tsx"));
 const Contact = lazy(() => import("./pages/contact/index.tsx"));
 const Faq = lazy(() => import("./pages/faq/index.tsx"));
 const Gallery = lazy(() => import("./pages/gallery/index.tsx"));
-const GalleryImage = lazy(() => import("@components/GalleryImage"));
+const GalleryImage = lazy(() => import("./components/GalleryImage/index.tsx"));
 const Guestbook = lazy(() => import("./pages/guestbook/index.tsx"));
 const Home = lazy(() => import("./pages/home/index.tsx"));
 const Links = lazy(() => import("./pages/links/index.tsx"));

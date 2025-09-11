@@ -43,18 +43,33 @@
     justify-content: space-between;
 
     button {
-      background-color: rebeccapurple;
+      all: unset;
+      background-color: darkgray;
+      border: outset 1px;
       border-radius: 0;
+      color: black;
+      cursor: pointer;
       font-family: cursive;
+      font-weight: bold;
+      padding: 8px 48px;
+
+      &:active {
+        background-color: #888 !important;
+        border: 0;
+        transform: scale(0.95);
+      }
 
       &:disabled {
-        background-color: mediumpurple;
-        cursor: default;
+        background-color: darkgray;
+        color: gray;
+        cursor: not-allowed;
+        pointer-events: none;
+        transform: none;
       }
 
       &:hover:not([disabled]),
       &:focus:not([disabled]) {
-        background-color: darkorchid;
+        background-color: lightgrey;
       }
     }
   }

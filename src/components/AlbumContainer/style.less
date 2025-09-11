@@ -58,16 +58,29 @@
     }
 
     .summary-button {
-      background-image: @button-gradient;
-      display: block;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
+      all: unset;
+      background-color: darkgray;
+      border: outset 1px;
+      border-radius: 0;
+      color: black;
+      cursor: pointer;
+      font-family: cursive;
+      font-weight: bold;
       margin-bottom: 8px;
-      margin-top: 8px;
+      padding: 8px 48px;
 
-      &:hover {
-        filter: invert(0.75);
-        text-decoration: underline;
+      &:active {
+        background-color: #888 !important;
+        border: 0;
+        transform: scale(0.95);
+      }
+
+      &:disabled {
+        background-color: darkgray;
+        color: gray;
+        cursor: not-allowed;
+        pointer-events: none;
+        transform: none;
       }
     }
 

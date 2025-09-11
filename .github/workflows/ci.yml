@@ -49,6 +49,14 @@ jobs:
       - name: Verify environment variables
         run: node e2e_tests/setup/checkEnv.js
 
+      - name: Debug BASE_URL
+        run: |
+          if [[ "${{ secrets.BASE_URL }}" == "http://localhost:5173" ]]; then
+            echo "BASE_URL is localhost"
+          else
+            echo "BASE_URL is something else $VITE_EVBP_MUSIC_BASE_URL"
+          fi
+
       - name: Wait for server to be ready
         run: npx wait-on ${{ secrets.BASE_URL }}
 

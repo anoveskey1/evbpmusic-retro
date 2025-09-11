@@ -63,7 +63,8 @@
     "util": "^0.12.5",
     "vite": "^6.0.5",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.7",
+    "wait-on": "^8.0.4"
   },
   "husky": {
     "hooks": {

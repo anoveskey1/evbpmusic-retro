@@ -1,12 +1,11 @@
 :root {
   font-family:
-    "Times New Roman", Serif, serif; /* Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+    Arial, sans-serif; /* Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
   font-weight: 400;
   width: 100%;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-attachment: fixed;
   background-image: url("/images/starfield1.jpg");
   background-repeat: repeat;
   font-synthesis: none;
@@ -35,6 +34,10 @@ h1 {
   line-height: 1.1;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Times New Roman", Serif, serif;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -52,6 +55,14 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+label {
+  color: white;
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: start;
 }
 
 @media (prefers-color-scheme: light) {

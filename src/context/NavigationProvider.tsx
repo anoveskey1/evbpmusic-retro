@@ -9,7 +9,16 @@ const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
   const location = useLocation();
 
   // Predefined list of routes in alphabetical order
-  const routes = ["/bio", "/contact", "/faq", "/links", "/music", "/news"];
+  const routes = [
+    "/bio",
+    "/contact",
+    "/faq",
+    "/gallery",
+    "/guestbook",
+    "/links",
+    "/music",
+    "/news",
+  ];
 
   useEffect(() => {
     setHistory((prevHistory) => {

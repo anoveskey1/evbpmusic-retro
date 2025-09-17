@@ -10,6 +10,7 @@ const GalleryImage = lazy(() => import("./components/GalleryImage/index.tsx"));
 const Guestbook = lazy(() => import("./pages/guestbook/index.tsx"));
 const Home = lazy(() => import("./pages/home/index.tsx"));
 const Links = lazy(() => import("./pages/links/index.tsx"));
+const Login = lazy(() => import("./components/LoginForm/index.tsx"));
 const Music = lazy(() => import("./pages/music/index.tsx"));
 const News = lazy(() => import("./pages/news/index.tsx"));
 const SlugPost = lazy(() => import("./components/News/SlugPost/index.tsx"));
@@ -20,6 +21,7 @@ function App() {
       <NavigationProvider>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
+            <Route path="/login" element={<Login />} />
             <Route path={"/"} element={<Home />} />
             <Route path="/bio" element={<Bio />} />
             <Route path="/contact" element={<Contact />} />

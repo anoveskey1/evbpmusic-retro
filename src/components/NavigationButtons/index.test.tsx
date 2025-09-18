@@ -3,6 +3,8 @@ import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavigationButtons from "./index";
 import NavigationProvider from "../../context/NavigationProvider";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 
 // Mock the useNavigation hook
 const mockGoForward = jest.fn(() => {
@@ -11,6 +13,19 @@ const mockGoForward = jest.fn(() => {
 let mockHistory: string[] = [];
 const mockGoBack = jest.fn(() => {
   return mockHistory.length > 1 ? mockHistory[mockHistory.length - 2] : null;
+});
+const mockReduxStore = configureStore({
+  reducer: {
+    auth: (
+      state = {
+        isAuthenticated: true,
+        user: {
+          username: "mockuser",
+          password: "mockpass",
+        },
+      },
+    ) => state,
+  },
 });
 
 jest.mock("@hooks", () => ({
@@ -31,11 +46,13 @@ describe("NavigationButtons", () => {
     mockHistory = ["/music", "/bio"];
 
     render(
-      <Router>
-        <NavigationProvider>
-          <NavigationButtons />
-        </NavigationProvider>
-      </Router>,
+      <Provider store={mockReduxStore}>
+        <Router>
+          <NavigationProvider>
+            <NavigationButtons />
+          </NavigationProvider>
+        </Router>
+      </Provider>,
     );
     const backButton = screen.getByRole("button", { name: /back/i });
     const homeButton = screen.getByRole("button", { name: /home/i });
@@ -50,11 +67,13 @@ describe("NavigationButtons", () => {
     mockHistory = ["/"];
 
     render(
-      <Router>
-        <NavigationProvider>
-          <NavigationButtons />
-        </NavigationProvider>
-      </Router>,
+      <Provider store={mockReduxStore}>
+        <Router>
+          <NavigationProvider>
+            <NavigationButtons />
+          </NavigationProvider>
+        </Router>
+      </Provider>,
     );
     const backButton = screen.getByRole("button", { name: /back/i });
     expect(backButton).toBeDisabled();
@@ -64,11 +83,13 @@ describe("NavigationButtons", () => {
     mockHistory = ["/music", "/bio"];
 
     render(
-      <Router>
-        <NavigationProvider>
-          <NavigationButtons />
-        </NavigationProvider>
-      </Router>,
+      <Provider store={mockReduxStore}>
+        <Router>
+          <NavigationProvider>
+            <NavigationButtons />
+          </NavigationProvider>
+        </Router>
+      </Provider>,
     );
     const backButton = screen.getByRole("button", { name: /back/i });
     expect(backButton).not.toBeDisabled();
@@ -78,11 +99,13 @@ describe("NavigationButtons", () => {
     mockHistory = ["/music", "/bio"];
 
     render(
-      <Router>
-        <NavigationProvider>
-          <NavigationButtons />
-        </NavigationProvider>
-      </Router>,
+      <Provider store={mockReduxStore}>
+        <Router>
+          <NavigationProvider>
+            <NavigationButtons />
+          </NavigationProvider>
+        </Router>
+      </Provider>,
     );
     const backButton = screen.getByRole("button", { name: /back/i });
 
@@ -94,11 +117,13 @@ describe("NavigationButtons", () => {
     mockHistory = ["/music", "/bio"];
 
     render(
-      <Router>
-        <NavigationProvider>
-          <NavigationButtons />
-        </NavigationProvider>
-      </Router>,
+      <Provider store={mockReduxStore}>
+        <Router>
+          <NavigationProvider>
+            <NavigationButtons />
+          </NavigationProvider>
+        </Router>
+      </Provider>,
     );
     const nextButton = screen.getByRole("button", { name: /next/i });
 

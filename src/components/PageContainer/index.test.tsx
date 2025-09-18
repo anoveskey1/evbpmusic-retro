@@ -4,6 +4,22 @@ import "@testing-library/jest-dom";
 import PageContainer from "./index";
 import NavigationProvider from "../../context/NavigationProvider";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+const mockReduxStore = configureStore({
+  reducer: {
+    auth: (
+      state = {
+        isAuthenticated: true,
+        user: {
+          username: "mockuser",
+          password: "mockpass",
+        },
+      },
+    ) => state,
+  },
+});
 
 describe("PageContainer", () => {
   beforeEach(() => {
@@ -11,9 +27,11 @@ describe("PageContainer", () => {
   });
   it("renders PageContainer component with children", () => {
     render(
-      <PageContainer>
-        <div data-testid="child-element">Child Element</div>
-      </PageContainer>,
+      <Provider store={mockReduxStore}>
+        <PageContainer>
+          <div data-testid="child-element">Child Element</div>
+        </PageContainer>
+      </Provider>,
     );
     const pageContainerElement = screen.getByTestId("child-element");
     expect(pageContainerElement).toBeInTheDocument();
@@ -29,9 +47,11 @@ describe("PageContainer", () => {
     });
 
     render(
-      <PageContainer>
-        <div>Test Content</div>
-      </PageContainer>,
+      <Provider store={mockReduxStore}>
+        <PageContainer>
+          <div>Test Content</div>
+        </PageContainer>
+      </Provider>,
     );
 
     const navigationButtons = screen.queryByRole("button", { name: /back/i });
@@ -47,13 +67,15 @@ describe("PageContainer", () => {
     });
 
     render(
-      <BrowserRouter>
-        <NavigationProvider>
-          <PageContainer>
-            <div>Test Content</div>
-          </PageContainer>
-        </NavigationProvider>
-      </BrowserRouter>,
+      <Provider store={mockReduxStore}>
+        <BrowserRouter>
+          <NavigationProvider>
+            <PageContainer>
+              <div>Test Content</div>
+            </PageContainer>
+          </NavigationProvider>
+        </BrowserRouter>
+      </Provider>,
     );
 
     const navigationButtons = screen.getByRole("button", { name: /back/i });

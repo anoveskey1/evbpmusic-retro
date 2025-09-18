@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../../app/store";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const user = useSelector((state: any) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   console.log("user: ", user);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleLogin = () => {
     dispatch(login({ username, password }));
+    navigate("/music");
   };
 
   return (

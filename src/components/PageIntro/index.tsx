@@ -1,4 +1,5 @@
 import { FC } from "react";
+import "./style.less";
 
 interface IPageIntro {
   description?: string;

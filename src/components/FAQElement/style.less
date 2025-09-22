@@ -1,3 +1,7 @@
+@import url("../../styles/variables.less");
+
+@faq-box-shadow: 5px 10px rgb(53, 53, 53);
+
 .faq-element {
   display: flex;
   flex-direction: column;
@@ -9,10 +13,11 @@
 
   .faq-answer {
     background-color: deeppink;
-    box-shadow: 5px 10px rgb(85 85 85);
-    color: #111;
+    box-shadow: @faq-box-shadow;
+    color: #000;
     font-style: italic;
     padding: 8px;
+    text-shadow: @shadow-color-medium @shadow-shallow;
   }
 
   .faq-index {
@@ -26,10 +31,11 @@
 
   .faq-question {
     background-color: turquoise;
-    box-shadow: 5px 10px rgb(85 85 85);
+    box-shadow: @faq-box-shadow;
     color: #333;
     font-size: 18px;
     font-weight: bold;
     padding: 8px 8px 8px 24px;
+    text-shadow: @shadow-color-medium-light @shadow-shallow;
   }
 }

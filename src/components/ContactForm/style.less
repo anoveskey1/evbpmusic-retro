@@ -1,3 +1,5 @@
+@import url("../../styles/variables.less");
+
 .contact-form {
   align-items: flex-start;
   background-color: rgb(255 255 255 / 20%);
@@ -26,6 +28,7 @@
       font-family: cursive;
       font-weight: bold;
       padding: 8px 48px;
+      text-shadow: @shadow-color-medium @shadow-medium;
 
       &:active {
         background-color: #888 !important;
@@ -49,6 +52,7 @@
     font-style: italic;
     margin-top: -10px;
     text-align: left;
+    text-shadow: @shadow-color-dark @shadow-shallow;
 
     .near-limit {
       color: red;
@@ -70,6 +74,7 @@
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 4px;
+    text-shadow: @shadow-color-dark @shadow-medium;
 
     &::after {
       content: ":";

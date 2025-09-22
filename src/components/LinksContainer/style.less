@@ -1,3 +1,5 @@
+@import url("../../styles/variables.less");
+
 .links {
   background-image: url("/images/starfield1-lowcontrast.jpg");
   border-radius: 5px;
@@ -6,7 +8,9 @@
   text-align: start;
 
   ul {
+    font-family: monospace;
     padding-inline-start: 8px;
+    text-shadow: @shadow-color-dark @shadow-shallow;
   }
 
   &:nth-of-type(1) {

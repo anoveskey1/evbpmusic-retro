@@ -41,10 +41,10 @@ const Home: React.FC = () => {
           className="desktop-nav-menu nav-left"
           data-testid="desktop-nav-menu-left"
         >
-          <MenuButton text={"faq"} to="/faq" />
           <MenuButton text={"bio"} to="/bio" />
           <MenuButton text={"music"} to="/music" />
           <MenuButton text={"gallery"} to="/gallery" />
+          <MenuButton text={"news"} to="/news" />
         </div>
         <div className="profile-center">
           <NewRetroImageLoader
@@ -58,9 +58,9 @@ const Home: React.FC = () => {
           className="desktop-nav-menu nav-right"
           data-testid="desktop-nav-menu-right"
         >
-          <MenuButton text={"news"} to="/news" />
-          <MenuButton text={"links"} to="/links" />
+          <MenuButton text={"faq"} to="/faq" />
           <MenuButton text={"guestbook"} to="/guestbook" />
+          <MenuButton text={"links"} to="/links" />
           <MenuButton text={"contact"} to="/contact" />
         </div>
       </div>

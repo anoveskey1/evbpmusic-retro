@@ -1,7 +1,10 @@
+@import url("../../styles/variables.less");
+
 .menu-button {
   background-image: linear-gradient(90deg, rebeccapurple 30%, slategray 100%);
   border: 0;
   border-radius: 2%;
+  box-shadow: @shadow-color-light @shadow-medium;
   color: #f0f0f0;
   cursor: pointer;
   display: inline-flex;
@@ -15,12 +18,14 @@
   padding: 10px 30px;
   text-align: center;
   text-decoration: none;
+  text-shadow: #333 3px 3px 1px;
   width: 100%;
 }
 
 .menu-button:hover {
   filter: invert(0.75);
   text-decoration: underline;
+  text-shadow: #ccc 1px 1px 1px;
 }
 
 @media (width >= 480px) {

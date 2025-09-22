@@ -1,3 +1,5 @@
+@import url("../../styles/variables.less");
+
 .guestbook-form {
   background-image: url("/images/starfield1-lowcontrast.jpg");
   box-sizing: border-box;
@@ -6,6 +8,10 @@
   gap: 1rem;
   padding: 1rem;
   width: 100%;
+
+  label {
+    text-shadow: @shadow-color-medium-dark @shadow-medium;
+  }
 
   &-username-field,
   &-email-field,
@@ -30,7 +36,7 @@
 
   &-actions {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1rem;
     justify-content: space-between;
 
@@ -44,6 +50,7 @@
       font-family: cursive;
       font-weight: bold;
       padding: 8px 48px;
+      text-shadow: @shadow-color-medium @shadow-medium;
 
       &:active {
         background-color: #888 !important;
@@ -63,6 +70,14 @@
       &:focus:not([disabled]) {
         background-color: lightgrey;
       }
+    }
+  }
+}
+
+@media (width >= 480px) {
+  .guestbook-form {
+    &-actions {
+      flex-direction: row;
     }
   }
 }

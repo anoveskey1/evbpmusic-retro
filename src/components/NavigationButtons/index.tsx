@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useNavigation } from "@hooks";
 import "./style.less";
+import useAuth from "@/stores/useAuth";
 
 const NavigationButtons = () => {
   const { goBack, goForward, history, updateHistory } = useNavigation();
   const navigate = useNavigate();
+
+  const isAuthenticated = useAuth((state) => state.isAuthenticated);
+  const logout = useAuth((state) => state.logout);
 
   const handleBack = () => {
     const previousPage = goBack();
@@ -20,6 +24,11 @@ const NavigationButtons = () => {
       updateHistory(nextPage);
       navigate(nextPage);
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -38,6 +47,11 @@ const NavigationButtons = () => {
       <button className="nav-button-forward" onClick={handleNext}>
         Next
       </button>
+      {isAuthenticated && (
+        <button className="nav-button-home" onClick={handleLogout}>
+          Logout
+        </button>
+      )}
     </div>
   );
 };

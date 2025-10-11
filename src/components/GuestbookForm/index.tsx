@@ -3,8 +3,11 @@ import "./style.less";
 import sendValidationCode from "./functions/sendValidationCode/sendValidationCode";
 import signGuestbook from "./functions/signGuestbook/signGuestbook";
 import validateUser from "./functions/validateUser/validateUser";
+import { useModal } from "@/context/ModalContext";
+import { SignGuestbookErrorResponse } from "@/types/signGuestbookResponses";
 
 const GuestbookForm: FC = () => {
+  const { showModal } = useModal();
   const [username, setUsername] = useState<string>("your handle");
   const [email, setEmail] = useState<string>("your email");
   const [message, setMessage] = useState<string>("");
@@ -20,17 +23,29 @@ const GuestbookForm: FC = () => {
 
     if (response === true) {
       setIsValidationCodeSent(true);
-      alert("Validation code sent to your email. Please check your inbox.");
+      showModal(
+        "INFO",
+        <p>Validation code sent to your email. Please check your inbox.</p>,
+      );
     } else if (typeof response === "object" && "message" in response) {
-      alert(`Failed to send validation code: ${response.message}`);
+      showModal(
+        "ERROR",
+        <p>Failed to send validation code: {response.message}</p>,
+      );
       return;
     } else {
-      alert("An unknown error has occurred. Please try again later.");
+      showModal(
+        "ERROR",
+        <p>An unknown error has occurred. Please try again later.</p>,
+      );
     }
   };
 
   const handleSignGuestbook = async () => {
-    const response = await signGuestbook(message, username);
+    const response: string | SignGuestbookErrorResponse = await signGuestbook(
+      message,
+      username,
+    );
 
     if (typeof response === "string") {
       setEmail("");
@@ -39,10 +54,12 @@ const GuestbookForm: FC = () => {
       setIsValidationCodeSent(false);
       setIsUserValidated(false);
       setIsGuestbookSigned(true);
-      alert(response);
+      showModal("SUCCESS", <p>{response}</p>);
+
       return;
     } else if (typeof response === "object" && "message" in response) {
-      alert(`Failed to sign guestbook: ${response.message}`);
+      showModal("ERROR", <p>Failed to sign guestbook: {response.message}</p>);
+
       return;
     }
   };
@@ -52,10 +69,11 @@ const GuestbookForm: FC = () => {
 
     if (response && "status" in response) {
       setIsUserValidated(true);
-      alert(response.message);
+      showModal("INFO", <p>{response.message}</p>);
+
       return;
     } else {
-      alert(response.message);
+      showModal("ERROR", <p>{response.message}</p>);
     }
   };
 
@@ -145,7 +163,10 @@ const GuestbookForm: FC = () => {
           onClick={(event) => {
             event.preventDefault();
             if (!message) {
-              alert("Please enter a message to sign the guestbook.");
+              showModal(
+                "WARNING",
+                <p>Please enter a message to sign the guestbook.</p>,
+              );
               return;
             } else {
               handleSignGuestbook();

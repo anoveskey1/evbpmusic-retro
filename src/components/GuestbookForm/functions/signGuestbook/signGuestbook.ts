@@ -1,7 +1,12 @@
+import {
+  SignGuestbookErrorResponse,
+  SignGuestbookSuccessResponse,
+} from "@/types/signGuestbookResponses";
+
 const signGuestbook = async (
   message: string,
   username: string,
-): Promise<string | object> => {
+): Promise<string | SignGuestbookErrorResponse> => {
   const response = await fetch(
     `${process.env.VITE_EVBP_MUSIC_API_BASE_URL}/api/sign-guestbook`,
     {
@@ -17,10 +22,10 @@ const signGuestbook = async (
   );
 
   if (response.ok) {
-    const data = await response.json();
+    const data: SignGuestbookSuccessResponse = await response.json();
     return data.message;
   } else {
-    const errorData = await response.json();
+    const errorData: SignGuestbookErrorResponse = await response.json();
     console.error("Error signing guestbook:", errorData.code);
     return errorData;
   }

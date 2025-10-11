@@ -1,12 +1,15 @@
 import emailValidator from "email-validator";
 import React, { useState } from "react";
 import IContactForm from "@typeDefs/IContactForm";
+import { AlertType } from "@/types";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import sanitizeInput from "./sanitizeInput";
 import "./style.less";
+import { useModal } from "@/context/ModalContext";
 
 const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
   const { turnstileSiteKey } = props;
+  const { showModal } = useModal();
   const maxCharactersForMessage = 800;
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -27,7 +30,7 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
 
     // validate email return email address
     if (!emailValidator.validate(email)) {
-      alert("Please enter a valid email address.");
+      showModal("WARNING", <p>Please enter a valid email address.</p>);
       return;
     }
 
@@ -57,11 +60,14 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
       if (!response.ok) {
         throw new Error("Failed to send email");
       } else {
-        alert("Message sent!");
+        showModal("SUCCESS", <p>Message sent!</p>);
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Failed to send message. Please try again later.");
+      showModal(
+        "ERROR",
+        <p>Failed to send message. Please try again later.</p>,
+      );
     }
 
     clearForm();
@@ -80,6 +86,7 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
         name="email"
         onChange={(e) => setEmail(e.target.value)}
         required
+        tabIndex={0}
         type="text"
         value={email}
       />
@@ -89,6 +96,7 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
         name="subject"
         onChange={handleSubjectChange}
         required
+        tabIndex={0}
         value={subject}
       >
         {SUBJECT_OPTIONS.map((option) => (
@@ -104,6 +112,7 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
         maxLength={maxCharactersForMessage}
         onChange={(e) => setMessage(e.target.value)}
         required
+        tabIndex={0}
         value={message}
       />
       <span className="character-limit">
@@ -118,10 +127,14 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
       </span>
       <div className="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
       <div className="button-section">
-        <button onClick={clearForm} type="button">
+        <button onClick={clearForm} tabIndex={0} type="button">
           Clear
         </button>
-        <button disabled={email === "" || message === ""} type="submit">
+        <button
+          disabled={email === "" || message === ""}
+          tabIndex={0}
+          type="submit"
+        >
           Send
         </button>
       </div>

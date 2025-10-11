@@ -1,10 +1,18 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import IApiError from "@typeDefs/IApiError";
 import sendValidationCode from "./functions/sendValidationCode/sendValidationCode";
 import signGuestbook from "./functions/signGuestbook/signGuestbook";
 import validateUser from "./functions/validateUser/validateUser";
 import GuestbookForm from "./index";
+import ModalProvider from "@/context/ModalProvider";
 
 jest.mock("./functions/sendValidationCode/sendValidationCode");
 jest.mock("./functions/signGuestbook/signGuestbook");
@@ -18,8 +26,6 @@ const mockError: IApiError = {
   code: "MOCK_ERROR",
   message: "An unknown error occurred",
 };
-
-window.alert = jest.fn();
 
 describe("GuestbookForm", () => {
   it("renders correctly (pre-user interaction)", () => {
@@ -59,8 +65,12 @@ describe("GuestbookForm", () => {
     });
   });
 
-  it("should display an alert if call to api/send-validation-code-to-email returns an error object", async () => {
-    render(<GuestbookForm />);
+  it("should display a modal if call to api/send-validation-code-to-email returns an error object", async () => {
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(mockError);
 
     const getValidationCodeButton = screen.getByRole("button", {
@@ -69,14 +79,20 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Failed to send validation code: An unknown error occurred",
       );
     });
   });
 
-  it("should display an alert if call to api/send-validation-code-to-email returns false", async () => {
-    render(<GuestbookForm />);
+  it("should display a modal if call to api/send-validation-code-to-email returns false", async () => {
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(false);
 
     const getValidationCodeButton = screen.getByRole("button", {
@@ -85,14 +101,20 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "An unknown error has occurred. Please try again later.",
       );
     });
   });
 
-  it("should display an alert if call to api/validate-user endpoint is unsuccessful", async () => {
-    render(<GuestbookForm />);
+  it("should display a modal if call to api/validate-user endpoint is unsuccessful", async () => {
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(true);
     mockValidateUser.mockResolvedValue({
       code: "MOCK_ERROR",
@@ -105,7 +127,9 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Validation code sent to your email. Please check your inbox.",
       );
     });
@@ -116,7 +140,9 @@ describe("GuestbookForm", () => {
     validateUserButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "MOCK User entry not found. Please contact the site admin.",
       );
     });
@@ -126,7 +152,11 @@ describe("GuestbookForm", () => {
   });
 
   it("should display the message field after a successful call to the api/validate-user endpoint", async () => {
-    render(<GuestbookForm />);
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(true);
     mockValidateUser.mockResolvedValue({
       status: true,
@@ -140,7 +170,9 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Validation code sent to your email. Please check your inbox.",
       );
     });
@@ -151,7 +183,9 @@ describe("GuestbookForm", () => {
     validateUserButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "MOCK User validation successful. You can now sign the guestbook!",
       );
     });
@@ -161,7 +195,11 @@ describe("GuestbookForm", () => {
   });
 
   it("should set the values of the input fields when the user types in them", async () => {
-    render(<GuestbookForm />);
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(true);
     mockValidateUser.mockResolvedValue({
       status: true,
@@ -190,7 +228,9 @@ describe("GuestbookForm", () => {
     });
     getValidationCodeButton.click();
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Validation code sent to your email. Please check your inbox.",
       );
     });
@@ -207,7 +247,9 @@ describe("GuestbookForm", () => {
     });
     validateUserButton.click();
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "MOCK User validation successful. You can now sign the guestbook!",
       );
     });
@@ -221,8 +263,12 @@ describe("GuestbookForm", () => {
     expect(messageInput).toHaveValue(mockMessage);
   });
 
-  it("should display a failure alert when the call to api/sign-guestbook endpoint is unsuccessful", async () => {
-    render(<GuestbookForm />);
+  it("should display a failure modal when the call to api/sign-guestbook endpoint is unsuccessful", async () => {
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(true);
     mockValidateUser.mockResolvedValue({
       status: true,
@@ -237,7 +283,9 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Validation code sent to your email. Please check your inbox.",
       );
     });
@@ -248,7 +296,9 @@ describe("GuestbookForm", () => {
     validateUserButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "MOCK User validation successful. You can now sign the guestbook!",
       );
     });
@@ -266,14 +316,20 @@ describe("GuestbookForm", () => {
     signGuestbookButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Failed to sign guestbook: An unknown error occurred",
       );
     });
   });
 
-  it("should display an alert telling the user to enter a message when no value is present for the message", async () => {
-    render(<GuestbookForm />);
+  it("should display an modal telling the user to enter a message when no value is present for the message", async () => {
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(true);
     mockValidateUser.mockResolvedValue({
       status: true,
@@ -287,7 +343,9 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Validation code sent to your email. Please check your inbox.",
       );
     });
@@ -298,25 +356,36 @@ describe("GuestbookForm", () => {
     validateUserButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      // const modalCloseButton = screen.queryByRole("button", { name: "OK" });
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "MOCK User validation successful. You can now sign the guestbook!",
       );
+
+      // if (modalCloseButton) { modalCloseButton.click();
     });
 
     const signGuestbookButton = screen.getByRole("button", {
       name: /sign the guestbook/i,
     });
-    signGuestbookButton.click();
+    act(() => signGuestbookButton.click());
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Please enter a message to sign the guestbook.",
       );
     });
   });
 
-  it("should display a success alert when the call to api/sign-guestbook endpoint is successful", async () => {
-    render(<GuestbookForm />);
+  it("should display a success modal when the call to api/sign-guestbook endpoint is successful", async () => {
+    render(
+      <ModalProvider>
+        <GuestbookForm />
+      </ModalProvider>,
+    );
     mockSendValidationCode.mockResolvedValue(true);
     mockValidateUser.mockResolvedValue({
       status: true,
@@ -331,7 +400,9 @@ describe("GuestbookForm", () => {
     getValidationCodeButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "Validation code sent to your email. Please check your inbox.",
       );
     });
@@ -342,9 +413,18 @@ describe("GuestbookForm", () => {
     validateUserButton.click();
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const modalElement = screen.getByRole("dialog");
+
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent(
         "MOCK User validation successful. You can now sign the guestbook!",
       );
+
+      const closeModalButton = within(modalElement).getByRole("button", {
+        name: /ok/i,
+      });
+
+      act(() => closeModalButton.click());
     });
 
     const messageInput = screen.getByRole("textbox", {
@@ -359,10 +439,12 @@ describe("GuestbookForm", () => {
     });
     signGuestbookButton.click();
 
+    expect(mockSignGuestbook).toHaveBeenCalledTimes(1);
+
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
-        "Guestbook signed successfully!",
-      );
+      const modalElement = screen.queryByRole("dialog");
+      expect(modalElement).toBeInTheDocument();
+      expect(modalElement).toHaveTextContent("Guestbook signed successfully!");
     });
 
     await waitFor(() => {

@@ -99,6 +99,8 @@ Given("I have clicked the Get Validation Code button", async function () {
 
   this.page.once("dialog", async (dialog) => {
     expect(dialog.type()).toEqual("alert");
+
+    await dialog.accept();
   });
 
   const button = await this.page.getByRole("button", {
@@ -126,10 +128,6 @@ Given("I have clicked the Get Validation Code button again", async function () {
     },
   );
 
-  this.page.once("dialog", async (dialog) => {
-    expect(dialog.type()).toEqual("alert");
-  });
-
   const button = await this.page.getByRole("button", {
     name: "Get Validation Code",
   });
@@ -138,12 +136,11 @@ Given("I have clicked the Get Validation Code button again", async function () {
 });
 
 Given("I see an alert that says {string}", async function (alertMessage) {
-  this.page.once("dialog", async (dialog) => {
-    expect(dialog.type()).toEqual("alert");
-    expect(dialog.message()).toEqual(alertMessage);
+  await expect(this.page.locator(".alert-content")).toBeVisible();
 
-    await dialog.accept();
-  });
+  const alertText = await this.page.locator(".alert-text-and-button");
+
+  await expect(alertText).toContainText(alertMessage);
 });
 
 Given(
@@ -181,9 +178,12 @@ Given("I click the Sign The Guestbook button", async function () {
     await route.fulfill(json);
   });
 
-  this.page.on("dialog", async (dialog) => {
-    expect(dialog.type()).toEqual("alert");
+  await expect(this.page.locator(".alert-content")).toBeVisible();
+  const okButton = await this.page.getByRole("button", {
+    name: "OK",
+    exact: true,
   });
+  await okButton.click();
 
   const button = await this.page.getByRole("button", {
     name: "Sign The Guestbook",
@@ -209,9 +209,12 @@ Given("I click the Validate User button", async function () {
     await route.fulfill(json);
   });
 
-  this.page.on("dialog", async (dialog) => {
-    expect(dialog.type()).toEqual("alert");
+  await expect(this.page.locator(".alert-content")).toBeVisible();
+  const okButton = await this.page.getByRole("button", {
+    name: "OK",
+    exact: true,
   });
+  await okButton.click();
 
   const button = await this.page.getByRole("button", { name: "Validate User" });
 
@@ -234,9 +237,12 @@ When(
       await route.fulfill(json);
     });
 
-    this.page.once("dialog", async (dialog) => {
-      expect(dialog.type()).toEqual("alert");
+    await expect(this.page.locator(".alert-content")).toBeVisible();
+    const okButton = await this.page.getByRole("button", {
+      name: "OK",
+      exact: true,
     });
+    await okButton.click();
 
     const button = await this.page.getByRole("button", {
       name: "Validate User",

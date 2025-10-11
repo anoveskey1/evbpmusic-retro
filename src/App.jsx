@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationProvider from "./context/NavigationProvider.js";
+import ModalProvider from "./context/ModalProvider.js";
 
 const Bio = lazy(() => import("./pages/bio/index.tsx"));
 const Contact = lazy(() => import("./pages/contact/index.tsx"));
@@ -18,21 +19,23 @@ function App() {
   return (
     <Router>
       <NavigationProvider>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path={"/"} element={<Home />} />
-            <Route path="/bio" element={<Bio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path={"/faq"} element={<Faq />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/gallery/:imageId" element={<GalleryImage />} />
-            <Route path="/guestbook" element={<Guestbook />} />
-            <Route path="/links" element={<Links />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/news/:slug" element={<SlugPost />} />
-          </Routes>
-        </Suspense>
+        <ModalProvider>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path={"/"} element={<Home />} />
+              <Route path="/bio" element={<Bio />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path={"/faq"} element={<Faq />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/gallery/:imageId" element={<GalleryImage />} />
+              <Route path="/guestbook" element={<Guestbook />} />
+              <Route path="/links" element={<Links />} />
+              <Route path="/music" element={<Music />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/news/:slug" element={<SlugPost />} />
+            </Routes>
+          </Suspense>
+        </ModalProvider>
       </NavigationProvider>
     </Router>
   );

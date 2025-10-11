@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import ContactForm from "./index";
 import { SUBJECT_OPTIONS } from "./emailSubjectOptions";
 import IContactForm from "@typeDefs/IContactForm";
+import ModalProvider from "@/context/ModalProvider";
 
 const mockProps: IContactForm = {
   turnstileSiteKey: "test_turnstile_key",
@@ -55,10 +56,12 @@ describe("ContactForm", () => {
     });
   });
 
-  it("should show an error message if the email is invalid", async () => {
-    window.alert = jest.fn();
-
-    render(<ContactForm {...mockProps} />);
+  it("should show an error dialog window if the email is invalid", async () => {
+    render(
+      <ModalProvider>
+        <ContactForm {...mockProps} />
+      </ModalProvider>,
+    );
     const invalidEmail = "invalid-email";
     const mockFormInput = "macho macho man... I've got to be a macho man!";
     const emailInputElement = screen.getByLabelText<HTMLInputElement>(/email/i);
@@ -71,14 +74,15 @@ describe("ContactForm", () => {
     fireEvent.click(submitButtonElement);
 
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith(
+      const dialogElement = screen.queryByRole("dialog");
+      expect(dialogElement).toBeInTheDocument();
+      expect(dialogElement).toHaveTextContent(
         "Please enter a valid email address.",
       );
     });
   });
 
   it("should clear the form fields on successful submission", async () => {
-    window.alert = jest.fn();
     global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,

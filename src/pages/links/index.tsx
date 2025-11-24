@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
 import LinksContainer from "@components/LinksContainer";
@@ -11,6 +12,13 @@ const Links: React.FC = () => {
 
   return (
     <PageContainer>
+      <Helmet>
+        <meta
+          name="description"
+          content="Links related to EVBP and other cool internet things."
+        />
+        <title>EVBPMusic.com | Links</title>
+      </Helmet>
       <PageIntro
         description="The internet is a wonderful place. Full of hyperlinks, memes, and other things to waste your afternoon with. Here are some internet things that I thought were worth your attention."
         header="Links"

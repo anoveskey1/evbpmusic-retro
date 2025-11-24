@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import AlbumContainer from "@components/AlbumContainer";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
@@ -10,6 +11,13 @@ const Music: React.FC = () => {
 
   return (
     <PageContainer>
+      <Helmet>
+        <meta
+          name="description"
+          content="Explore EVBP's extensive discography."
+        />
+        <title>EVBPMusic.com | Music</title>
+      </Helmet>
       <PageIntro
         description="Here, you will find information about EVBP's entire discography, including summaries behind each release, interesting tidbits, and possibly clues about other things..."
         header="Music"

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Helmet } from "react-helmet-async";
 import FAQElement from "@components/FAQElement";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
@@ -8,6 +9,13 @@ import "./style.less";
 const Faq: FC = () => {
   return (
     <PageContainer>
+      <Helmet>
+        <meta
+          name="description"
+          content="Have questions about EVBP? You'll find the answers here."
+        />
+        <title>EVBPMusic.com | FAQ</title>
+      </Helmet>
       <PageIntro
         description="Have questions? We've got answers!"
         header="FAQ"

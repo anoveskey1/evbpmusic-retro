@@ -52,11 +52,7 @@
     "answer": "If you would like, but I would much rather that you give that money to a local mutual aid group, or a non-profit that you believe in. Capitalism will be the death of us all."
   },
   {
-    "question": "Then why do you sell merch on your bandcamp page?",
+    "question": "Then why do you sell merch on your Bandcamp page?",
     "answer": "Because I paid to have it made."
-  },
-  {
-    "question": "Should this question actually be here?",
-    "answer": "No. It is only here to verify that my deploy to AWS was successful."
   }
 ]

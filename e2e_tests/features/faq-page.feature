@@ -90,5 +90,5 @@ Feature: FAQ Page
   Scenario: Verify FAQ #14 content
     Given I am on the "faq" page
     And I see the list of 14 frequently asked questions
-    Then faq #14 should have question "Then why do you sell merch on your bandcamp page?"
+    Then faq #14 should have question "Then why do you sell merch on your Bandcamp page?"
     And faq #14 should have answer "Because I paid to have it made."

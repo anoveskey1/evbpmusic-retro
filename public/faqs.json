@@ -54,5 +54,9 @@
   {
     "question": "Then why do you sell merch on your bandcamp page?",
     "answer": "Because I paid to have it made."
+  },
+  {
+    "question": "Should this question actually be here?",
+    "answer": "No. It is only here to verify that my deploy to AWS was successful."
   }
 ]

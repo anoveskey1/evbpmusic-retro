@@ -72,7 +72,7 @@ label {
 
 @media (prefers-color-scheme: light) {
   :root {
-      background-color: #fff;
+    background-color: #fff;
   }
   a:hover {
     color: #747bff;

@@ -8,7 +8,7 @@
   color: rgba(255, 255, 255, 0.87);
   background:
     linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("images/starfield1.jpg");
+    url("/images/starfield1.jpg");
   /* background-image: url("/images/starfield1.jpg"); */
   /* background-repeat: repeat; */
   font-synthesis: none;

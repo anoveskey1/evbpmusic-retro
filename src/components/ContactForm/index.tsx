@@ -116,7 +116,7 @@ const ContactForm: React.FC<IContactForm> = (props: IContactForm) => {
         value={message}
       />
       <span className="character-limit">
-        maximum characters: {maxCharactersForMessage};
+        maximum characters: {maxCharactersForMessage};{" "}
         <span
           className={
             maxCharactersForMessage - message.length <= 15 ? "near-limit" : ""

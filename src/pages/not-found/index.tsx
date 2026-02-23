@@ -4,7 +4,7 @@ import "@/styles/error-page.less";
 
 const NotFound: FC = () => {
   return (
-    <div>
+    <div className="details">
       <h1>404 Not Found</h1>
       <p>
         The requested URL <strong>{window.location.pathname}</strong> was not

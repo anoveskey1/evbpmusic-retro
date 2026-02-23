@@ -5,6 +5,7 @@ import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
 import IAlbumContainer from "@typeDefs/IAlbumContainer";
 import albums from "../../../public/albums.json";
+import "@/styles/default-page.less";
 
 const Music: React.FC = () => {
   const reverseAlbums = albums.slice(0).reverse();

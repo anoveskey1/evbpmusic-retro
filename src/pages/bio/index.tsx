@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Helmet } from "react-helmet-async";
 import PageContainer from "@components/PageContainer";
+import "@/styles/default-page.less";
 
 const Bio: FC = () => {
   return (

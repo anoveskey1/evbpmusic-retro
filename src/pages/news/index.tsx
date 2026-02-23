@@ -3,6 +3,7 @@ import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
 import { useLegacyNewsPosts, useNewsPosts } from "@hooks";
 import { NewsPost } from "@/types/INewsFeed";
+import "@/styles/default-page.less";
 
 const News = () => {
   const legacyNewsPosts = useLegacyNewsPosts();

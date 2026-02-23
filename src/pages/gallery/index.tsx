@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
 import GalleryContainer from "@components/GalleryContainer";
+import "@/styles/default-page.less";
 
 const Gallery: FC = () => {
   return (

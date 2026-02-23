@@ -4,6 +4,7 @@ import GuestbookEntryList from "@components/GuestbookEntry/GuestbookEntryList";
 import GuestbookForm from "@components/GuestbookForm";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
+import "@/styles/default-page.less";
 
 const Guestbook: FC = () => {
   return (

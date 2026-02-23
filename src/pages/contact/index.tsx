@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import ContactForm from "@components/ContactForm";
 import PageContainer from "@components/PageContainer";
 import PageIntro from "@components/PageIntro";
+import "@/styles/default-page.less";
 
 const ContactPage: React.FC = () => {
   return (

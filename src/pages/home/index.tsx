@@ -9,6 +9,7 @@ import VisitorCounter from "@components/VisitorCounter";
 import { useWindowWidth } from "@hooks";
 import getLogoImageWidth from "./getLogoImageWidth";
 import getPortraitImageWidth from "./getPortraitImageWidth";
+import "@/styles/default-page.less";
 import "./style.less";
 
 const Home: React.FC = () => {

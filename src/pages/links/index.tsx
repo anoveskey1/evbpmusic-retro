@@ -5,6 +5,7 @@ import PageIntro from "@components/PageIntro";
 import LinksContainer from "@components/LinksContainer";
 import { ILink } from "@typeDefs/links";
 import links from "./links.json";
+import "@/styles/default-page.less";
 
 const Links: React.FC = () => {
   const relatedLinks: ILink[] = links["EVBPRelatedLinks"];

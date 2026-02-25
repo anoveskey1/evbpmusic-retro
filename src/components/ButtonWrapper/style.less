@@ -3,9 +3,10 @@
 .button-wrapper {
   background-image: @button-gradient;
   border-radius: 2%;
-  color: #f0f0f0;
+  color: #808080;
   cursor: pointer;
   display: inline-flex;
+  filter: grayscale(60%);
   font-family: Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
@@ -16,10 +17,13 @@
   padding: 10px 30px;
   text-align: center;
   text-decoration: none;
+  text-shadow: #333 2px 2px 1px;
 
   &:hover {
-    filter: invert(0.75);
+    color: #f0f0f0;
+    filter: none;
     text-decoration: underline;
+    text-shadow: #1a1a1a 3px 3px 1px;
   }
 }
 

@@ -5,9 +5,10 @@
   border: 0;
   border-radius: 2%;
   box-shadow: @shadow-color-medium-dark @shadow-deep;
-  color: #f0f0f0;
+  color: #808080;
   cursor: pointer;
   display: inline-flex;
+  filter: grayscale(60%);
   font-family: Impact, sans-serif;
   font-size: 24px;
   font-weight: normal;
@@ -18,14 +19,15 @@
   padding: 10px 30px;
   text-align: center;
   text-decoration: none;
-  text-shadow: #333 3px 3px 1px;
+  text-shadow: #333 2px 2px 1px;
   width: 100%;
 }
 
 .menu-button:hover {
-  filter: invert(0.75);
+  color: #f0f0f0;
+  filter: none;
   text-decoration: underline;
-  text-shadow: #ccc 1px 1px 1px;
+  text-shadow: #1a1a1a 3px 3px 1px;
 }
 
 @media (width >= 480px) {

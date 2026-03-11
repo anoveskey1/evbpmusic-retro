@@ -21,12 +21,7 @@ describe("PageContainer", () => {
   });
 
   it("should not render the navigation buttons when on root path", () => {
-    Object.defineProperty(window, "location", {
-      value: {
-        pathname: "/",
-      },
-      writable: true,
-    });
+    window.history.pushState({}, "", "/");
 
     render(
       <PageContainer>
@@ -39,12 +34,7 @@ describe("PageContainer", () => {
   });
 
   it("should render the navigation buttons when not on root path", () => {
-    Object.defineProperty(window, "location", {
-      value: {
-        pathname: "/bio",
-      },
-      writable: true,
-    });
+    window.history.pushState({}, "", "/bio");
 
     render(
       <BrowserRouter>

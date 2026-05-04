@@ -19,7 +19,7 @@
     "@babel/preset-env": "^7.26.7",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.26.0",
-    "@cucumber/cucumber": "^12.2.0",
+    "@cucumber/cucumber": "^12.8.2",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
